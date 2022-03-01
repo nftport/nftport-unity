@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-namespace NFTPort   //www.embracingearth.space
+namespace NFTPort  
 {
     
     public class NFTs_ownedbyanAccount : MonoBehaviour

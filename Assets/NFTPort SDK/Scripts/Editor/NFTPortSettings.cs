@@ -19,10 +19,10 @@ namespace NFTPort.Editor
 
         void OnGUI()
         {
-            Texture banner = (Texture)AssetDatabase.LoadAssetAtPath("Assets/NFTPort SDK/banner.png", typeof(Texture));
+            Texture banner = Resources.Load<Texture>("banner");
             GUILayout.Box(banner);
         
-            GUILayout.Label("Welcome to NFTPort Unity SDK", EditorStyles.boldLabel);
+            GUILayout.Label("Welcome to NFTPort Unity SDK (Pre-Alpha) ", EditorStyles.boldLabel);
 
             myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString);
             

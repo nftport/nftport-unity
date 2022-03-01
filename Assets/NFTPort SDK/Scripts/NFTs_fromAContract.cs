@@ -8,7 +8,6 @@ using UnityEngine.Events;
 
 namespace NFTPort
 {
-    //www.embracingearth.space
     public class NFTs_fromAContract : MonoBehaviour
     {
 

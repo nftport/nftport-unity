@@ -32,7 +32,7 @@ namespace NFTPort
             }
             else
             {
-                return "Please Run Port.Initialise() before calling GetUserApiKey()";
+                return "Run Port.Initialise() before calling GetUserApiKey()";
             }
         }
 
@@ -54,7 +54,6 @@ namespace NFTPort
         
         public static string LoadUserPrefsTextfile()
         {
-            string filePath = "Assets/NFTPort SDK/Resources/UserPrefs";
             TextAsset targetFile = Resources.Load<TextAsset>("UserPrefs");;
             if (targetFile != null)
                 return targetFile.text;

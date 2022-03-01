@@ -6,7 +6,6 @@ using UnityEngine;
 
 //EXTRA Interface script for ease. 
 //to call you can add using NFTPort on your script; and do NFTPort_Interface.NFT'sFromContract (contractStr , Chain) ; 
-//by www.embracingearth.space
 namespace NFTPort
 {
     [RequireComponent(
@@ -47,7 +46,7 @@ namespace NFTPort
             _mintUrl.Name = name;
             _mintUrl.Run();
         }
+        
 
-    
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 
-//by www.embracingearth.space
 
 namespace NFTPort
 {
