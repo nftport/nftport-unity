@@ -69,3 +69,18 @@ NFTsOwnedbyanAccount._ownedbyAddreddModel.nfts[i].name;
 ### NFTs_ownedbyanAccount.cs
 >Component provides All NFT's owned by the account.  <br/>
 <img src="./Readme-Assets/ownedbyAccount.jpg"  width="500"  /> <br/>
+
+
+#### Setting up Variables <br/>
+These can be setup directly through inspector. 
+For Runtime or setting up through script following can be used by refrencing the component, in this example as : _NFTsOwnedbyanAccount .
+```
+_NFTsOwnedbyanAccount.Address = "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B";
+_NFTsOwnedbyanAccount.chain = "ethereum";
+_NFTsOwnedbyanAccount.include = "all";
+```
+
+```
+_NFTsOwnedbyanAccount.Run();
+```
+Any events after call can be done via:
