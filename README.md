@@ -83,4 +83,21 @@ _NFTsOwnedbyanAccount.include = "all";
 ```
 _NFTsOwnedbyanAccount.Run();
 ```
-Any events after call can be done via:
+<br/>
+Any events after a successful fetch can be done via:
+<img src="./Readme-Assets/eventsafter.jpg"  width="400"  />
+
+##### Other Individual components can be used in similar fashion. 
+
+
+# Whats next?
+### Time to BUIDL. 
+*we will be iterating this extension and this is meant to provide a starter pack and tools in your journey with NFTPort and Unity3D. NFT's and GameEngines opens up a huge metaverse of creativity where possibilities are endless! What will you build?* 
+
+NFTPort has a number of api endpoints available at: https://docs.nftport.xyz/docs/nftport 
+
+# Join the community :
+Get support, showcase your work , share your thoughts and feedback, and engage in a vibrant community at:
+https://discord.gg/w92sXkNmBR 
+
+###### for your gaming endevours, get in touch at sahaj@nftport.xyz
