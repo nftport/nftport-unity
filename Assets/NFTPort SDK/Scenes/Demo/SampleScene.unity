@@ -399,7 +399,6 @@ MonoBehaviour:
   Contract: 0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D
   Chain: polygon
   include: metadata
-  _apiKey: 
   AfterSuccess:
     m_PersistentCalls:
       m_Calls:
@@ -438,7 +437,6 @@ MonoBehaviour:
   Address: 0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B
   Chain: polygon
   include: metadata
-  _apiKey: 
   AfterSuccess:
     m_PersistentCalls:
       m_Calls:
@@ -517,7 +515,6 @@ MonoBehaviour:
   Name: name
   Description: description
   MintToAddress: 
-  _apiKey: 
   OutputText: {fileID: 1782922619}
 --- !u!1 &309408582
 GameObject:
@@ -3484,7 +3481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -160.484}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -926, y: -115}
+  m_AnchoredPosition: {x: -926.00024, y: -115.00012}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392075709
