@@ -49,10 +49,10 @@ Easy Mint NFT via URL:
 NFTPort_Interface.Instance.Mint(FileUrlString, AddressString, NFTMintNameString);
 ```
 
-<br/>
+
 >If you do not need to change chain ID at runtime, you can get most done by above and set the chain id and include parameters in the inspector on individual components.
 
-When you call general functions  above using NFTPort_Interface.cs, the data gets sorted according to each NFT and populated in model of the following individual components below it, as seen in Unity Inpector Window. Any further actions utilising this data can be refrenced from these scripts. You can also link events from these individual components (view editor window of components in demo scene) <br/>
+When you call general functions  above using NFTPort_Interface.cs, the data gets sorted according to each NFT and populated in model of the following individual components below it, as seen in Unity Inpector Window. Any further actions utilising this data can be refrenced from these scripts. You can also link events from these individual components (view editor window of components(on object NNFTPort) in demo scene and demo.cs) <br/>
 
 ```
 NFTsOwnedbyanAccount._ownedbyAddreddModel.nfts[i].name;
@@ -67,5 +67,5 @@ NFTsOwnedbyanAccount._ownedbyAddreddModel.nfts[i].name;
 ###### Use Fetched Data : Modify chains, ID , Settings and more:
 
 ### NFTs_ownedbyanAccount.cs
->Component provides All NFT's owned by the account.
-
+>Component provides All NFT's owned by the account.  <br/>
+<img src="./Readme-Assets/ownedbyAccount.jpg"  width="500"  /> <br/>
