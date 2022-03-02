@@ -4,7 +4,7 @@
 
 ## Getting Started: 
 
-- Get your API keys: Your API requests are authenticated using API keys. You can generate an API key from : https://www.nftport.xyz/sign-up
+- Get your API keys: Your API requests are authenticated using API keys. You can get your free API key from : https://www.nftport.xyz/sign-up
 
 - Download Unity 2020.3.18f https://unity3d.com/unity/whats-new/2020.3.18 <br/>
   >*SDK is made using Unity 2020.3.18f , however is compatible with other versions as well. We'll be working towards Unity Asset Store release to make process easier.*
