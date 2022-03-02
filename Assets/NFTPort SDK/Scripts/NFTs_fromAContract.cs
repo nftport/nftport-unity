@@ -20,7 +20,7 @@ namespace NFTPort
         private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
         //private string RequestUriInit = "http://0.0.0.0:80/v0/nfts/";
         private string WEB_URL;
-        public  string _apiKey;
+        private string _apiKey;
         
         //Event Called after success, actions can be set within editor. This can be used to call UI updateing scripts and any further actions required after getting data from API.
         public UnityEvent AfterSuccess;

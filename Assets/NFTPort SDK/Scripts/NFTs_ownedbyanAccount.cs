@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using Newtonsoft.Json;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -15,12 +13,12 @@ namespace NFTPort
         public string Address = "Input Account Address Contract";
         [StringInList("ethereum","polygon")]
         public string Chain;
-        [StringInList("default","metadata", "all")]
+        [StringInList("default","metadata", "contract_information")]
         public string include;
 
         private string RequestUriInit = "https://api.nftport.xyz/v0/accounts/";
         private string WEB_URL;
-        public  string _apiKey;
+        private  string _apiKey;
         
         //Event Called after success, actions can be set within editor. This can be used to call UI updateing scripts and any further actions required after getting data from API.
         public UnityEvent AfterSuccess;

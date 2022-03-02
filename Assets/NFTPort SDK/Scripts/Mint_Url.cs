@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using NFTPort;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
@@ -21,7 +17,7 @@ namespace NFTPort
         public string MintToAddress = "wallet adrress";
         private string RequestUriInit = "https://api.nftport.xyz/v0/mints/easy/urls";
         private string WEB_URL;
-        public  string _apiKey;
+        private string _apiKey;
 
         [SerializeField] private TextMeshProUGUI OutputText;
 
@@ -45,7 +41,7 @@ namespace NFTPort
             
         }
 
-        private class NFT
+        private class EasyMintNFT
         {
             public string chain;
             public string name;
@@ -54,10 +50,10 @@ namespace NFTPort
             public string mint_to_address;
         }
 
-        private NFT nft;
+        private EasyMintNFT nft;
         void createNFTClass() //Sets Values of NFT to Mint
         {
-            nft = new NFT();
+            nft = new EasyMintNFT();
             nft.chain = Chain;
             nft.name = Name;
             nft.description = Description;

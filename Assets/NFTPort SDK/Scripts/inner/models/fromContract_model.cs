@@ -17,6 +17,9 @@ namespace NFTPort
        [Serializable]
        public class Metadata
        {
+           public string name;
+           public string description;
+           public string id;
            public List<Attribute> attributes;
            public string image;
        }
@@ -30,6 +33,7 @@ namespace NFTPort
        [Serializable]
        public class Nft
        {
+           public string name;
            public string token_id;
            public string chain;
            public string contract_address;

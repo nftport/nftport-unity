@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 //EXTRA Interface script for ease. 
-//to call you can add using NFTPort on your script; and do NFTPort_Interface.NFT'sFromContract (contractStr , Chain) ; 
+//to call you can add using NFTPort on your script; and do NFTPort_Interface.instance.NFT'sFromContract (contractStr , Chain) ; 
 namespace NFTPort
 {
     [RequireComponent(
