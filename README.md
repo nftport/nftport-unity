@@ -71,7 +71,7 @@ NFTsOwnedbyanAccount._ownedbyAddreddModel.nfts[i].name;
 <img src="./Readme-Assets/ownedbyAccount.jpg"  width="500"  /> <br/>
 
 
-#### Setting up Variables <br/>
+#### Setting up Variables and Run()<br/>
 These can be setup directly through inspector. 
 For Runtime or setting up through script following can be used by refrencing the component, in this example as : _NFTsOwnedbyanAccount .
 ```
@@ -97,7 +97,7 @@ Any events after a successful fetch can be done via:
 NFTPort has a number of api endpoints available at: https://docs.nftport.xyz/docs/nftport 
 
 # Join the community :
-Get support, showcase your work , share your thoughts and feedback, and engage in a vibrant community at:
+Get support, showcase your work, share your thoughts and feedback, and engage in a vibrant community at:
 https://discord.gg/w92sXkNmBR 
 
 ###### for your gaming endeavors, get in touch at sahaj@nftport.xyz
