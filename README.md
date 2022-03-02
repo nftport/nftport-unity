@@ -100,4 +100,4 @@ NFTPort has a number of api endpoints available at: https://docs.nftport.xyz/doc
 Get support, showcase your work , share your thoughts and feedback, and engage in a vibrant community at:
 https://discord.gg/w92sXkNmBR 
 
-###### for your gaming endevours, get in touch at sahaj@nftport.xyz
+###### for your gaming endeavors, get in touch at sahaj@nftport.xyz
