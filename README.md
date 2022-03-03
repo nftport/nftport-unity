@@ -11,7 +11,7 @@
 
 - Download the NFTPort extension:
   - Option 1: clone this Github repository and open the [Unity project](./NFT_UnitySDK).
-  - Option 2: download the Unity package and import in your project
+  - Option 2: download the [Unity package](https://github.com/nftport/nftport-unity/releases) and import in your project
   - Option 3: copy the [NFT_UnitySDK Folder](./NFT_UnitySDK/Assets/NFTPort%20SDK) in your project Assets directory.
 
 <br/>
