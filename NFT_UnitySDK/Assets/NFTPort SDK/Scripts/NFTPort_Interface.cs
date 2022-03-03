@@ -4,12 +4,10 @@ using UnityEngine;
 //to call you can add using NFTPort on your script; and do NFTPort_Interface.instance.NFT'sFromContract (contractStr , Chain) ; 
 namespace NFTPort
 {
-    [RequireComponent(
-        typeof(NFTs_ownedbyanAccount), 
-        typeof(NFTs_fromAContract), 
-        typeof(Mint_Url)
-
-    )]
+    [RequireComponent(typeof(NFTs_ownedbyanAccount))]
+    [RequireComponent(typeof(NFTs_fromAContract))]
+    [RequireComponent(typeof(Mint_Url))]
+    [RequireComponent(typeof(NFTDetails))]
     
     public class NFTPort_Interface : MonoBehaviour
     {
@@ -31,13 +29,14 @@ namespace NFTPort
         private NFTs_ownedbyanAccount _nfTsOwnedbyanAccount;
         private NFTs_fromAContract _nfTsFromAContract;
         private Mint_Url _mintUrl;
-
+        private NFTDetails _nftDetails;
         private void Awake()
         {
             InterfaceInstance();
             _nfTsOwnedbyanAccount = GetComponent<NFTs_ownedbyanAccount>();
             _nfTsFromAContract = GetComponent<NFTs_fromAContract>();
             _mintUrl = GetComponent<Mint_Url>();
+            _nftDetails = GetComponent<NFTDetails>();
         }
 
         public void NFTsFromContract(string contract)
@@ -58,6 +57,13 @@ namespace NFTPort
             _mintUrl.MintToAddress = mintTOAddress;
             _mintUrl.Name = name;
             _mintUrl.Run();
+        }
+
+        public void NFTDetails(string contract_address, string token_id)
+        {
+            _nftDetails.Contract = contract_address;
+            _nftDetails.Token_id = token_id;
+            _nftDetails.Run();
         }
         
 

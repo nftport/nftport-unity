@@ -16,9 +16,13 @@ public class Demo : MonoBehaviour
     [SerializeField] private Text Mintto;
     [SerializeField] private Text MintName;
     
+    //nftdetails
+    [SerializeField] private Text NFTDetails_Contract;
+    [SerializeField]private Text NFTDetails_Token_ID;
     
     [SerializeField] private NFTs_ownedbyanAccount _nfTsOwnedbyanAccount;
     [SerializeField] private NFTs_fromAContract _nfTsFromAContract;
+    [SerializeField] private NFTDetails _nftDetails;
     
     #endregion
 
@@ -64,5 +68,21 @@ public class Demo : MonoBehaviour
     {
         NFTPort_Interface.Instance.Mint(Minturl.text, Mintto.text, MintName.text);
     }
+
+    public void RetrieveNFTDetails()
+    {
+        NFTPort_Interface.Instance.NFTDetails(NFTDetails_Contract.text,NFTDetails_Token_ID.text);
+    }
+
+    public void UpdateUI_RetrieveNFTDetails()
+    {
+        NFTNames.text = "";
+        NFTNames.text  = 
+            _nftDetails._NftDetailsModel.nft.file_url +'\n' 
+            + _nftDetails._NftDetailsModel.nft.metadata.description + '\n' 
+            + _nftDetails._NftDetailsModel.nft.metadata.name;
+        // other data can be accessed in similar manner, view NFTDetails_model.cs
+    }
+
 
 }
