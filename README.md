@@ -55,7 +55,10 @@ Easy Mint NFT via URL:
 ```csharp
 NFTPort_Interface.Instance.Mint(FileUrlString, AddressString, NFTMintNameString);
 ```
-
+Retrieve NFTDetails: 
+```csharp
+NFTPort_Interface.Instance.NFTDetails(ContractString, TokenIdString);
+```
 
 If you do not need to change chain ID at runtime, you can get most done by above and set the chain ID and include parameters in the inspector on individual components.
 
