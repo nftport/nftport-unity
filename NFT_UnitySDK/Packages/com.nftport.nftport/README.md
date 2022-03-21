@@ -2,7 +2,7 @@
 
 The purpose of this starter kit is to provide the data structure and development guidelines for new packages meant for the **Unity Package Manager (UPM)**.
 
-## Are you ready to become a package?
+## Are you ready to become a package? 
 The Package Manager is a work in progress for Unity. Because of that, your package needs to meet these criteria to become an official Unity package:
 - **Your code accesses public Unity C# APIs only.**
 - **Your code doesn't require security, obfuscation, or conditional access control.**
