@@ -9,7 +9,7 @@ namespace NFTPort
     public class Mint_Url : MonoBehaviour
     {
         public string fileurl = "Add file url to mint";
-        [StringInList("ethereum","polygon")]
+        [StringInList("rinkeby","polygon")]
         public string Chain;
 
         public string Name = "name";
