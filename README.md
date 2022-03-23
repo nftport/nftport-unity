@@ -1,5 +1,5 @@
 # WIP
-
+//
 The purpose of this starter kit is to provide the data structure and development guidelines for new packages meant for the **Unity Package Manager (UPM)**.
 
 ## Are you ready to become a package? 
