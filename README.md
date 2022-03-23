@@ -1,4 +1,4 @@
-# Package Starter Kit
+# WIP
 
 The purpose of this starter kit is to provide the data structure and development guidelines for new packages meant for the **Unity Package Manager (UPM)**.
 
@@ -8,7 +8,7 @@ The Package Manager is a work in progress for Unity. Because of that, your packa
 - **Your code doesn't require security, obfuscation, or conditional access control.**
 
 
-## Package structure
+## Package structure 
 
 ```none
 <root>
