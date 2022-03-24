@@ -1,8 +1,8 @@
-name: CI
-on:
-  push:
-    branches:
-      - com.nftport.nftport
+name: Release Package 🚀
+on: workflow_dispatch
+# push:
+#   branches:
+#     - com.nftport.nftport
 jobs:
   release:
     name: release
@@ -20,3 +20,4 @@ jobs:
           branch: com.nftport.nftport
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
