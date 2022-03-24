@@ -1,3 +1,10 @@
+# 1.0.0 (2022-03-24)
+
+
+### Bug Fixes
+
+* test ([a1275cb](https://github.com/nftport/nftport-unity/commit/a1275cba77552b24b6bbf72dd0ab788d1411aa5f))
+
 # Changelog
 All notable changes to this package will be documented in this file.
 
