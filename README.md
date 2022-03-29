@@ -23,7 +23,7 @@ git remote add nftport-unity https://[USERNAME]:[TOKEN]@github.com/nftport/nftpo
 git subtree push --prefix=NFT_UnitySDK/Packages/com.nftport.nftport nftport-unity com.nftport.nftport
 ```
 ```
-git subtree add --prefix=NFT_UnitySDK/Packages/com.nftport.nftport --squash nftport-unity com.nftport.nftport
+git subtree push --prefix=NFT_UnitySDK/Packages/com.nftport.nftport --squash nftport-unity com.nftport.nftport
 ```
 ➡️Pulling [nftport-unity](http://com.nftport.com) changes to this repo:
 
