@@ -2,9 +2,7 @@ name: Unity Tests _Unity 🎮
 on:
   push:
     branches:
-      - com.nftport.nftport
-      - UPM_DevelopmentBranch
-      - dev
+      - master
       
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
