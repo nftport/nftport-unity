@@ -9,9 +9,11 @@ Development environment for nftport-unity SDK repo
 <br/>
 <br/>
 ### Setup Locally: 
+create https://github.com/settings/tokens,
+<br/>
 Add [nftport-unity](https://github.com/nftport/nftport-unity/tree/com.nftport.nftport) locally as a remote origin (nftport-unity) :
 ```
-git remote add nftport-unity https://github.com/nftport/nftport-unity.git
+git remote add nftport-unity https://[USERNAME]:[TOKEN]@github.com/nftport/nftport-unity.git
 ```
 ↖️Pushing [package folder changes](https://github.com/nftport/nftport-unity-dev/tree/master/NFT_UnitySDK/Packages/com.nftport.nftport) from here -> to [nftport-unity](https://github.com/nftport/nftport-unity/tree/com.nftport.nftport) repo:
 <br/>
