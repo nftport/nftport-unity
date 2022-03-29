@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/NFT_UnitySDK/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -21,6 +22,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode/
 
 # Gradle cache directory
 .gradle/
@@ -42,6 +44,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.idea
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -57,4 +60,10 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+Assets/Temp/szvfx+spline assets BASE/EffectExamples/Mirza Beig/Particle Systems/Ultimate VFX/Expansions/XP - CONSTR. KIT/Prefabs/Oneshot/Shards/pf_vfx-ult_xp-ckit_psys_oneshot_shards-x3+.prefab.meta
+
+#Custom Files : Env Variables, Keys etc.
+/Assets/NFTPort SDK/Resources/UserPrefs.json
+
 
