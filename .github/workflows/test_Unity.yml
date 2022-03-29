@@ -1,4 +1,4 @@
-name: Unity Tests 🎮
+name: Unity Tests _Unity 🎮
 on:
   push:
     branches:

@@ -1,7 +1,7 @@
-name: Build Tests 🛕
+name: Build Tests _Unity 🛕
 on:
   workflow_run:
-    workflows: ["Unity Tests 🎮"]
+    workflows: ["Unity Tests _Unity 🎮"]
     types: [completed] #requested
 
 env:
