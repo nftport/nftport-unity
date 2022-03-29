@@ -1,0 +1,24 @@
+name: Release Package 🚀
+on: workflow_dispatch
+# push:
+#   branches:
+#     - com.nftport.nftport
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/com.nftport.nftport'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+          branch: com.nftport.nftport
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
