@@ -9,7 +9,6 @@ Development environment for nftport-unity SDK repo
 <br/>
 <br/>
 ### Setup Locally: 
-<br/>
 Add [nftport-unity](https://github.com/nftport/nftport-unity/tree/com.nftport.nftport) locally as a remote origin (nftport-unity) :
 ```
 git remote add nftport-unity https://github.com/nftport/nftport-unity.git
