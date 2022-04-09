@@ -73,35 +73,36 @@ namespace NFTPort
 
         #region Prefs File Write
         #if UNITY_EDITOR
-
-
-        public static void SaveNewApi(string newAPI)
-        {
-            _userPrefs.API_KEY = newAPI;
-            if(Port._initialised == false);
+        
+            public static void SaveNewApi(string newAPI)
             {
-                if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                _userPrefs.API_KEY = newAPI;
+                if(Port._initialised == false);
                 {
-                    CreateFolder();
-                };
-                WriteToUserPrefs();
+                    if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                    {
+                        CreateFolder();
+                    };
+                    WriteToUserPrefs();
+                }
+                
             }
             
-        }
-       static  void WriteToUserPrefs()
-        {
-            _initialised = false;
-            string json = JsonUtility.ToJson(_userPrefs);
-            System.IO.File.WriteAllText("Assets/Resources/" + "NFTPort UserPrefs.json", json);
-            AssetDatabase.Refresh();
-        }
+            static  void WriteToUserPrefs()
+            {
+                _initialised = false;
+                string json = JsonUtility.ToJson(_userPrefs);
+                System.IO.File.WriteAllText("Assets/Resources/" + "NFTPort UserPrefs.json", json);
+                AssetDatabase.Refresh();
+            }
 
-       static void CreateFolder()
-        {
-            string guid = AssetDatabase.CreateFolder("Assets", "Resources");
-            string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-            AssetDatabase.Refresh();
-        }
+           static void CreateFolder()
+            {
+                string guid = AssetDatabase.CreateFolder("Assets", "Resources");
+                string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
+                AssetDatabase.Refresh();
+            }
+           
         #endif
         
 
