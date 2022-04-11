@@ -6,7 +6,7 @@ using UnityEngine;
 namespace NFTPort
 {
     [Serializable]
-    public class ownedbyAddress_model : MonoBehaviour
+    public class NFTs_OwnedByAnAccount_model : MonoBehaviour
     {
         [Serializable]
         public class Trait
