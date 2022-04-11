@@ -77,12 +77,13 @@ namespace NFTPort
             public static void SaveNewApi(string newAPI)
             {
                 _userPrefs.API_KEY = newAPI;
-                if(Port._initialised == false);
+                if(_initialised == false)
                 {
                     if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                     {
                         CreateFolder();
-                    };
+                    }
+                    
                     WriteToUserPrefs();
                 }
                 
@@ -100,7 +101,6 @@ namespace NFTPort
             {
                 string guid = AssetDatabase.CreateFolder("Assets", "Resources");
                 string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-                AssetDatabase.Refresh();
             }
            
         #endif
