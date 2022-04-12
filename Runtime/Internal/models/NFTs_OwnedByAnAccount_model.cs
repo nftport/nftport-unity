@@ -35,6 +35,14 @@ namespace NFTPort
             public int? edition;
         }
         [Serializable]
+        public class Contract
+        {
+            public string name;
+            public string symbol;
+            public string type;
+        }
+        
+        [Serializable]
         public class Nft
         {
             public string name;
@@ -46,6 +54,7 @@ namespace NFTPort
             public string creator_address;
             public Metadata metadata;
             public string metadata_url;
+            public Contract contract;
         }
         [Serializable]
         public class Root

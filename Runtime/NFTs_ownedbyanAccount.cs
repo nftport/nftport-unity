@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 namespace NFTPort  
 {
     /// <summary>
-    /// Returns NFTs owned by a given account (i.e. wallet) address. Can also return each NFT metadata with include parameter and filter from specific collection.
+    /// NFTs owned by a given account (i.e. wallet) address. Can also return each NFT metadata with include parameter and filter from specific collection.
     /// </summary>
     public class NFTs_OwnedByAnAccount : MonoBehaviour
     {
@@ -60,15 +60,20 @@ namespace NFTPort
 
 
             private UnityAction<string> OnErrorAction;
-            private UnityAction OnCompleteAction;
-
-
-            [Space(10)]
-            //Event Called after success, actions can be set within editor. 
+            private UnityAction<NFTs_OwnedByAnAccount_model.Root> OnCompleteAction;
+            
+            [Space(20)]
+            //[Header("Called After Successful API call")]
             public UnityEvent afterSuccess;
+            //[Header("Called After Error API call")]
+            public UnityEvent afterError;
 
-            //Gets filled with data and can be refrenced >
-            public NFTs_OwnedByAnAccount_model.Root ownedbyAddressModel;
+            [Header("Run Component when this Game Object is Set Active")]
+            [SerializeField] private bool onEnable = false;
+            public bool debugErrorLog = true;
+            
+            [Header("Gets filled with data and can be referenced:")]
+            public NFTs_OwnedByAnAccount_model.Root ownedByAccountModel;
 
         #endregion
 
@@ -79,24 +84,32 @@ namespace NFTPort
             _apiKey = Port.GetUserApiKey();
             
         }
-        
+
+        private void OnEnable()
+        {
+            if (onEnable)
+                Run();
+        }
 
         #region SetParams and Chain Functions
 
-            /// <summary>
-            /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
-            /// Optional bool parameter destroyAtEnd can be passed here and set to false to avoid Spawned GameObject being destroyed after the Api process is complete.
-            /// </summary>
-            public static NFTs_OwnedByAnAccount Initialize(bool destroyAtEnd = true)
+        /// <summary>
+        /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
+        /// </summary>
+        /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
+        public static NFTs_OwnedByAnAccount Initialize(bool destroyAtEnd = true)
             {
                 var _this = new GameObject("NFTs Of Account").AddComponent<NFTs_OwnedByAnAccount>();
                 _this.destroyAtEnd = destroyAtEnd;
+                _this.onEnable = false;
+                _this.debugErrorLog = false;
                 return _this;
             }
             
             /// <summary>
             /// Set Account Address to retrieve NFTs from as string
             /// </summary>
+            /// <param name="account_address"> as string.</param>
             public NFTs_OwnedByAnAccount SetAddress(string account_address)
             {
                 this.address = account_address;
@@ -104,8 +117,9 @@ namespace NFTPort
             }
             
             /// <summary>
-            /// Blockchain from which to query NFTs. Choose from Chains.
+            /// Blockchain from which to query NFTs.
             /// </summary>
+            /// <param name="chain"> Choose from available Chains enum</param>
             public NFTs_OwnedByAnAccount SetChain(Chains chain)
             {
                 this.chain = chain;
@@ -115,6 +129,7 @@ namespace NFTPort
             /// <summary>
             /// Include optional data in the response. default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract, Choose from Includes.
             /// </summary>
+            /// <param name="include"> Choose from available Includes enum</param>
             public NFTs_OwnedByAnAccount SetInclude(Includes include)
             {
                 this.include = include;
@@ -122,20 +137,31 @@ namespace NFTPort
             }
 
             /// <summary>
-            /// Filter by and return NFTs only from the given contract address/collection. Add as string.
+            /// Set Filter by to return NFTs only from the given contract address/collection. 
             /// </summary>
+            ///<param name="contract_address"> as string.</param>
             public NFTs_OwnedByAnAccount SetFilterFromContract(string contract_address)
             {
                 this.contract_address = contract_address;
                 return this;
             }
             
-            public NFTs_OwnedByAnAccount OnComplete(UnityAction action)
+            /// <summary>
+            /// Action on succesfull API Fetch.
+            /// </summary>
+            /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
+            /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
+            public NFTs_OwnedByAnAccount OnComplete(UnityAction<NFTs_OwnedByAnAccount_model.Root> action)
             {
                 this.OnCompleteAction = action;
                 return this;
             }
             
+            /// <summary>
+            /// Action on Error
+            /// </summary>
+            /// <param name="UnityAction action"> string.</param>
+            /// <returns> Information on Error as string text.</returns>
             public NFTs_OwnedByAnAccount OnError(UnityAction<string> action)
             {
                 this.OnErrorAction = action;
@@ -153,7 +179,7 @@ namespace NFTPort
             {
                 WEB_URL = BuildUrl();
                 StartCoroutine(CallAPIProcess());
-                return ownedbyAddressModel;
+                return ownedByAccountModel;
             }
 
             string BuildUrl()
@@ -168,41 +194,41 @@ namespace NFTPort
             IEnumerator CallAPIProcess()
             {
                 //Make request
-                UnityWebRequest rq = UnityWebRequest.Get(WEB_URL);
-                rq.SetRequestHeader("Content-Type", "application/json");
-                rq.SetRequestHeader("Authorization", _apiKey);
+                UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
+                request.SetRequestHeader("Content-Type", "application/json");
+                request.SetRequestHeader("Authorization", _apiKey);
 
                 {
-                    yield return rq.SendWebRequest();
-                    string jsonResult = System.Text.Encoding.UTF8.GetString(rq.downloadHandler.data);
+                    yield return request.SendWebRequest();
+                    string jsonResult = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
                     
-                    Debug.Log(rq.responseCode);
-                    Debug.Log(jsonResult);
                     
-                    //Fill Data Model from recieved class
-                    ownedbyAddressModel = JsonConvert.DeserializeObject<NFTs_OwnedByAnAccount_model.Root>(jsonResult);
-                    
-                    if (ownedbyAddressModel == null)
+                    if (request.error != null)
                     {
                         if(OnErrorAction!=null)
-                            OnErrorAction($"Null data. Response code: {rq.responseCode}.");
+                            OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                        if(debugErrorLog)
+                            Debug.Log($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                        if(afterError!=null)
+                            afterError.Invoke();
                         yield break;
                     }
-
-                    if(ownedbyAddressModel != null)
+                    else
                     {
+                        //Fill Data Model from recieved class
+                        ownedByAccountModel = JsonConvert.DeserializeObject<NFTs_OwnedByAnAccount_model.Root>(jsonResult);
+                        
                         if(OnCompleteAction!=null)
-                            OnCompleteAction.Invoke();
+                            OnCompleteAction.Invoke(ownedByAccountModel);
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
                         
-                        yield return ownedbyAddressModel;
                     }
 
                 }
                 
-                rq.Dispose();
+                request.Dispose();
                 if(destroyAtEnd)
                     Destroy (this.gameObject);
             }
