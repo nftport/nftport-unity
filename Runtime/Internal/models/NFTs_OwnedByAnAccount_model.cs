@@ -6,11 +6,7 @@ using UnityEngine;
 namespace NFTPort
 {
     [Serializable]
-<<<<<<< Updated upstream:NFT_UnitySDK/Packages/com.nftport.nftport/Runtime/Internal/models/ownedbyAddress_model.cs
-    public class ownedbyAddress_model : MonoBehaviour
-=======
     public class NFTs_OwnedByAnAccount_model
->>>>>>> Stashed changes:NFT_UnitySDK/Packages/com.nftport.nftport/Runtime/Internal/models/NFTs_OwnedByAnAccount_model.cs
     {
         [Serializable]
         public class Trait
