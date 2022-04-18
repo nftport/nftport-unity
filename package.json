@@ -2,18 +2,32 @@
   "name": "com.nftport.nftport",
   "displayName": "NFTPort",
   "version": "0.0.7",
-  "description": "Replace this string with your own description of the package. This description appears in the Package Manager window when the user selects this package from the list. \n\nFor best results, use this text to summarize: \n▪ What the package does \n▪ How it can benefit the user \n\nNote: Special formatting characters are supported, including line breaks ('\\n') and bullets ('\\u25AA').",
+  "description": "NFTPort.xyz unity extension provides tools and features to integrate NFT's crosschain at lightning speed in Unity.\n\n https://github.com/nftport/nftport-unity.git",
   "type": "tool",
-  "documentationUrl": "",
+  "documentationUrl": "https://docs.nftport.xyz/docs/nftport",
   "keywords": [
     "web3",
     "blockchain",
-    "NFT",
+    "NFT", 
+    "NFTs",
     "ethereum"
   ],
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+},
   "author": {
     "name": "NFTPort.xyz",
     "email": "sahaj@nftport.xyz",
     "url": "https://www.nftport.xyz/"
-  }
+  },
+  "samples": [
+    {
+        "displayName": "NFT Ownership Data: Account/Contract",
+        "description": "Contains sample showcasing get components for : NFTs owned by an account and NFTs of a contract",
+        "path": "Samples/Ownership Data",
+        "dependencies": {
+          "com.unity.textmeshpro": "3.0.6"
+      }
+    }
+  ]
 }

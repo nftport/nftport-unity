@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 namespace NFTPort  
 {
     /// <summary>
-    /// NFTs owned by a given account (i.e. wallet) address. Can also return each NFT metadata with include parameter and filter from specific collection.
+    /// NFTs owned by a given account (wallet address), Can also return each NFT metadata with include parameter and filter from specific collection.
     /// </summary>
     public class NFTs_OwnedByAnAccount : MonoBehaviour
     {
@@ -50,12 +50,12 @@ namespace NFTPort
             [Header("Include optional data in the response.")]
             [Tooltip("Default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract.")]
             [SerializeField]
-            Includes include = Includes.Default;
+            Includes include = Includes.metadata;
 
             
             private string RequestUriInit = "https://api.nftport.xyz/v0/accounts/";
             private string WEB_URL;
-            private  string _apiKey;
+            private string _apiKey;
             private bool destroyAtEnd = false;
 
 
@@ -71,6 +71,7 @@ namespace NFTPort
             [Header("Run Component when this Game Object is Set Active")]
             [SerializeField] private bool onEnable = false;
             public bool debugErrorLog = true;
+            public bool debugLogRawApiResponse = false;
             
             [Header("Gets filled with data and can be referenced:")]
             public NFTs_OwnedByAnAccount_model.Root ownedByAccountModel;
@@ -119,7 +120,7 @@ namespace NFTPort
             /// <summary>
             /// Blockchain from which to query NFTs.
             /// </summary>
-            /// <param name="chain"> Choose from available Chains enum</param>
+            /// <param name="chain"> Choose from available 'Chains' enum</param>
             public NFTs_OwnedByAnAccount SetChain(Chains chain)
             {
                 this.chain = chain;
@@ -129,7 +130,7 @@ namespace NFTPort
             /// <summary>
             /// Include optional data in the response. default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract, Choose from Includes.
             /// </summary>
-            /// <param name="include"> Choose from available Includes enum</param>
+            /// <param name="include"> Choose from available 'Includes' enum </param>
             public NFTs_OwnedByAnAccount SetInclude(Includes include)
             {
                 this.include = include;
@@ -173,7 +174,7 @@ namespace NFTPort
         
         #region Run - API
             /// <summary>
-            /// Runs the Api call and returns the corresponding model on success.
+            /// Runs the Api call and fills the corresponding model in the component on success.
             /// </summary>
             public NFTs_OwnedByAnAccount_model.Root Run()
             {
@@ -202,7 +203,9 @@ namespace NFTPort
                     yield return request.SendWebRequest();
                     string jsonResult = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
                     
-                    
+                    if(debugLogRawApiResponse)
+                        Debug.Log(jsonResult);
+
                     if (request.error != null)
                     {
                         if(OnErrorAction!=null)
@@ -223,11 +226,8 @@ namespace NFTPort
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
-                        
                     }
-
                 }
-                
                 request.Dispose();
                 if(destroyAtEnd)
                     Destroy (this.gameObject);
