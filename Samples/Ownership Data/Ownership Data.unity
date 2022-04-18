@@ -5152,7 +5152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069d4837e6bc6ab429e088e3c161a6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NfTsOwnedByAnAccount: {fileID: 1913506718}
+  NfTsOwnedByAnAccount: {fileID: 0}
   chainDropdown: {fileID: 1007654880}
   accountAddressText: {fileID: 1472206753}
   contractFilter: {fileID: 508878931}
@@ -5316,7 +5316,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1307876728}
   m_HandleRect: {fileID: 1307876727}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
