@@ -1,66 +1,74 @@
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace NFTPort
 {
     [Serializable]
-<<<<<<< Updated upstream:NFT_UnitySDK/Packages/com.nftport.nftport/Runtime/Internal/models/ownedbyAddress_model.cs
-    public class ownedbyAddress_model : MonoBehaviour
-=======
-    public class NFTs_OwnedByAnAccount_model
->>>>>>> Stashed changes:NFT_UnitySDK/Packages/com.nftport.nftport/Runtime/Internal/models/NFTs_OwnedByAnAccount_model.cs
+    public class NFTs_OfAContract_model
     {
-        [Serializable]
-        public class Trait
-        {
-            public string trait_type;
-            public string value;
-        }
         [Serializable]
         public class Attribute
         {
             public string trait_type;
             public string value;
         }
+
         [Serializable]
         public class Metadata
         {
             public string name;
             public string description;
-            public string id;
             public string image;
-            public List<Trait> traits;
+            public int edition;
+            public object date;
             public List<Attribute> attributes;
             public string compiler;
-            public long? date;
+            public string background_color;
+            public string external_url;
+            public string animation_url;
             public string dna;
-            public int? edition;
         }
+
+        [Serializable]
+        public class FileInformation
+        {
+            public int height;
+            public int width;
+            public int file_size;
+        }
+
         [Serializable]
         public class Nft
         {
             public string name;
+            public string chain;
             public string contract_address;
             public string token_id;
-            public string description;
-            public string file_url;
-            public string cached_file_url;
-            public string creator_address;
             public Metadata metadata;
             public string metadata_url;
+            public string file_url;
+            public string cached_file_url;
+            public DateTime mint_date;
+            public FileInformation file_information;
+            public DateTime updated_date;
         }
+
+        [Serializable]
+        public class Contract
+        {
+            public string name;
+            public string symbol;
+            public string type;
+        }
+
         [Serializable]
         public class Root
         {
             public string response;
             public List<Nft> nfts;
-            public object total;
-            public object continuation;
+            public Contract contract;
+            public int total;
         }
-
-
     }
-
 }

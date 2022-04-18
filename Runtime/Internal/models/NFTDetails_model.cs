@@ -6,7 +6,7 @@ using UnityEngine;
 namespace NFTPort
 {
     [Serializable]
-    public class NFTDetails_model : MonoBehaviour
+    public class NFTDetails_model 
     {
         [Serializable]
         public class Metadata
