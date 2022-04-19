@@ -89,7 +89,7 @@ namespace NFTPort.Samples.Ownership_Data{
         public void NFTsOfAContract_Run()
         {
             NFTsOfAContract
-                .SetChain(GetChainFromDropDownSelectio_Contract())
+                .SetChain(GetChainFromDropDownSelect_Contract())
                 .SetContractAddress(contractAddressText.text)
                 .OnComplete(NFTs=> NFTsAContract_OutputUI(NFTs))
                 .Run();
@@ -116,7 +116,7 @@ namespace NFTPort.Samples.Ownership_Data{
         }
 
         #region Chain DropDown contract
-        NFTs_OfAContract.Chains GetChainFromDropDownSelectio_Contract()
+        NFTs_OfAContract.Chains GetChainFromDropDownSelect_Contract()
         {
             if (chainDropdown_Contract.value == 0)
                 return NFTs_OfAContract.Chains.ethereum;
