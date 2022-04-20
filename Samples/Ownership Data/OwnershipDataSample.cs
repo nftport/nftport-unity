@@ -32,7 +32,7 @@ namespace NFTPort.Samples.Ownership_Data{
                 .Run();
         }
 
-        void NFTsOwnedByAnAccount_OutputUI(NFTs_OwnedByAnAccount_model.Root NFTsOfUser)
+        void NFTsOwnedByAnAccount_OutputUI(NFTs_model NFTsOfUser)
         {
             outputWindow.text = "";
             
@@ -95,12 +95,12 @@ namespace NFTPort.Samples.Ownership_Data{
                 .Run();
         }
 
-        void NFTsAContract_OutputUI(NFTs_OfAContract_model.Root NFTsOfContractr)
+        void NFTsAContract_OutputUI(NFTs_model NFTsOfContract)
         {
             outputWindow.text = "";
             
             //Populate NFT names in Output window
-            foreach (var ContractNFT  in NFTsOfContractr.nfts)
+            foreach (var ContractNFT  in NFTsOfContract.nfts)
             {
                 if (ContractNFT.metadata.name == null)
                     ContractNFT.metadata.name = "NFT Name not Set";

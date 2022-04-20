@@ -60,7 +60,7 @@ namespace NFTPort
 
 
             private UnityAction<string> OnErrorAction;
-            private UnityAction<NFTs_OwnedByAnAccount_model.Root> OnCompleteAction;
+            private UnityAction<NFTs_model> OnCompleteAction;
             
             [Space(20)]
             //[Header("Called After Successful API call")]
@@ -74,7 +74,7 @@ namespace NFTPort
             public bool debugLogRawApiResponse = false;
             
             [Header("Gets filled with data and can be referenced:")]
-            public NFTs_OwnedByAnAccount_model.Root ownedByAccountModel;
+            public NFTs_model NFTs;
 
         #endregion
 
@@ -152,7 +152,7 @@ namespace NFTPort
             /// </summary>
             /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
             /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
-            public NFTs_OwnedByAnAccount OnComplete(UnityAction<NFTs_OwnedByAnAccount_model.Root> action)
+            public NFTs_OwnedByAnAccount OnComplete(UnityAction<NFTs_model> action)
             {
                 this.OnCompleteAction = action;
                 return this;
@@ -176,11 +176,11 @@ namespace NFTPort
             /// <summary>
             /// Runs the Api call and fills the corresponding model in the component on success.
             /// </summary>
-            public NFTs_OwnedByAnAccount_model.Root Run()
+            public NFTs_model Run()
             {
                 WEB_URL = BuildUrl();
                 StartCoroutine(CallAPIProcess());
-                return ownedByAccountModel;
+                return NFTs;
             }
 
             string BuildUrl()
@@ -219,10 +219,10 @@ namespace NFTPort
                     else
                     {
                         //Fill Data Model from recieved class
-                        ownedByAccountModel = JsonConvert.DeserializeObject<NFTs_OwnedByAnAccount_model.Root>(jsonResult);
+                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(jsonResult);
                         
                         if(OnCompleteAction!=null)
-                            OnCompleteAction.Invoke(ownedByAccountModel);
+                            OnCompleteAction.Invoke(NFTs);
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
