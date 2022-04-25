@@ -198,7 +198,8 @@ namespace NFTPort
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("Authorization", _apiKey);
-
+                request.SetRequestHeader("request-source", "NFTPort-Unity-SDK");
+                
                 {
                     yield return request.SendWebRequest();
                     string jsonResult = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
@@ -214,7 +215,7 @@ namespace NFTPort
                             Debug.Log($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(afterError!=null)
                             afterError.Invoke();
-                        yield break;
+                        //yield break;
                     }
                     else
                     {

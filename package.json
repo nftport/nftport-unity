@@ -1,20 +1,17 @@
 {
   "name": "com.nftport.nftport",
   "displayName": "NFTPort",
-  "version": "0.0.7",
+  "version": "0.0.4-preview",
   "description": "NFTPort.xyz unity extension provides tools and features to integrate NFT's crosschain at lightning speed in Unity.\n\n https://github.com/nftport/nftport-unity.git",
   "type": "tool",
   "documentationUrl": "https://docs.nftport.xyz/docs/nftport",
   "keywords": [
     "web3",
     "blockchain",
-    "NFT", 
+    "NFT",
     "NFTs",
     "ethereum"
   ],
-  "dependencies": {
-    "com.unity.textmeshpro": "3.0.6"
-},
   "author": {
     "name": "NFTPort.xyz",
     "email": "sahaj@nftport.xyz",
@@ -22,12 +19,14 @@
   },
   "samples": [
     {
-        "displayName": "NFT Ownership Data: Account/Contract",
-        "description": "Contains sample showcasing get components for : NFTs owned by an account and NFTs of a contract",
-        "path": "Samples/Ownership Data",
-        "dependencies": {
-          "com.unity.textmeshpro": "3.0.6"
-      }
+      "displayName": "NFT Ownership Data: Account/Contract",
+      "description": "Contains sample showcasing get components for : NFTs owned by an account and NFTs of a contract",
+      "path": "Samples/Ownership Data"
+    },
+    {
+      "displayName": "Easy Mint NFT using URL",
+      "description": "Contains sample showcasing easing minting a file via a URL",
+      "path": "Samples/Easy Mint URL"
     }
   ]
 }
