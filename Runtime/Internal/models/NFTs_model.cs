@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Video;
+using Object = UnityEngine.Object;
 
 namespace NFTPort
 {
     [Serializable]
-    public class NFTs_model
+    public class NFTs_model 
     {
         public string response;
         public List<Nft> nfts;
@@ -14,21 +17,21 @@ namespace NFTPort
     }
     
     [Serializable]
-    public class Attribute
+    public class Attribute : NFTs_model
     {
         public string trait_type;
         public string value;
     }
     
     [Serializable]
-    public class Trait
+    public class Trait : NFTs_model
     {
         public string trait_type;
         public string value;
     }
 
     [Serializable]
-    public class Metadata
+    public class Metadata : NFTs_model
     {
         public string name;
         public string description;
@@ -46,7 +49,7 @@ namespace NFTPort
     }
 
     [Serializable]
-    public class FileInformation
+    public class FileInformation : NFTs_model
     {
         public int height;
         public int width;
@@ -54,7 +57,7 @@ namespace NFTPort
     }
 
     [Serializable]
-    public class Nft
+    public class Nft : NFTs_model
     {
         public string name;
         public string chain;
@@ -69,10 +72,24 @@ namespace NFTPort
         public DateTime updated_date;
         public string description;
         public string creator_address;
+        public Assets assets;
+    }
+    
+    [Serializable]
+    public class Assets : NFTs_model
+    {
+        [Header("Unity Assets which can be linked to Nft")]
+        public Texture2D image_texture;
+        public AudioClip audioClip;
+        public VideoClip videoClip;
+        public Animation animation;
+        public GameObject gameObject;
+        public Mesh mesh;
+        public Dictionary<string, Object> Objects = new Dictionary<string, Object>(); //User definable.
     }
 
     [Serializable]
-    public class Contract
+    public class Contract : NFTs_model
     {
         public string name;
         public string symbol;
