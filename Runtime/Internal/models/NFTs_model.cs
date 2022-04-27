@@ -17,21 +17,21 @@ namespace NFTPort
     }
     
     [Serializable]
-    public class Attribute : NFTs_model
+    public class Attribute 
     {
         public string trait_type;
         public string value;
     }
     
     [Serializable]
-    public class Trait : NFTs_model
+    public class Trait
     {
         public string trait_type;
         public string value;
     }
 
     [Serializable]
-    public class Metadata : NFTs_model
+    public class Metadata
     {
         public string name;
         public string description;
@@ -49,7 +49,7 @@ namespace NFTPort
     }
 
     [Serializable]
-    public class FileInformation : NFTs_model
+    public class FileInformation 
     {
         public int height;
         public int width;
@@ -57,7 +57,7 @@ namespace NFTPort
     }
 
     [Serializable]
-    public class Nft : NFTs_model
+    public class Nft
     {
         public string name;
         public string chain;
@@ -76,7 +76,7 @@ namespace NFTPort
     }
     
     [Serializable]
-    public class Assets : NFTs_model
+    public class Assets
     {
         [Header("Unity Assets which can be linked to Nft")]
         public Texture2D image_texture;
@@ -89,7 +89,7 @@ namespace NFTPort
     }
 
     [Serializable]
-    public class Contract : NFTs_model
+    public class Contract 
     {
         public string name;
         public string symbol;

@@ -44,7 +44,8 @@ namespace NFTPort
             Includes include = Includes.all;
 
             
-            private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
+            //private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
+            private string RequestUriInit = "http://0.0.0.0:80/v0/nfts/";
             private string WEB_URL;
             private string _apiKey;
             private bool destroyAtEnd = false;

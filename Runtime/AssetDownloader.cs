@@ -1,8 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -48,7 +44,7 @@ namespace NFTPort
             /// Action on succesfull Download
             /// </summary>
             /// <returns> Texture2D </returns>
-            public GetImage OnComplete(UnityAction<UnityEngine.Texture2D> action)
+            public GetImage OnComplete(UnityAction<Texture2D> action)
             {
                 this.OnCompleteAction = action;
                 return this;
@@ -113,17 +109,17 @@ namespace NFTPort
                     }
                     else
                     {
-                        Texture2D NFTImage = DownloadHandlerTexture.GetContent(request);
+                        lastGetImage = DownloadHandlerTexture.GetContent(request);
                         //UnityEngine.Texture2D NFTImage = ((DownloadHandlerTexture)request.downloadHandler).texture;
-                        lastGetImage = NFTImage;
-
-                        yield return request.result;
+                        
+                        request.Dispose();
+                        //yield return request.result;
 
                         if (NFT_Assets != null)
-                            NFT_Assets.image_texture = NFTImage;
+                            NFT_Assets.image_texture = lastGetImage;
                         
-                        if(OnCompleteAction!=null && NFTImage!=null)
-                            OnCompleteAction(NFTImage);
+                        if(OnCompleteAction!=null && lastGetImage!=null)
+                            OnCompleteAction.Invoke(lastGetImage);
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
@@ -135,7 +131,7 @@ namespace NFTPort
                         if (OnAllAssetsDownloadEnded != null)
                             OnAllAssetsDownloadEnded("assetsDownloaders Ended");
                     }
-                    request.Dispose();
+                    
                     if(_destroyAtEnd)
                         Destroy (this.gameObject);
                 }
