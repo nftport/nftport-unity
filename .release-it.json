@@ -1,0 +1,34 @@
+{
+  "git":{
+    "commitMessage": "'🚀 release v${version}'"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": false
+  ,
+
+  "hooks":{
+    "bump": "npx auto-changelog -p"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump" : true,
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {}
+        ]
+      }
+    }
+  }
+}
