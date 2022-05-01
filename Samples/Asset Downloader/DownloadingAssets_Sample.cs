@@ -24,12 +24,14 @@ namespace NFTPort.Samples.AssetDownloader
                 .SetInclude(NFTs_OwnedByAnAccount.Includes.metadata)
                 .SetFilterFromContract("0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d")
                 .OnError(error=>Debug.Log(error))
-                .OnComplete(NFTs=> GetAssets(NFTs))
+                .OnComplete(NFTs=> StartCoroutine(GetAssets(NFTs)))
                 .Run();
         }
         
-        void GetAssets(NFTs_model _NFTsOfUser)
+        IEnumerator GetAssets(NFTs_model _NFTsOfUser)
         {
+            yield return new WaitForSeconds(0.5f);
+            
             NFTsOfUser = _NFTsOfUser;
             
             foreach(var nft in NFTsOfUser.nfts)
@@ -57,7 +59,7 @@ namespace NFTPort.Samples.AssetDownloader
                 TextureObject.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
                     new Vector2(0.5f, 0.5f));
                 
-                //Link Spawned GameObject to NFT Asset
+                //Link Spawned GameObject to NFTs_model Asset GameObject field
                 nft.assets.gameObject = TextureObject.gameObject;
                 
             

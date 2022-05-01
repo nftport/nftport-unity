@@ -144,8 +144,6 @@ namespace NFTPort.Samples.Ownership_Data{
             PopulateChainDropDownList();
             PopulateChainDropDownList_Contract();
         }
-
-        
         
     }
 

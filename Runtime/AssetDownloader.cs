@@ -87,6 +87,7 @@ namespace NFTPort
                 if (OnFetchStart != null)
                     OnFetchStart.Invoke();
                 
+                StopAllCoroutines();
                 StartCoroutine(DownloadTexture(URL, NFT_Assets));
                 return this;
             }

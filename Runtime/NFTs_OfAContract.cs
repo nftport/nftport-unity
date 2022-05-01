@@ -44,8 +44,7 @@ namespace NFTPort
             Includes include = Includes.all;
 
             
-            //private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
-            private string RequestUriInit = "http://0.0.0.0:80/v0/nfts/";
+            private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
             private string WEB_URL;
             private string _apiKey;
             private bool destroyAtEnd = false;
@@ -161,6 +160,7 @@ namespace NFTPort
             public NFTs_model Run()
             {
                 WEB_URL = BuildUrl();
+                StopAllCoroutines();
                 StartCoroutine(CallAPIProcess());
                 return NFTs;
             }
@@ -176,8 +176,9 @@ namespace NFTPort
                 //Make request
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
+                request.SetRequestHeader("source", "NFTPort-Unity");
                 request.SetRequestHeader("Authorization", _apiKey);
-                request.SetRequestHeader("request-source", "NFTPort-Unity-SDK");
+                
 
                 {
                     yield return request.SendWebRequest();

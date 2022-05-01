@@ -4539,10 +4539,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chain: 0
-  _fileURL: Enter URL of the file to mint
-  _name: Enter Name of the NFT
-  _description: Enter Description of the NFT.
-  _mintToAddress: Enter Blockchain address to mint to.
+  _fileURL: https://i.imgur.com/tzAbx5D.png
+  _name: NFTPort.xyz_Gaming SDK
+  _description: Fast track your NFT Game Development with NFTPort's Unity SDK. https://github.com/nftport/nftport-unity.git
+  _mintToAddress: 0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B
   OnRequestStarted:
     m_PersistentCalls:
       m_Calls:
@@ -4588,8 +4588,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onEnable: 0
-  debugErrorLog: 0
+  onEnable: 1
+  debugErrorLog: 1
   debugLogRawApiResponse: 0
   minted:
     response: 

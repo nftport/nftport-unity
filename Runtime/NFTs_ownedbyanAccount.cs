@@ -179,6 +179,7 @@ namespace NFTPort
             public NFTs_model Run()
             {
                 WEB_URL = BuildUrl();
+                StopAllCoroutines();
                 StartCoroutine(CallAPIProcess());
                 return NFTs;
             }
@@ -198,7 +199,7 @@ namespace NFTPort
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("Authorization", _apiKey);
-                request.SetRequestHeader("request-source", "NFTPort-Unity-SDK");
+                request.SetRequestHeader("source", "NFTPort-Unity");
                 
                 {
                     yield return request.SendWebRequest();

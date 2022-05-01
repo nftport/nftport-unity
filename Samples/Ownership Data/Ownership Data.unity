@@ -5173,8 +5173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chain: 0
-  address: Input Account Address To Fetch NFT's from
-  contract_address: 
+  address: 0xc92a0a71122054f83c8fbdade123385aa259c779
+  contract_address: 0x026224A2940bFE258D0dbE947919B62fE321F042
   include: 1
   afterSuccess:
     m_PersistentCalls:
@@ -5182,12 +5182,17 @@ MonoBehaviour:
   afterError:
     m_PersistentCalls:
       m_Calls: []
-  onEnable: 0
+  onEnable: 1
   debugErrorLog: 1
   debugLogRawApiResponse: 0
-  ownedByAccountModel:
+  NFTs:
     response: 
     nfts: []
+    contract:
+      name: 
+      symbol: 
+      type: 
+    total: 0
 --- !u!4 &1913506719
 Transform:
   m_ObjectHideFlags: 0
@@ -5226,7 +5231,7 @@ MonoBehaviour:
   onEnable: 0
   debugErrorLog: 1
   debugLogRawApiResponse: 0
-  ownedByContractModel:
+  NFTs:
     response: 
     nfts: []
     contract:

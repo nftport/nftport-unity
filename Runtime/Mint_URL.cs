@@ -184,7 +184,7 @@ namespace NFTPort
                 
             //headers
             request.SetRequestHeader("Content-Type",  "application/json");
-            request.SetRequestHeader("request-source", "NFTPort-Unity-SDK");
+            request.SetRequestHeader("source", "NFTPort-Unity");
             request.SetRequestHeader("Authorization", _apiKey);
 
                 
