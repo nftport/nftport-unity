@@ -1,0 +1,12 @@
+
+---
+git:
+  commitMessage: '🚀 release v${version}'
+  
+github:
+  release: true
+
+npm: false
+
+hooks:
+  after:bump: "npx auto-changelog -p"
