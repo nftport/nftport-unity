@@ -5,7 +5,8 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 
 namespace NFTPort  
-{
+{ using Internal;
+    
     /// <summary>
     /// NFTs of a contract / collections
     /// </summary>
@@ -72,8 +73,8 @@ namespace NFTPort
 
         private void Awake()
         {
-            Port.Initialise();
-            _apiKey = Port.GetUserApiKey();
+            PortUser.Initialise();
+            _apiKey = PortUser.GetUserApiKey();
             
         }
 

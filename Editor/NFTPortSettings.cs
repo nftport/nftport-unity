@@ -4,7 +4,7 @@ using UnityEditor;
 using Newtonsoft.Json;
 
 namespace NFTPort.Editor
-{
+{ using Internal;
     [System.Serializable]
     public class NFTPortSettings : EditorWindow
     {
@@ -46,25 +46,25 @@ namespace NFTPort.Editor
         #region ReadWrite UserPrefs
         
         [SerializeField]
-        private Port.UserPrefs _userPrefs = new Port.UserPrefs();
+        private PortUser.UserPrefs _userPrefs = new PortUser.UserPrefs();
         void ReadFromUserPrefs()
         {
             TextAsset targetFile = Resources.Load<TextAsset>("NFTPort UserPrefs");;
             if (targetFile != null)
             {
-                _userPrefs = JsonConvert.DeserializeObject<Port.UserPrefs>(targetFile.text);
+                _userPrefs = JsonConvert.DeserializeObject<PortUser.UserPrefs>(targetFile.text);
                 myAPIString = _userPrefs.API_KEY;
             }
             else
             {
-                Port._initialised = false;
+                PortUser._initialised = false;
                 myAPIString = "Enter your API KEY here";
             }
                 
         }
         void WriteToUserPrefs()
         {
-            Port.SaveNewApi(myAPIString);
+            PortUser.SaveNewApi(myAPIString);
             base.SaveChanges();
         }
 

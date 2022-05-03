@@ -6,7 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 
 namespace NFTPort
-{   
+{   using Internal;
+    
     /// <summary>
     /// Easy minting w/URL, If you wish to customize the minting process e.g. use your own contract, set more metadata, see Customizable minting.
     /// </summary>
@@ -66,8 +67,8 @@ namespace NFTPort
         
         private void Awake()
         {
-            Port.Initialise();
-            _apiKey = Port.GetUserApiKey();
+            PortUser.Initialise();
+            _apiKey = PortUser.GetUserApiKey();
             
         }
         

@@ -8,7 +8,8 @@ using UnityEngine.Networking;
 using UnityEngine.Serialization;
 
 namespace NFTPort  
-{
+{ using Internal;
+    
     /// <summary>
     /// NFTs owned by a given account (wallet address), Can also return each NFT metadata with include parameter and filter from specific collection.
     /// </summary>
@@ -81,8 +82,8 @@ namespace NFTPort
 
         private void Awake()
         {
-            Port.Initialise();
-            _apiKey = Port.GetUserApiKey();
+            PortUser.Initialise();
+            _apiKey = PortUser.GetUserApiKey();
             
         }
 
