@@ -16,5 +16,27 @@
     "name": "NFTPort.xyz",
     "email": "sahaj@nftport.xyz",
     "url": "https://www.nftport.xyz/"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "NFT Ownership Data: Account/Contract",
+      "description": "Contains sample showcasing get components for : NFTs owned by an account and NFTs of a contract",
+      "path": "Samples~/Ownership Data"
+    },
+    {
+      "displayName": "Easy Mint NFT using URL",
+      "description": "Contains sample showcasing easing minting a file via a URL",
+      "path": "Samples~/Easy Mint URL"
+    },
+    {
+      "displayName": "Asset Downloader",
+      "description": "Download assets like NFTImage, Video, Audio etc from IPFS or Web2, Use in conjunction with NFTMetaData",
+      "path": "Samples~/Easy Mint URL"
+    },
+    {
+      "displayName": "Player Wallet Connect + WebL Templates",
+      "description": "Get Address of players wallet connect with events",
+      "path": "Samples~/Player Connect + WebGL Templates"
+    }
+  ]
 }
