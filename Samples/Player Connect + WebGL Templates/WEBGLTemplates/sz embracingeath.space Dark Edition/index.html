@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Game | {{{ PRODUCT_NAME }}}</title>
+
+    <meta property="og:description" content= "NFTPort Unity SDK, Integrate Blockchain NFT's Crosschain in Games at high speeds">
+    <meta property="og:image" content="https://i.imgur.com/tzAbx5D.png">
+    <meta name="keywords" content="NFT, Blockchain, Unity, Games, sz, NFTPort.xyz, Ethereum, Polygon, Web3, Metaverse, NFTs">
+    <meta property="og:type" content="website">
+    
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  
+  <script>
+    var unityGame;
+    async function getAccount() {
+      if (typeof window.ethereum !== 'undefined') {
+        console.log('MetaMask is installed!');
+        // connecting metamask
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        ConnectToGame(account);
+      }
+      else{
+        window.open('https://metamask.io/','mywindow');
+        console.log('Install Metamask');
+      }
+    }
+    function ConnectToGame(account) {
+      getAddress(account);
+    }
+
+    function getAddress(account) {
+      // Unity sends
+      unityGame.SendMessage('PlayerConnect_NFTPort', 'WebHook_GetAddress', account);
+    }
+    //≧◠‿◠≦✌ _sz_ Ω 
+  </script>
+  <body style="background-color:#151821;">
+  <div class="topnav">
+  <div id="unity-webgl-logo" onClick="window.open('https://www.nftport.xyz/','mywindow');" style="cursor: pointer;">&nbsp;></div>
+  <a class="connect" onClick="getAccount();"  style="cursor: pointer;">&nbsp;Connect</a>
+    </div>
+  
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}}></canvas>
+      <div id="unity-loading-bar">
+        <div>
+          <img src = "TemplateData/product_logo.png" width=200>
+        </div>
+        <div width=200>
+          <p class="load_warning" width=200>Please wait while the game loads. This may take a few minutes...</p>
+        </div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-mobile-warning">
+        Mobile device detected: Rotate to horizontal mode. [[ Use PC for best experience ]]
+      </div>
+      <div id="unity-footer">
+        <div id="unity-fullscreen-button"></div>
+      </div>
+    </div>
+        <div id="unity-build-title">{{{ PRODUCT_NAME }}}</div>
+      </div>
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      var config = {
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "{{{ COMPANY_NAME }}}",
+        productName: "{{{ PRODUCT_NAME }}}",
+        productVersion: "{{{ PRODUCT_VERSION }}}",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        // Avoid draining fillrate performance on mobile devices,
+        // and default/override low DPI mode on mobile browsers.
+        config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.height = "100%";
+        canvas.style.aspectRatio = 16/9;
+        
+        //canvas.style.width = "{{{ WIDTH }}}px";
+        //canvas.style.height = "{{{ HEIGHT }}}px";
+      }
+#if BACKGROUND_FILENAME
+      canvas.style.background = "url('" + buildUrl + "/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
+#endif
+
+      //document.getElementById("unity-container").style.width = "80%";
+      document.getElementById("unity-container").style.height = "80%";
+      //document.getElementById("unity-container").style.aspectRatio = 16/9;
+      
+      loadingBar.style.display = "block";
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          unityGame=unityInstance;
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

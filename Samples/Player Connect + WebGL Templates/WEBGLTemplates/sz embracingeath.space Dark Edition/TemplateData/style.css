@@ -1,0 +1,121 @@
+body { 
+    padding: 0;
+    margin: 0 
+}
+#unity-container { 
+    position: absolute 
+}
+#unity-container.unity-desktop {
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%)
+}
+
+#unity-container.unity-mobile {
+    width: 100%;
+    height: 100% 
+}
+#unity-canvas {
+background: #231F20x
+}
+.unity-mobile #unity-canvas {
+    width: 100%; height: 100%
+}
+#unity-loading-bar {
+    position: absolute; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none 
+}
+#unity-logo {
+    width: 154px;
+    height: 130px;
+    background: url('unity-logo-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center 
+}
+#unity-progress-bar-empty {
+    width: 141px;
+    height: 18px;
+    margin-top: 10px;
+    margin-left: 30px;
+    background: url('progress-bar-empty-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center 
+}
+#unity-progress-bar-full {
+    width: 0%; 
+    height: 18px;
+    margin-top: 10px;
+    background: url('progress-bar-full-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center 
+}
+#unity-footer {
+    position: relative
+}
+.unity-mobile #unity-footer { 
+    display: none 
+}
+#unity-webgl-logo { 
+    float:left; 
+    width: 204px;
+    height: 38px;
+    padding: 11px;
+    background: url('webgl-logo.png') no-repeat center
+}
+#unity-build-title { 
+    float: right;
+    margin-right: 10px;
+    line-height: 38px; 
+    font-family: arial;
+    font-size: 18px 
+}
+#unity-fullscreen-button { 
+    float: right;
+    width: 38px; 
+    height: 38px; 
+    background: url('fullscreen-button.png') no-repeat center 
+}
+#unity-mobile-warning { 
+    position: absolute;
+    left: 50%; 
+    top: 5%; 
+    transform: translate(-50%); 
+    background: white; 
+    padding: 10px; 
+    display: none 
+}
+
+.topnav {
+    background-color: #373940;
+    overflow: hidden;
+}
+
+.connect:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.connect{
+    float: right;
+    border:none;
+    bottom: 0px;
+    width: 185px;
+    height: 33px;
+    right: 10px;
+    z-index: 1;
+    background-color: #8099ff ;
+    color: white;
+    padding: 11px;
+    font-weight: bold;
+    font-size: x-large;
+    font-palette: light;
+    border-radius: 5px;
+    text-decoration: white;
+    font-family: arial;
+}
+
+.load_warning{
+    font-family: arial;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12em;
+    text-align: center;
+}

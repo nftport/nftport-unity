@@ -32,6 +32,11 @@
       "displayName": "Asset Downloader",
       "description": "Download assets like NFTImage, Video, Audio etc from IPFS or Web2, Use in conjunction with NFTMetaData",
       "path": "Samples/Easy Mint URL"
+    },
+    {
+      "displayName": "Player Wallet Connect + WebL Templates",
+      "description": "Get Address of players wallet connect with events",
+      "path": "Samples/Player Connect + WebGL Templates"
     }
   ]
 }
