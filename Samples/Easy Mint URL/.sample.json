@@ -1,0 +1,5 @@
+{
+	"displayName":"Easy Mint NFT using URL",
+	"description": "Contains sample showcasing easing minting a file via a URL.",
+	"createSeparatePackage": false
+}

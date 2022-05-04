@@ -1,0 +1,5 @@
+{
+	"displayName":"NFT Ownership Data: Account/Contract",
+	"description": "Contains sample showcasing get components for : NFTs owned by an account and NFTs of a contract.",
+	"createSeparatePackage": false
+}
