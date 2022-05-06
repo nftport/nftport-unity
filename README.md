@@ -26,7 +26,7 @@ Import as a package using Git URL: In Unity's Package Manager, click the '+' on 
 
 -------
 
-### [Documention](https://docs.nftport.xyz/docs/nftport) 
+### [Documentation](https://docs.nftport.xyz/docs/nftport) 
 ### [Support](https://discord.gg/w92sXkNmBR)
 ### [ChangeLog](https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md)
 
