@@ -20,7 +20,6 @@ NFTPort's Unity extension wraps NFTPort API's and provides tools and features to
 Import as a package using Git URL: In Unity's Package Manager, click the '+' on the top left corner and select 'Add package from git URL.' 
   ```
   https://github.com/nftport/nftport-unity.git
-  
   ```
 
 </br>
@@ -31,21 +30,9 @@ Import as a package using Git URL: In Unity's Package Manager, click the '+' on 
 ### [Support](https://discord.gg/w92sXkNmBR)
 ### [ChangeLog](https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md)
 
-<<<<<<< Updated upstream
-</br>
-=======
->>>>>>> Stashed changes
-
 -------
 
 #### [Apply for the Community Partnership Program](https://www.nftport.xyz/community)
 #### [Feedback Form](https://form.typeform.com/to/OpyZtxcs)
 
-<<<<<<< Updated upstream
-</br>
-
-=======
-
-
->>>>>>> Stashed changes
 -------
