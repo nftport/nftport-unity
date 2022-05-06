@@ -9,7 +9,7 @@
   ,
 
   "hooks":{
-    "bump": "npx auto-changelog -p"
+    "after:bump": "npx auto-changelog -p"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
