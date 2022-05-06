@@ -1,229 +1,43 @@
-# WIP
-//
-The purpose of this starter kit is to provide the data structure and development guidelines for new packages meant for the **Unity Package Manager (UPM)**.
 
-## Are you ready to become a package? 
-The Package Manager is a work in progress for Unity. Because of that, your package needs to meet these criteria to become an official Unity package:
-- **Your code accesses public Unity C# APIs only.**
-- **Your code doesn't require security, obfuscation, or conditional access control.**
+![NFTPort Gaming](https://imgur.com/yPKRwvU.png)
 
+</br>
 
-## Package structure 
+  [![star this repo](https://img.shields.io/github/stars/nftport/nftport-unity?label=Star%20the%20Repo&style=social)](https://github.com/nftport/nftport-unity)
+    [![Join Discord](https://img.shields.io/discord/862277439023874059?logo=discord)](https://discord.gg/w92sXkNmBR)
+    [![Follow Twitter](https://img.shields.io/twitter/follow/nftport_xyz?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=nftport_xy)
+    [![Release](https://img.shields.io/github/v/release/nftport/nftport-unity)](https://github.com/nftport/nftport-unity/releases)
+    [![Json](https://img.shields.io/github/package-json/v/nftport/nftport-unity/com.nftport.nftport?style=flat-square)]()
+    [![License](https://img.shields.io/github/license/nftport/nftport-unity?style=flat-square)](https://twitter.com/intent/follow?screen_name=nftport_xy)
+    [![Made with Unity](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat-square&logo=unity)](https://unity3d.com)
+    [![Made with NFTPort](https://img.shields.io/badge/Made%20with-NFTPort-black?style=flat-square&logo=data:image/png;base64,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)](https://www.nftport.xyz/)
 
-```none
-<root>
-  ├── package.json
-  ├── README.md
-  ├── CHANGELOG.md
-  ├── Third Party Notices.md
-  ├── Editor
-  │   ├── Nftport.Nftport.Editor.asmdef
-  │   └── EditorExample.cs
-  ├── Runtime
-  │   ├── Nftport.Nftport.asmdef
-  │   └── RuntimeExample.cs
-  ├── Tests
-  │   ├── .tests.json
-  │   ├── Editor
-  │   │   ├── Nftport.Nftport.Editor.Tests.asmdef
-  │   │   └── EditorExampleTest.cs
-  │   └── Runtime
-  │        ├── Nftport.Nftport.Tests.asmdef
-  │        └── RuntimeExampleTest.cs
-  ├── Samples
-  │   └── Example
-  │       ├── .sample.json
-  │       └── SampleExample.cs
-  └── Documentation
-       ├── NFTPort.md
-       └── Images
-```
 
-## Develop your package
-Package development works best within the Unity Editor.  Here's how to get started:
+### Introduction
+NFTPort's Unity extension wraps NFTPort API's and provides tools and features to fast-track development and create cross-chain compatible NFT games and products in Unity with fast and reliable onchain data.
 
-1. Enter your package name. The name you choose should contain your default organization followed by the name you typed. For example: `Nftport.Nftport`.
+### Get NFTPort Unity extension
+Import as a package using Git URL: In Unity's Package Manager, click the '+' on the top left corner and select 'Add package from git URL.' 
+  ```
+  https://github.com/nftport/nftport-unity.git
+  
+  ```
 
-2. [Enter the information](#FillOutFields) for your package in the `package.json` file.
+</br>
 
-3. [Rename and update](#Asmdef) assembly definition files.
+-------
 
-4. [Document](#Doc) your package.
+### [Documention](https://docs.nftport.xyz/docs/nftport) 
+### [Support](https://discord.gg/w92sXkNmBR)
+### [ChangeLog](https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md)
 
-5. [Add samples](#Populate) to your package (code & assets).
+</br>
 
-6. [Validate](#Valid) your package.
+-------
 
-7. [Add tests](#Tests) to your package.
+#### [Apply for the Community Partnership Program](https://www.nftport.xyz/community)
+#### [Feedback Form](https://form.typeform.com/to/OpyZtxcs)
 
-8. Update the `CHANGELOG.md` file. 
+</br>
 
-    Every new feature or bug fix should have a trace in this file. For more details on the chosen changelog format, see [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
-
-9. Make sure your package [meets all legal requirements](#Legal).
-
-10. Publish your package.
-
-
-
-<a name="FillOutFields"></a>
-### Completing the package manifest
-
-You can either modify the package manifest (`package.json`) file directly in the Inspector or by using an external editor. 
-
-To use the Inspector, select the `package.json` file in the Project browser. The **Package NFTPort Manifest** page opens for editing.
-
-Update these required attributes in the `package.json` file: 
-
-| **Attribute name:** | **Description:**                                             |
-| ------------------- | ------------------------------------------------------------ |
-| **name**            | The officially registered package name. This name must conform to the [Unity Package Manager naming convention](https://docs.unity3d.com/Manual/upm-manifestPkg.html#name), which uses reverse domain name notation. For example: <br />`"com.[YourCompanyName].[your-package-name]"` |
-| **displayName**     | A user-friendly name to appear in the Unity Editor (for example, in the Project Browser, the Package Manager window, etc.). For example: <br />`"Terrain Builder SDK"` <br/>__NOTE:__ Use a display name that will help users understand what your package is intended for. |
-| **version**         | The package version number (**'MAJOR.MINOR.PATCH"**). This value must respect [semantic versioning](http://semver.org/). For more information, see [Package version](https://docs.unity3d.com/Manual/upm-manifestPkg.html#pkg-ver) in the Unity User Manual. |
-| **unity**           | The lowest Unity version the package is compatible with. If omitted, the package is considered compatible with all Unity versions. <br /><br />The expected format is "**&lt;MAJOR&gt;.&lt;MINOR&gt;**" (for example, **2018.3**). |
-| **description**     | A brief description of the package. This is the text that appears in the [details view](upm-ui-details) of the Packages window. Any [UTF-8](https://en.wikipedia.org/wiki/UTF-8) character code is supported. This means that you can use special formatting character codes, such as line breaks (**\n**) and bullets (**\u25AA**). |
-
-Update the following recommended fields in file **package.json**:
-
-| **Attribute name:** | **Description:**                                             |
-| ------------------- | ------------------------------------------------------------ |
-| **dependencies**    | A map of package dependencies. Keys are package names, and values are specific versions. They indicate other packages that this package depends on. For more information, see [Dependencies](https://docs.unity3d.com/Manual/upm-dependencies.html) in the Unity User Manual.<br /><br />**NOTE**: The Package Manager does not support range syntax, only **SemVer** versions. |
-| **keywords**        | An array of keywords used by the Package Manager search APIs. This helps users find relevant packages. |
-
-
-
-<a name="Asmdef"></a>
-### Updating the Assembly Definition files
-
-You must associate scripts inside a package to an assembly definition file (.asmdef). Assembly definition files are the Unity equivalent to a C# project in the .NET ecosystem. You must set explicit references in the assembly definition file to other assemblies (whether in the same package or in external packages). See [Assembly Definitions](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html) for more details.
-
-Use these conventions for naming and storing your assembly definition files to ensure that the compiled assembly filenames follow the [.NET Framework Design Guidelines](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/):
-
-* Store Editor-specific code under a root editor assembly definition file:
-
-  `Editor/Nftport.Nftport.Editor.asmdef`
-
-* Store runtime-specific code under a root runtime assembly definition file:
-
-  `Runtime/Nftport.Nftport.asmdef`
-
-* Configure related test assemblies for your editor and runtime scripts:
-
-  `Tests/Editor/Nftport.Nftport.Editor.Tests.asmdef`
-
-  `Tests/Runtime/Nftport.Nftport.Tests.asmdef`
-
-To get a more general view of a recommended package folder layout, see [Package layout](https://docs.unity3d.com/Manual/cus-layout.html).
-
-
-
-<a name="Doc"></a>
-### Providing documentation
-
-Use the `Documentations~/NFTPort.md` documentation file to create preliminary, high-level documentation. This document should introduce users to the features and sample files included in your package.  Your package documentation files will be used to generate online and local docs, available from the Package Manager UI.
-
-**Document your public APIs**
-* All public APIs need to be documented with **XmlDoc**.
-* API documentation is generated from [XmlDoc tags](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/xmldoc/xml-documentation-comments) included with all public APIs found in the package. See [Editor/EditorExample.cs](Editor/EditorExample.cs) for an example.
-
-
-
-
-<a name="Populate"></a>
-### Adding Assets to your package
-
-If your package contains a sample, rename the `Samples/Example` folder, and update the `.sample.json` file in it.
-
-In the case where your package contains multiple samples, you can make a copy of the `Samples/Example` folder for each sample, and update the `.sample.json` file accordingly.
-
-Similar to `.tests.json` file, there is a `"createSeparatePackage"` field in `.sample.json`. If set to true, the CI will create a separate package for the sample.
-
-Delete the `Samples` folder altogether if your package does not need samples.
-
-As of Unity release 2019.1, the Package Manager recognizes the `/Samples` directory in a package. Unity doesn't automatically import samples when a user adds the package to a Project. However, users can click a button in the details view of a package in the **Packages** window to optionally import samples into their `/Assets` directory.
-
-
-
-
-<a name="Valid"></a>
-### Validating your package
-
-Before you publish your package, you need to make sure that it passes all the necessary validation checks by using the Package Validation Suite extension (optional).
-
-Once you install the Validation Suite package, a **Validate** button appears in the details view of a package in the **Packages** window. To install the extension, follow these steps:
-
-1. Point your Project manifest to a staging registry by adding this line to the manifest: 
-    `"registry": "https://staging-packages.unity.com"`
-2. Install the **Package Validation Suite v0.3.0-preview.13** or above from the **Packages** window in Unity. Make sure the package scope is set to **All Packages**, and select **Show preview packages** from the **Advanced** menu.
-3. After installation, a **Validate** button appears in the **Packages** window. Click the button to run a series of tests, then click the **See Results** button for additional information:
-    * If it succeeds, a green bar with a **Success** message appears.
-    * If it fails, a red bar with a **Failed** message appears.
-
-**NOTE:** The validation suite is still in preview.
-
-
-
-
-<a name="Tests"></a>
-### Adding tests to your package
-
-All packages must contain tests.  Tests are essential for Unity to ensure that the package works as expected in different scenarios.
-
-**Editor tests**
-* Write all your Editor Tests in `Tests/Editor`
-
-**Playmode Tests**
-
-* Write all your Playmode Tests in `Tests/Runtime`.
-
-#### Separating the tests from the package
-
-You can create a separate package for the tests, which allows you to exclude a large number of tests and Assets from being published in your main package, while still making it easy to test it.
-
-Open the `Tests/.tests.json` file and set the **createSeparatePackage** attribute:
-
-| **Value to set:** | **Result:**                                                  |
-| ----------------- | ------------------------------------------------------------ |
-| **true**          | CI creates a separate package for these tests. At publish time, the Package Manager adds metadata to link the packages together. |
-| **false**         | Keep the tests as part of the published package.             |
-
-
-
-<a name="Legal"></a>
-### Meeting the legal requirements
-
-You can use the Third Party Notices.md file to make sure your package meets any legal requirements. For example, here is a sample license file from the Unity Timeline package:
-
-```
-Unity Timeline copyright © 2017-2019 Unity Technologies ApS
-
-Licensed under the Unity Companion License for Unity-dependent projects--see [Unity Companion License](http://www.unity3d.com/legal/licenses/Unity_Companion_License).
-
-Unless expressly provided otherwise, the Software under this license is made available strictly on an “AS IS” BASIS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. Please review the license for details on these and other terms and conditions.
-
-```
-
-
-
-#### Third Party Notices
-
-If your package has third-party elements, you can include the licenses in a Third Party Notices.md file. You can include a **Component Name**, **License Type**, and **Provide License Details** section for each license you want to include. For example:
-
-```
-This package contains third-party software components governed by the license(s) indicated below:
-
-Component Name: Semver
-
-License Type: "MIT"
-
-[SemVer License](https://github.com/myusername/semver/blob/master/License.txt)
-
-Component Name: MyComponent
-
-License Type: "MyLicense"
-
-[MyComponent License](https://www.mycompany.com/licenses/License.txt)
-
-```
-
-**NOTE**: Any URLs you use should point to a location that contains the reproduced license and the copyright information (if applicable).
+-------
