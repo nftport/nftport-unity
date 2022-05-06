@@ -41,7 +41,7 @@ namespace NFTPort
         public void WebHook_GetAddress(string recievedaddress)
         {
             connectedWalletAddress = recievedaddress;
-            Port.ConnectPlayerAddress = connectedWalletAddress;
+            Port.ConnectedPlayerAddress = connectedWalletAddress;
             
             if(OnCompleteAction!=null)
                 OnCompleteAction.Invoke(connectedWalletAddress);

@@ -6,6 +6,6 @@ namespace NFTPort
 {
     public static class Port
     {
-        public static string ConnectPlayerAddress;
+        public static string ConnectedPlayerAddress;
     }
 }

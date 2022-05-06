@@ -22,7 +22,7 @@ namespace NFTPort.Samples.PlayerConnect
             addressText.text = address;
             
             //This value can also be accessed from anywhere globally via Port.
-            addressText.text = Port.ConnectPlayerAddress;
+            addressText.text = Port.ConnectedPlayerAddress;
         }
         
     }
