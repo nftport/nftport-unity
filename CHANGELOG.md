@@ -14,9 +14,11 @@
 
 ### [0.0.1-earlyalpha](https://github.com/nftport/nftport-unity/releases/tag/v0.0.1-earlyalpha) -2022-03-21
 
-- Init, changed api_Key read-write through resources [`70ae305`](https://github.com/nftport/nftport-unity/commit/70ae3055e735974f0a1fd495e4a4ad576bee0a05)
-- cleanups, folder structuring, Fixed apiKey for Settings window [`f8428a4`](https://github.com/nftport/nftport-unity/commit/f8428a433f807b674679fa3e7fd94f0b8273b20a)
-- structuring for readme [`dc77bc3`](https://github.com/nftport/nftport-unity/commit/dc77bc31619bc2a55d8168c3636ffe26801b509a)
+Provides starter pack for NFTPort API endpoints in Unity3D. Early release.
+
+* NFTs owned by an account </br>
+* NFTs of a contract </br>
+* EasyMint via URL file </br>
 
 -----
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
