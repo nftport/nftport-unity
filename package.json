@@ -1,7 +1,7 @@
 {
   "name": "com.nftport.nftport",
   "displayName": "NFTPort",
-  "version": "0.1.0-preview",
+  "version": "0.1.1-preview",
   "description": "NFTPort.xyz unity extension provides tools and features to integrate NFT's crosschain at lightning speed in Unity.\n\n https://github.com/nftport/nftport-unity.git",
   "type": "tool",
   "documentationUrl": "https://docs.nftport.xyz/docs/nftport",
