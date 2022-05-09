@@ -1,7 +1,9 @@
 # Changelog
 
 ### [0.1.1-preview](https://github.com/nftport/nftport-unity/compare/v0.1.0-preview...v0.1.1-preview) (2022-05-09)
+### Bug Fixes
 
+* Fixed feature NFTs of Account.
 ## [0.1.0-preview](https://github.com/nftport/nftport-unity/compare/v1.0.0...v0.1.0-preview) (2022-05-06)
 
 
