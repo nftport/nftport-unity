@@ -38,6 +38,15 @@ namespace NFTPort.Editor
         public override void SaveChanges()
         {
             WriteToUserPrefs();
+
+            IPFS_UploadFile_Internal ipfsUploadFileInternal = new IPFS_UploadFile_Internal();
+            var _gameobject =  new GameObject("Easy Mint w/ URL");
+            ipfsUploadFileInternal
+                .InitializeGameObject(_gameobject, true, true)
+                .SetFilePatth("F:/(0)/Screenshot 2022-05-14 044703.jpg")
+                .Run();
+
+            Storage_UploadFile.Initialize().OnComplete().OnComplete().Run();
         }
         
         
