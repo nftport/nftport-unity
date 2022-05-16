@@ -13,18 +13,46 @@ namespace NFTPort.Utils
             string contentType = "";
             var fileExtension = Path.GetExtension(filePath).Replace(".","").ToLower();
             ////â‰§â— â€¿â— â‰¦âœŒ _sz_ Î //≧◠‿◠≦✌ _sz_ Ω
-            Debug.Log(fileExtension);
 
             if (
                 fileExtension == "png" ||
                 fileExtension == "jpeg" ||
                 fileExtension == "jpg" ||
-                fileExtension == "gif" 
+                fileExtension == "gif" ||
+                fileExtension == "bmp" ||
+                fileExtension == "tiff" ||
+                fileExtension == "aces" 
+                
                 )
             {
                 contentType = "image/" + fileExtension;
             }
             
+            else if (
+                fileExtension == "glb" ||
+                fileExtension == "gltf"
+            )
+            {
+                contentType = "model/gltf-binary";
+            }
+            
+            else if (
+                fileExtension == "obj" ||
+                fileExtension == "mtl" ||
+                fileExtension == "step" ||
+                fileExtension == "stl" 
+            )
+            {
+                contentType = "model/" + fileExtension;
+            }
+            
+            else if (
+                fileExtension == "fbx"
+            )
+            {
+                contentType = "application/octet-stream";
+            }
+
             else if (
                     fileExtension == "svg" 
             )
@@ -71,10 +99,16 @@ namespace NFTPort.Utils
             }
             
             else if (
-                    fileExtension == "csv"
+                    fileExtension == "csv" ||
+                    fileExtension == "calendar" ||
+                    fileExtension == "css" ||
+                    fileExtension == "html" ||
+                    fileExtension == "javascript" ||
+                    fileExtension == "markdown" ||
+                    fileExtension == "xml" 
                     )
             {
-                contentType = "text" + fileExtension;
+                contentType = "text/" + fileExtension;
             }
             
             else
