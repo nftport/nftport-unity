@@ -9,12 +9,28 @@ namespace NFTPort.Editor
     public class NFTPortSettings : EditorWindow
     {
         
-        public static string myAPIString = "Enter Your API Key";
-    
+        public static string myAPIString = PortConstants.DefaultAPIKey;
+         
+        protected static Type WindowType = typeof(NFTPortSettings);
+        private static bool windowopen = false;
         [MenuItem("NFTPort/Home")]
         public static void ShowWindow()
         {
-            GetWindow<NFTPortSettings>("Home");
+            GetWindow<NFTPortSettings>(PortConstants.HomeWindowName);
+        }
+        
+        /// <summary>   
+        /// When the package is imported
+        /// </summary>
+        [UnityEditor.InitializeOnLoadMethod]
+        public static void InitializeOnLoadMethod()
+        {
+            EditorApplication.delayCall += delayCall;
+        }
+
+        static void delayCall()
+        {
+            ReadFromUserPrefs();
         }
 
         void OnGUI()
@@ -22,17 +38,32 @@ namespace NFTPort.Editor
             Texture banner = Resources.Load<Texture>("banner");
             GUILayout.Box(banner);
         
-            GUILayout.Label("Welcome to NFTPort Unity SDK ", EditorStyles.boldLabel);
+            GUILayout.Label("Welcome to NFTPort Unity SDK ", EditorStyles.whiteLargeLabel);
+            GUILayout.Label("\n" +
+                            " Create cross-chain compatible NFT games \n and products in Unity with fast and reliable data.\n" +
+                            "", EditorStyles.label);
 
             myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString);
             
-            if (GUILayout.Button("Save"))
+            if (GUILayout.Button("Save", GUILayout.Height(25)))
                 SaveChanges();
+            
+            if (GUILayout.Button("View Documentation", GUILayout.Height(25)))
+                Application.OpenURL(PortConstants.Docs_GettingStarted);
+            
+            if (GUILayout.Button("Support", GUILayout.Height(25)))
+                Application.OpenURL(PortConstants.DiscordInvite);
         }
 
         void OnEnable()
         {
             ReadFromUserPrefs();
+            windowopen = true;
+        }
+
+        private void OnDisable()
+        {
+            windowopen = false;
         }
 
         public override void SaveChanges()
@@ -40,16 +71,30 @@ namespace NFTPort.Editor
             WriteToUserPrefs();
         }
         
-        
-        
+        static void ShowHomeWindow()
+        {
+            if(myAPIString != PortConstants.DefaultAPIKey || windowopen)
+                return;
+            
+            NFTPortSettings win = GetWindow(WindowType, false, PortConstants.HomeWindowName, true) as NFTPortSettings;
+            if (win == null)
+            {
+                return;  
+            }
 
+            windowopen = true;
+            win.minSize = new Vector2(555, 450);
+            win.maxSize = new Vector2(555, 450);
+            win.Show();
+        }
+        
         #region ReadWrite UserPrefs
         
-        [SerializeField]
-        private PortUser.UserPrefs _userPrefs = new PortUser.UserPrefs();
-        void ReadFromUserPrefs()
+        private static PortUser.UserPrefs _userPrefs = new PortUser.UserPrefs();
+        private static TextAsset targetFile;
+        static void ReadFromUserPrefs()
         {
-            TextAsset targetFile = Resources.Load<TextAsset>("NFTPort UserPrefs");;
+            targetFile = Resources.Load<TextAsset>("NFTPort UserPrefs");
             if (targetFile != null)
             {
                 _userPrefs = JsonConvert.DeserializeObject<PortUser.UserPrefs>(targetFile.text);
@@ -58,9 +103,11 @@ namespace NFTPort.Editor
             else
             {
                 PortUser._initialised = false;
-                myAPIString = "Enter your API KEY here";
+                myAPIString = PortConstants.DefaultAPIKey;
             }
-                
+
+            ShowHomeWindow();
+
         }
         void WriteToUserPrefs()
         {
