@@ -35,6 +35,7 @@ namespace NFTPort
         void Awake()
         {
             connectedWalletAddress = null;
+            this.gameObject.name = "PlayerConnect_NFTPort";
         }
         
         //called from index - For WebGL

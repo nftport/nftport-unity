@@ -5,6 +5,7 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine.Events;
 #endif
 
 
@@ -79,27 +80,29 @@ namespace NFTPort.Internal
                 _userPrefs.API_KEY = newAPI;
                 if(_initialised == false)
                 {
-                    if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                    if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources"))
                     {
                         CreateFolder();
                     }
                     
                     WriteToUserPrefs();
                 }
-                
+
             }
             
             static  void WriteToUserPrefs()
             {
                 _initialised = false;
                 string json = JsonUtility.ToJson(_userPrefs);
-                System.IO.File.WriteAllText("Assets/Resources/" + "NFTPort UserPrefs.json", json);
+                System.IO.File.WriteAllText("Assets/NFTPort/Resources/" + "NFTPort UserPrefs.json", json);
                 AssetDatabase.Refresh();
+                PortUser.Initialise();
             }
 
            static void CreateFolder()
             {
-                string guid = AssetDatabase.CreateFolder("Assets", "Resources");
+                AssetDatabase.CreateFolder("Assets", "NFTPort");
+                string guid = AssetDatabase.CreateFolder("Assets/NFTPort", "Resources");
                 string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
             }
            

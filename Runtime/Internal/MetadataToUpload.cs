@@ -10,7 +10,7 @@ namespace NFTPort
     [System.Serializable]
     public class MetadataToUpload
     {
-        [Tooltip("Main NFT File URL, use Storage | File Upload to get url")]
+        [Tooltip("Main NFT File URL, use 'Storage File Upload' to get url")]
         public string file_url = "Required Field";
         public string name = "Required Field";
         public string description = "Required Field";

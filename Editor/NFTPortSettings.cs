@@ -1,7 +1,10 @@
 using System;
+using System.Drawing;
 using UnityEngine;
 using UnityEditor;
 using Newtonsoft.Json;
+using UnityEditor.PackageManager;
+using UnityEngine.SocialPlatforms;
 
 namespace NFTPort.Editor
 { using Internal;
@@ -9,14 +12,15 @@ namespace NFTPort.Editor
     public class NFTPortSettings : EditorWindow
     {
         
-        public static string myAPIString = PortConstants.DefaultAPIKey;
+         static string myAPIString = PortConstants.DefaultAPIKey;
          
         protected static Type WindowType = typeof(NFTPortSettings);
         private static bool windowopen = false;
         [MenuItem("NFTPort/Home")]
         public static void ShowWindow()
         {
-            GetWindow<NFTPortSettings>(PortConstants.HomeWindowName);
+            var win = GetWindow<NFTPortSettings>(PortConstants.HomeWindowName);
+            SetSize(win);
         }
         
         /// <summary>   
@@ -43,16 +47,41 @@ namespace NFTPort.Editor
                             " Create cross-chain compatible NFT games \n and products in Unity with fast and reliable data.\n" +
                             "", EditorStyles.label);
 
-            myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString);
             
-            if (GUILayout.Button("Save", GUILayout.Height(25)))
+            GUILayout.BeginHorizontal("box");
+            var defaultColor = GUI.backgroundColor;
+            if(APIkeyOk())
+                GUI.color = UnityEngine.Color.green;
+            else
+            {
+                GUI.color = UnityEngine.Color.red;
+            }
+            myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString);
+            GUI.color = defaultColor;
+            GUILayout.EndHorizontal();
+            
+            
+            if (GUILayout.Button("Save API Key", GUILayout.Height(25)))
                 SaveChanges();
+            
+            EditorGUILayout.LabelField("");
+            
+            GuiLine();
             
             if (GUILayout.Button("View Documentation", GUILayout.Height(25)))
                 Application.OpenURL(PortConstants.Docs_GettingStarted);
             
-            if (GUILayout.Button("Support", GUILayout.Height(25)))
+            if (GUILayout.Button("Community & Support", GUILayout.Height(25)))
                 Application.OpenURL(PortConstants.DiscordInvite);
+            
+            GuiLine();
+            
+            EditorGUILayout.LabelField("");
+
+            if (userModel != null)
+            {
+                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name); 
+            }
         }
 
         void OnEnable()
@@ -69,6 +98,7 @@ namespace NFTPort.Editor
         public override void SaveChanges()
         {
             WriteToUserPrefs();
+            UserStats();
         }
         
         static void ShowHomeWindow()
@@ -83,9 +113,20 @@ namespace NFTPort.Editor
             }
 
             windowopen = true;
-            win.minSize = new Vector2(555, 450);
-            win.maxSize = new Vector2(555, 450);
+            SetSize(win);
             win.Show();
+        }
+        static void SetSize(NFTPortSettings win) 
+        {
+            win.minSize = new Vector2(530, 530);
+            win.maxSize = new Vector2(530, 530);
+        } 
+        
+        static void GuiLine( int i_height = 1 )
+        {
+            Rect rect = EditorGUILayout.GetControlRect(false, i_height );
+            rect.height = i_height;
+            EditorGUI.DrawRect(rect, new UnityEngine.Color ( 0.5f,0.5f,0.5f, 1 ) );
         }
         
         #region ReadWrite UserPrefs
@@ -99,13 +140,17 @@ namespace NFTPort.Editor
             {
                 _userPrefs = JsonConvert.DeserializeObject<PortUser.UserPrefs>(targetFile.text);
                 myAPIString = _userPrefs.API_KEY;
+                PortUser.Initialise();
             }
             else
-            {
+            { 
                 PortUser._initialised = false;
                 myAPIString = PortConstants.DefaultAPIKey;
             }
 
+            
+            UserStats();
+            
             ShowHomeWindow();
 
         }
@@ -116,8 +161,43 @@ namespace NFTPort.Editor
         }
 
         #endregion
-     
-        
+
+        #region Userstats
+        static User_model userModel;
+        static void UserStats()
+        {
+            userModel = null;
+            //User_Settings a = new User_Settings();
+             User_Settings
+                .Initialize(true)
+               // .OnError(error=> a.End())
+                .OnComplete(usermodel=> userModel = usermodel)
+                .Run();
+        }
+         
+
+        bool APIkeyOk()
+        {
+            if (userModel == null)
+            {
+                PortUser._initialised = false;
+                return false;
+            }
+
+            if (userModel.response == "OK")
+            {
+                PortUser.Initialise();
+                return true;
+            }
+            else
+            {
+                PortUser._initialised = false;
+                return false;
+            }
+        }
+
+        #endregion
+         
         
     }
 }

@@ -9,6 +9,5 @@ namespace NFTPort.Internal
         public const string DiscordInvite = "https://discord.gg/w92sXkNmBR";
 
     }
-
 }
 

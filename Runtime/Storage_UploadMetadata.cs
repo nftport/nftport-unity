@@ -25,11 +25,11 @@ namespace NFTPort
         [ReadOnly]public float uplodedBytes = 0;
         
         [Space(20)] [Header("Use Save file as Json function to save it to defined path")]
-        public string saveToPath = "Assets/";
+        public string saveToPath = "Assets/NFTPort/";
         public string fileName = "netadata.json";
 
         [Space(20)]
-        //[Header("Called When API call starts")]
+        //[Header("Called When API call starts")] 
         public UnityEvent OnRequestStarted;
 
         //[Header("Called After Successful API call")]
@@ -264,7 +264,7 @@ namespace NFTPort
                     OnErrorAction($"( ≖.≖) Response code: {request.responseCode}. Result {jsonResult}");
                 if (debugErrorLog)
                     Debug.Log($"( ≖.≖) Response code: {request.responseCode}. Result {jsonResult}");
-                if(afterError!=null)
+                if (afterError!=null)
                     afterError.Invoke();
             }
             else

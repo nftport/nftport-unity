@@ -3,13 +3,13 @@ using UnityEngine;
 namespace NFTPort.Editor
 {
     using UnityEditor;
+    using Internal;
 
     [CustomEditor(typeof(Storage_UploadFile))]
     public class Storage_UploadFile_Editor : Editor
     {
         public override void OnInspectorGUI()
         {
-            
             Storage_UploadFile myScript = (Storage_UploadFile)target;
             
             Texture banner = Resources.Load<Texture>("c_s_file");
@@ -20,12 +20,12 @@ namespace NFTPort.Editor
                 myScript.Run();
             }
             
-            if(GUILayout.Button("Stop", GUILayout.Height(25)))
+            if(GUILayout.Button("Stop Upload", GUILayout.Height(25)))
                 myScript.Stop(false);
             
             
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL("https://docs.nftport.xyz/docs/nftport/ZG9jOjUzMzQxMzcy-examples");
+                Application.OpenURL(PortConstants.Docs_GettingStarted);
             DrawDefaultInspector();
         }
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 namespace NFTPort.Editor
 {
     using UnityEditor;
+    using Internal;
 
     [CustomEditor(typeof(Storage_UploadMetadata))]
     public class Storage_UploadMetadata_Editor : Editor
@@ -12,9 +13,12 @@ namespace NFTPort.Editor
             
             Storage_UploadMetadata myScript = (Storage_UploadMetadata)target;
             
-            Texture banner = Resources.Load<Texture>("c_s_Metadata");
-            GUILayout.Box(banner);
             
+            Texture banner = Resources.Load<Texture>("c_s_Metadata");
+            GUILayout.BeginHorizontal();
+            GUILayout.Box(banner);
+            GUILayout.EndHorizontal();
+
             if (GUILayout.Button("Upload Metadata to IPFS", GUILayout.Height(45)))
             {
                 myScript.Run();
@@ -27,7 +31,7 @@ namespace NFTPort.Editor
                 myScript.SaveFileasJson(myScript.metadata, myScript.saveToPath, myScript.fileName);
 
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL("https://docs.nftport.xyz/docs/nftport/ZG9jOjUzMzQxMzcy-examples");
+                Application.OpenURL(PortConstants.Docs_GettingStarted);
             DrawDefaultInspector();
         }
     }
