@@ -103,9 +103,16 @@ namespace NFTPort
                 WEB_URL = BuildUrl();
                 StopAllCoroutines();
                 StartCoroutine(CallAPIProcess());
+                StartCoroutine(ForceEnd());
             }
 
             return this;
+        }
+
+        IEnumerator ForceEnd()
+        {
+            yield return new WaitForSeconds(5f);
+            End();
         }
 
         private void OnDestroy()

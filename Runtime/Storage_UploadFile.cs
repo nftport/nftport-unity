@@ -38,7 +38,7 @@ namespace NFTPort
         public Storage_model.Storage storageModel;
 
         private UnityAction<string> OnStartedAction;
-        private UnityAction<float> OnProgressAction;
+        private UnityAction<int> OnProgressAction;
         private UnityAction<string> OnErrorAction;
         private UnityAction<Storage_model.Storage> OnCompleteAction;
         private bool destroyAtEnd = false;
@@ -95,7 +95,7 @@ namespace NFTPort
         /// Action on File Upload Progress returining Progress percentage
         /// </summary>
         /// <returns> float uploadProgress .</returns>
-        public Storage_UploadFile OnProgress(UnityAction<float> action)
+        public Storage_UploadFile OnProgress(UnityAction<int> action)
         {
             this.OnProgressAction = action;
             return this;

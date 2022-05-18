@@ -28,7 +28,7 @@ namespace NFTPort.Editor
                 myScript.Stop(false);
             
             if(GUILayout.Button("Save File Locally", GUILayout.Height(25)))
-                myScript.SaveFileasJson(myScript.metadata, myScript.saveToPath, myScript.fileName);
+                myScript.SaveFile(myScript.saveToPath, myScript.fileName);
 
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
                 Application.OpenURL(PortConstants.Docs_GettingStarted);

@@ -18,7 +18,7 @@ namespace NFTPort
     {
         #region Parameter Defines
 
-        public MetadataToUpload metadata;
+        public MetadataToUpload_model metadata;
         
         [Space(20)]
         [ReadOnly]public float uploadProgress = 0;
@@ -26,7 +26,7 @@ namespace NFTPort
         
         [Space(20)] [Header("Use Save file as Json function to save it to defined path")]
         public string saveToPath = "Assets/NFTPort/";
-        public string fileName = "netadata.json";
+        public string fileName = "metadata.json";
 
         [Space(20)]
         //[Header("Called When API call starts")] 
@@ -47,7 +47,7 @@ namespace NFTPort
         public Storage_model.Storage storageModel;
 
         private UnityAction<string> OnStartedAction;
-        private UnityAction<float> OnProgressAction;
+        private UnityAction<int> OnProgressAction;
         private UnityAction<string> OnErrorAction;
         private UnityAction<Storage_model.Storage> OnCompleteAction;
         private bool destroyAtEnd = false;
@@ -87,7 +87,7 @@ namespace NFTPort
         /// Set MetaData properties, This will override any values set in metadata in the editor ≧◔◡◔≦ .
         /// </summary>
         /// <param name="MetadataToUpload"> metadata.</param>
-        public Storage_UploadMetadata SetMetaData(MetadataToUpload _metadata)
+        public Storage_UploadMetadata SetMetadata(MetadataToUpload_model _metadata)
         {
             metadata = _metadata;
             return this;
@@ -105,10 +105,10 @@ namespace NFTPort
         }
         
         /// <summary>
-        /// Action on File Upload Progress returining Progress percentage
+        /// Action on File Upload Progress returning Progress percentage
         /// </summary>
         /// <returns> float uploadProgress .</returns>
-        public Storage_UploadMetadata OnProgress(UnityAction<float> action)
+        public Storage_UploadMetadata OnProgress(UnityAction<int> action)
         {
             this.OnProgressAction = action;
             return this;
@@ -146,6 +146,9 @@ namespace NFTPort
             StartCoroutine(CallAPIProcess());
         }
         
+        /// <summary>
+        /// Stop Any In progress calls
+        /// </summary>
         public void Stop(bool destroy)
         {
             StopAllCoroutines();
@@ -164,23 +167,29 @@ namespace NFTPort
         /// <summary>
         /// Save File as Json locally.
         /// </summary>
-        /// <param name="MetadataToUpload"> of type MetadataToUpload.</param>
         /// <param name="saveToPath"> Path to save to as string.</param>
-        /// <param name="fileName"> FileName as string, include extension, eg: metadata.json.</param>
-        public void SaveFileasJson(MetadataToUpload metadata, string saveToPath, string fileName)
+        /// <param name="fileName"> FileName as string</param>
+        public void SaveFile(string saveToPath, string fileName)
         {
             string json = JsonConvert.SerializeObject(
-                metadata, 
-                new JsonSerializerSettings
-                {
-                    DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-            System.IO.File.WriteAllText(saveToPath + fileName, json);
-            #if UNITY_EDITOR
-            AssetDatabase.Refresh();
-            #endif
-            Debug.Log($"File Saved to: " + saveToPath + fileName);
+                    metadata, 
+                    new JsonSerializerSettings
+                    {
+                        DefaultValueHandling = DefaultValueHandling.Ignore,
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+                System.IO.File.WriteAllText(saveToPath + fileName, json);
+#if UNITY_EDITOR
+                AssetDatabase.Refresh();
+#endif
+            if(File.Exists(saveToPath+fileName)){
+                Debug.Log($"File Saved to: " + saveToPath + fileName);
+            }
+            else
+            {
+                Debug.Log($"Path Not Found: " + saveToPath);
+            }
+            
         }
 
         string BuildUrl()

@@ -8,7 +8,7 @@ using UnityEngine;
 namespace NFTPort
 {
     [System.Serializable]
-    public class MetadataToUpload
+    public class MetadataToUpload_model
     {
         [Tooltip("Main NFT File URL, use 'Storage File Upload' to get url")]
         public string file_url = "Required Field";

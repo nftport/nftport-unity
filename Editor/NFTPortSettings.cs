@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.IO;
 using UnityEngine;
 using UnityEditor;
 using Newtonsoft.Json;
@@ -16,6 +17,7 @@ namespace NFTPort.Editor
          
         protected static Type WindowType = typeof(NFTPortSettings);
         private static bool windowopen = false;
+        PkgJson releasedPkgJson = null;
         [MenuItem("NFTPort/Home")]
         public static void ShowWindow()
         {
@@ -82,6 +84,27 @@ namespace NFTPort.Editor
             {
                 EditorGUILayout.LabelField("   Welcome " + userModel.profile.name); 
             }
+            
+            EditorGUILayout.LabelField("");
+            
+            GuiLine();
+            GUILayout.BeginHorizontal("box");
+            EditorGUILayout.LabelField("installed version: " + PkgInfo.GetPackageVer());
+            
+            var ls = LatestRel.Initialize();
+            if (ls != null)
+            {
+                ls.OnComplete(pkg => releasedPkgJson = pkg);
+                ls.Run();
+            }
+
+            if (releasedPkgJson != null)
+            {
+                EditorGUILayout.LabelField("Latest release version: " + releasedPkgJson.version);
+            }
+
+            GUILayout.EndHorizontal();
+
         }
 
         void OnEnable()
@@ -118,8 +141,8 @@ namespace NFTPort.Editor
         }
         static void SetSize(NFTPortSettings win) 
         {
-            win.minSize = new Vector2(530, 530);
-            win.maxSize = new Vector2(530, 530);
+            win.minSize = new Vector2(530, 590);
+            win.maxSize = new Vector2(530, 590);
         } 
         
         static void GuiLine( int i_height = 1 )
