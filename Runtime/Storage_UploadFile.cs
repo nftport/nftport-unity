@@ -74,7 +74,7 @@ namespace NFTPort
             return _this;
         }
 
-        public Storage_UploadFile SetFilePatth(string _filePath)
+        public Storage_UploadFile SetFilePath(string _filePath)
         {
             filePath = _filePath;
             return this;

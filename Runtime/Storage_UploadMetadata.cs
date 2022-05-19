@@ -18,7 +18,7 @@ namespace NFTPort
     {
         #region Parameter Defines
 
-        public MetadataToUpload_model metadata;
+        public Storage_MetadataToUpload_model metadata;
         
         [Space(20)]
         [ReadOnly]public float uploadProgress = 0;
@@ -87,7 +87,7 @@ namespace NFTPort
         /// Set MetaData properties, This will override any values set in metadata in the editor ≧◔◡◔≦ .
         /// </summary>
         /// <param name="MetadataToUpload"> metadata.</param>
-        public Storage_UploadMetadata SetMetadata(MetadataToUpload_model _metadata)
+        public Storage_UploadMetadata SetMetadata(Storage_MetadataToUpload_model _metadata)
         {
             metadata = _metadata;
             return this;

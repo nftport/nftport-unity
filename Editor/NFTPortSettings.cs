@@ -1,11 +1,7 @@
 using System;
-using System.Drawing;
-using System.IO;
 using UnityEngine;
 using UnityEditor;
 using Newtonsoft.Json;
-using UnityEditor.PackageManager;
-using UnityEngine.SocialPlatforms;
 
 namespace NFTPort.Editor
 { using Internal;
@@ -13,7 +9,7 @@ namespace NFTPort.Editor
     public class NFTPortSettings : EditorWindow
     {
         
-         static string myAPIString = PortConstants.DefaultAPIKey;
+        static string myAPIString = PortConstants.DefaultAPIKey;
          
         protected static Type WindowType = typeof(NFTPortSettings);
         private static bool windowopen = false;
@@ -82,12 +78,13 @@ namespace NFTPort.Editor
 
             if (userModel != null)
             {
-                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name); 
+                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name + "."); 
             }
             
             EditorGUILayout.LabelField("");
             
             GuiLine();
+            
             GUILayout.BeginHorizontal("box");
             EditorGUILayout.LabelField("installed version: " + PkgInfo.GetPackageVer());
             
@@ -190,10 +187,8 @@ namespace NFTPort.Editor
         static void UserStats()
         {
             userModel = null;
-            //User_Settings a = new User_Settings();
-             User_Settings
+            User_Settings
                 .Initialize(true)
-               // .OnError(error=> a.End())
                 .OnComplete(usermodel=> userModel = usermodel)
                 .Run();
         }
