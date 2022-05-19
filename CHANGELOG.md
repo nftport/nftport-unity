@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/nftport/nftport-unity/compare/v0.1.1-preview...v0.2.0) (2022-05-19)
+
+
+### Features
+
+* Added Storage | File Upload ([a6fd126](https://github.com/nftport/nftport-unity/commit/a6fd126a20371a5d9fbc26cf0298afd49d9e8c60))
+* Added Storage | Metadata Upload ([d9e057b](https://github.com/nftport/nftport-unity/commit/d9e057b03c3991a71b7877d05ae70cc35ead15f4))
+
+
+### Bug Fixes
+
+* Missing meta files for NFT's of Account ([d3a3155](https://github.com/nftport/nftport-unity/commit/d3a31554471156c044cd71121991b36b1683d354))
+
 ### [0.1.1-preview](https://github.com/nftport/nftport-unity/compare/v0.1.0-preview...v0.1.1-preview) (2022-05-09)
 ### Bug Fixes
 
