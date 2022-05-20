@@ -41,6 +41,7 @@ namespace NFTPort
         [Header("Run Component when this Game Object is Set Active")] [SerializeField]
         private bool onEnable = false;
         public bool debugErrorLog = true;
+        public bool debugLogRawJson = false;
         public bool debugLogRawApiResponse = false;
 
         [Header("Response after successful upload:")]
@@ -202,16 +203,20 @@ namespace NFTPort
         IEnumerator CallAPIProcess()
         {
             //var _FormParams = FormMaker.Formeet(filePath);
+
+            var processedMetadata = ProcessMetadataToUpload.ConvertCustomFieldsListToDict(metadata);
             
             string json = JsonConvert.SerializeObject(
-                metadata, 
+                processedMetadata, 
                 new JsonSerializerSettings
                 {
                     DefaultValueHandling = DefaultValueHandling.Ignore,
                     NullValueHandling = NullValueHandling.Ignore
                 });
+            if (debugLogRawJson)
+                Debug.Log(json);
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
-            
+
             request = new UnityWebRequest(WEB_URL, "POST");
             UploadHandler uploader = new UploadHandlerRaw(jsonToSend);
             //uploader.contentType = _FormParams.contentType;
