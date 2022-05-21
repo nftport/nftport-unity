@@ -204,7 +204,7 @@ namespace NFTPort
         {
             //var _FormParams = FormMaker.Formeet(filePath);
 
-            var processedMetadata = ProcessMetadataToUpload.ConvertCustomFieldsListToDict(metadata);
+            var processedMetadata = ProcessMetadataToUpload.Process(metadata);
             
             string json = JsonConvert.SerializeObject(
                 processedMetadata, 

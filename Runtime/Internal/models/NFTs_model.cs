@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.Video;
 using Object = UnityEngine.Object;
 
@@ -20,7 +21,22 @@ namespace NFTPort
     public class Attribute 
     {
         public string trait_type;
+        [Tooltip("Set as either Numerical or Alphabets. Numeric properties as either floats or integers so that OpenSea can display them appropriately. String properties should be human-readable strings.")]
         public string value;
+        [Tooltip("Set to '0' to exclude, Negative and Positive values accepted.")]
+        public int max_value;
+        
+        [Tooltip("View https://docs.opensea.io/docs/metadata-standards")]
+        public Displaytype display_type;
+    }
+    
+    public enum Displaytype
+    {
+        not_set,
+        boost_number,
+        boost_percentage,
+        number,
+        date
     }
     
     [Serializable]

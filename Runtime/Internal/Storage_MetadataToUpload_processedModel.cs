@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace NFTPort.Internal
@@ -25,8 +26,16 @@ namespace NFTPort.Internal
         public Dictionary<string, string> custom_fields;
         
         [DefaultValue(null)]
-        public List<Attribute> attributes;
+        public List<ProcessedAttribute> attributes;
        
+    }
+    public class ProcessedAttribute 
+    {
+        public string trait_type;
+        public string value;
+        public int max_value;
+        [DefaultValue(null)]
+        public string display_type;
     }
 }
 
