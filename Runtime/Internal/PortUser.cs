@@ -40,7 +40,7 @@ namespace NFTPort.Internal
                 return String.Empty;
             }
             else
-                return "Run Port.Initialise() before calling GetUserApiKey()";
+                return " Make sure to input your APIKEYS in NFTPort/Home ";
         }
 
         #region Prefs File Read

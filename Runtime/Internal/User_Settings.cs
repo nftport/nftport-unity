@@ -48,7 +48,7 @@ namespace NFTPort
         
         private void Awake()
         {
-            //PortUser.Initialise();
+            PortUser.Initialise();
             _apiKey = PortUser.GetUserApiKey();
             
         }
@@ -93,7 +93,7 @@ namespace NFTPort
         }
 
         /// <summary>
-        /// Runs the Mint ^_^
+        /// Runs ^_^
         /// </summary>
         public User_Settings Run()
         {

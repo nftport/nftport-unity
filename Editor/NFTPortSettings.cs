@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using Newtonsoft.Json;
+using UnityEditor.PackageManager;
 
 namespace NFTPort.Editor
 { using Internal;
@@ -13,6 +14,7 @@ namespace NFTPort.Editor
          
         protected static Type WindowType = typeof(NFTPortSettings);
         private static bool windowopen = false;
+        private bool ranLatestrel = false;
         PkgJson releasedPkgJson = null;
         [MenuItem("NFTPort/Home")]
         public static void ShowWindow()
@@ -27,12 +29,13 @@ namespace NFTPort.Editor
         [UnityEditor.InitializeOnLoadMethod]
         public static void InitializeOnLoadMethod()
         {
-            EditorApplication.delayCall += delayCall;
+            Events.registeredPackages += RegisteredPackagesEventHandler;
+            //EditorApplication.delayCall += delayCall;
         }
 
-        static void delayCall()
+        static void RegisteredPackagesEventHandler(PackageRegistrationEventArgs packageRegistrationEventArgs)
         {
-            ReadFromUserPrefs();
+            ReadFromUserPrefs(); 
         }
 
         void OnGUI()
@@ -87,12 +90,17 @@ namespace NFTPort.Editor
             
             GUILayout.BeginHorizontal("box");
             EditorGUILayout.LabelField("installed version: " + PkgInfo.GetPackageVer());
-            
-            var ls = LatestRel.Initialize();
-            if (ls != null)
+
+            if (!ranLatestrel)
             {
-                ls.OnComplete(pkg => releasedPkgJson = pkg);
-                ls.Run();
+                var ls = LatestRel.Initialize();
+                if (ls != null)
+                {
+                    ls.OnComplete(pkg => releasedPkgJson = pkg);
+                    ls.Run();
+                }
+
+                ranLatestrel = true;
             }
 
             if (releasedPkgJson != null)
@@ -106,8 +114,10 @@ namespace NFTPort.Editor
 
         void OnEnable()
         {
-            ReadFromUserPrefs();
+            if(!windowopen)
+                ReadFromUserPrefs();
             windowopen = true;
+            ranLatestrel = false;
         }
 
         private void OnDisable()
@@ -118,7 +128,7 @@ namespace NFTPort.Editor
         public override void SaveChanges()
         {
             WriteToUserPrefs();
-            UserStats();
+            UserStats(); 
         }
         
         static void ShowHomeWindow()
@@ -160,18 +170,16 @@ namespace NFTPort.Editor
             {
                 _userPrefs = JsonConvert.DeserializeObject<PortUser.UserPrefs>(targetFile.text);
                 myAPIString = _userPrefs.API_KEY;
-                PortUser.Initialise();
+                //PortUser.Initialise();
+                UserStats();
             }
             else
             { 
                 PortUser._initialised = false;
                 myAPIString = PortConstants.DefaultAPIKey;
+                if(!windowopen)
+                    ShowHomeWindow();
             }
-
-            
-            UserStats();
-            
-            ShowHomeWindow();
 
         }
         void WriteToUserPrefs()
