@@ -5,11 +5,10 @@
 
 ### Bug Fixes
 
-* Corrupted images and .metas ([05abcbf](https://github.com/nftport/nftport-unity/commit/05abcbf80a10dcd14d5a6863859945b5fdc72e1c))
-* corrupted images in PlayerConnect + WebGL  sample ([18b3e41](https://github.com/nftport/nftport-unity/commit/18b3e417ae16ba541ccc3ba2a1c402b454fb5da1))
-* optimized Home window user settings ([7128cd0](https://github.com/nftport/nftport-unity/commit/7128cd0f3733cacedab14b3a6f1e15b1ab762531))
-* Updated Metadata Upload feature with compatible format ([83938c1](https://github.com/nftport/nftport-unity/commit/83938c137d3a29d78d1eadf8c19e0cbf810fd5e2))
-* updates upload metadata feature with metadata standards ([56dc885](https://github.com/nftport/nftport-unity/commit/56dc8857bcf88169395435a6807612e9fbc943ee))
+* Fixed Corrupted images and .metas ([05abcbf](https://github.com/nftport/nftport-unity/commit/05abcbf80a10dcd14d5a6863859945b5fdc72e1c))
+* Fixed Corrupted images in PlayerConnect + WebGL  sample ([18b3e41](https://github.com/nftport/nftport-unity/commit/18b3e417ae16ba541ccc3ba2a1c402b454fb5da1))
+* Optimized home window user settings ([7128cd0](https://github.com/nftport/nftport-unity/commit/7128cd0f3733cacedab14b3a6f1e15b1ab762531))
+* Updated Metadata Upload feature with API compatible format and metadata standards ([83938c1](https://github.com/nftport/nftport-unity/commit/83938c137d3a29d78d1eadf8c19e0cbf810fd5e2))
 
 ## [0.2.0](https://github.com/nftport/nftport-unity/compare/v0.1.1-preview...v0.2.0) (2022-05-19)
 
