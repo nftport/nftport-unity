@@ -109,6 +109,10 @@ namespace NFTPort.Editor
             }
 
             GUILayout.EndHorizontal();
+            
+            
+            if (GUILayout.Button("star the github", GUILayout.Height(17), GUILayout.Width(155)))
+                Application.OpenURL(PortConstants.Github);
 
         }
 
@@ -148,8 +152,8 @@ namespace NFTPort.Editor
         }
         static void SetSize(NFTPortSettings win) 
         {
-            win.minSize = new Vector2(530, 590);
-            win.maxSize = new Vector2(530, 590);
+            win.minSize = new Vector2(530, 600);
+            win.maxSize = new Vector2(530, 600);
         } 
         
         static void GuiLine( int i_height = 1 )
