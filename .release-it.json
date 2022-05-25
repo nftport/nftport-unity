@@ -1,17 +1,16 @@
 {
-  "git":{
+  "git": {
     "commitMessage": "'🚀 release v${version}'"
   },
   "github": {
     "release": true
   },
-  "npm": false
-  ,
+  "npm": false,
   "plugins": {
     "@release-it/conventional-changelog": {
       "infile": "CHANGELOG.md",
       "header": "# Changelog",
-      "ignoreRecommendedBump" : true,
+      "ignoreRecommendedBump": true,
       "preset": {
         "name": "conventionalcommits",
         "types": [
