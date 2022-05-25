@@ -1,5 +1,15 @@
 # Changelog
 
+### [0.2.2](https://github.com/nftport/nftport-unity/compare/v0.2.0...v0.2.2) (2022-05-25)
+
+
+### Bug Fixes
+
+* optimized Home window user settings ([7128cd0](https://github.com/nftport/nftport-unity/commit/7128cd0f3733cacedab14b3a6f1e15b1ab762531))
+* Tooltip' is not valid on this declaration type. ([c70bda2](https://github.com/nftport/nftport-unity/commit/c70bda27ce1ae1c1c20319e30be6f39e5e72e9f5))
+* Updated Metadata Upload feature with compatible format ([83938c1](https://github.com/nftport/nftport-unity/commit/83938c137d3a29d78d1eadf8c19e0cbf810fd5e2))
+* updates upload metadata feature with metadata standards ([56dc885](https://github.com/nftport/nftport-unity/commit/56dc8857bcf88169395435a6807612e9fbc943ee))
+
 ### [0.2.1](https://github.com/nftport/nftport-unity/compare/v0.2.0...v0.2.1) (2022-05-24)
 
 
