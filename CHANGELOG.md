@@ -1,5 +1,28 @@
 # Changelog
 
+### [0.2.1](https://github.com/nftport/nftport-unity/compare/v0.2.0...v0.2.1) (2022-05-24)
+
+
+### Bug Fixes
+
+* Fixed Corrupted images and .metas ([05abcbf](https://github.com/nftport/nftport-unity/commit/05abcbf80a10dcd14d5a6863859945b5fdc72e1c))
+* Fixed Corrupted images in PlayerConnect + WebGL  sample ([18b3e41](https://github.com/nftport/nftport-unity/commit/18b3e417ae16ba541ccc3ba2a1c402b454fb5da1))
+* Optimized home window user settings ([7128cd0](https://github.com/nftport/nftport-unity/commit/7128cd0f3733cacedab14b3a6f1e15b1ab762531))
+* Updated Metadata Upload feature with API compatible format and metadata standards ([83938c1](https://github.com/nftport/nftport-unity/commit/83938c137d3a29d78d1eadf8c19e0cbf810fd5e2))
+
+## [0.2.0](https://github.com/nftport/nftport-unity/compare/v0.1.1-preview...v0.2.0) (2022-05-19)
+
+
+### Features
+
+* Added Storage | File Upload ([a6fd126](https://github.com/nftport/nftport-unity/commit/a6fd126a20371a5d9fbc26cf0298afd49d9e8c60))
+* Added Storage | Metadata Upload ([d9e057b](https://github.com/nftport/nftport-unity/commit/d9e057b03c3991a71b7877d05ae70cc35ead15f4))
+
+
+### Bug Fixes
+
+* Missing meta files for NFT's of Account ([d3a3155](https://github.com/nftport/nftport-unity/commit/d3a31554471156c044cd71121991b36b1683d354))
+
 ### [0.1.1-preview](https://github.com/nftport/nftport-unity/compare/v0.1.0-preview...v0.1.1-preview) (2022-05-09)
 ### Bug Fixes
 
