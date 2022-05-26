@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NFTPort
 {
-    [Serializable][Tooltip("View https://docs.opensea.io/docs/metadata-standards")]
+    [Serializable]//[Tooltip("View https://docs.opensea.io/docs/metadata-standards")]
     public class Storage_MetadataToUpload_model
     {
         [Tooltip("URL of the file that you wish to link with the metadata and turn into an NFT., use 'Storage File Upload' to get url")]

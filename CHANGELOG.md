@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.2](https://github.com/nftport/nftport-unity/compare/v0.2.0...v0.2.2) (2022-05-25)
+
+
+### Bug Fixes
+
+* Tooltip' is not valid on this declaration type error
+
 ### [0.2.1](https://github.com/nftport/nftport-unity/compare/v0.2.0...v0.2.1) (2022-05-24)
 
 
