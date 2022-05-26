@@ -16,6 +16,7 @@ namespace NFTPort.Editor
         private static bool windowopen = false;
         private bool ranLatestrel = false;
         PkgJson releasedPkgJson = null;
+        static private bool NFTPortStarted;
         [MenuItem("NFTPort/Home")]
         public static void ShowWindow()
         {
@@ -36,6 +37,25 @@ namespace NFTPort.Editor
         static void RegisteredPackagesEventHandler(PackageRegistrationEventArgs packageRegistrationEventArgs)
         {
             ReadFromUserPrefs(); 
+        }
+
+        [InitializeOnLoad]
+        public class Startup
+        {  
+            static Startup()
+            {
+                EditorApplication.update += AfterLoad;
+            }
+
+            static void AfterLoad()
+            {
+                NFTPortStarted = SessionState.GetBool("NFTPortStarted", false);
+                if(!NFTPortStarted)
+                {
+                    ReadFromUserPrefs();
+                    SessionState.SetBool("NFTPortStarted", true);
+                } 
+            }
         }
 
         void OnGUI()
@@ -116,12 +136,27 @@ namespace NFTPort.Editor
 
         }
 
+        private bool firstload = true;
+
         void OnEnable()
         {
-            if(!windowopen)
-                ReadFromUserPrefs();
+            if (!windowopen)
+            {
+                if (!firstload)
+                {
+                    firstload = false;
+                    return;
+                    
+                }
+                else
+                {
+                    ReadFromUserPrefs();
+                }
+                
+            }
             windowopen = true;
             ranLatestrel = false;
+            
         }
 
         private void OnDisable()
@@ -137,7 +172,7 @@ namespace NFTPort.Editor
         
         static void ShowHomeWindow()
         {
-            if(myAPIString != PortConstants.DefaultAPIKey || windowopen)
+            if(windowopen)
                 return;
             
             NFTPortSettings win = GetWindow(WindowType, false, PortConstants.HomeWindowName, true) as NFTPortSettings;
@@ -201,12 +236,21 @@ namespace NFTPort.Editor
             userModel = null;
             User_Settings
                 .Initialize(true)
+                .OnError(usermodel=> StatsErrore())
                 .OnComplete(usermodel=> userModel = usermodel)
                 .Run();
         }
+
+        static void StatsErrore()
+        {
+            if (!windowopen && !APIkeyOk())
+            {
+                ShowHomeWindow();
+            }
+        }
          
 
-        bool APIkeyOk()
+        static bool APIkeyOk()
         {
             if (userModel == null)
             {
