@@ -223,7 +223,7 @@ namespace NFTPort
             request.uploadHandler = uploader;
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type",  "application/json");
-            request.SetRequestHeader("source", "NFTPort-Unity");
+            request.SetRequestHeader("source", PortUser.GetSource());
             request.SetRequestHeader("Authorization", _apiKey);
             request.SendWebRequest();
 

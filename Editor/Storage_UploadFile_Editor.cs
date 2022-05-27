@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 namespace NFTPort.Editor
@@ -8,9 +9,10 @@ namespace NFTPort.Editor
     [CustomEditor(typeof(Storage_UploadFile))]
     public class Storage_UploadFile_Editor : Editor
     {
+        private Storage_UploadFile myScript;
         public override void OnInspectorGUI()
         {
-            Storage_UploadFile myScript = (Storage_UploadFile)target;
+            myScript = (Storage_UploadFile)target;
             
             Texture banner = Resources.Load<Texture>("c_s_file");
             GUILayout.Box(banner);
@@ -25,9 +27,29 @@ namespace NFTPort.Editor
             
             
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL(PortConstants.Docs_GettingStarted);
+                Application.OpenURL(PortConstants.Docs_StorageFile);
+
+            if (GUILayout.Button("Select File", GUILayout.Height(35)))
+            {
+                OpenFile();
+            }
+
             DrawDefaultInspector();
         }
+        
+        
+        public void OpenFile()
+        {
+            //Get the path
+            var path = EditorUtility.OpenFilePanel("Select File (⌐▨_▨) | NFTPort Upload", "", "*");
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            //Read
+            var reader = new StreamReader(path);
+            myScript.filePath = path;
+        }
+        
     }
 }
 
