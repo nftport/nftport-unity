@@ -177,7 +177,7 @@ namespace NFTPort
                 //Make request
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SetRequestHeader("source", "NFTPort-Unity");
+                request.SetRequestHeader("source", PortUser.GetSource());
                 request.SetRequestHeader("Authorization", _apiKey);
                 
 

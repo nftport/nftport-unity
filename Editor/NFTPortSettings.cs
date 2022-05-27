@@ -223,6 +223,7 @@ namespace NFTPort.Editor
         }
         void WriteToUserPrefs()
         {
+            PortUser.SetVersion(PkgInfo.GetPackageVer());
             PortUser.SaveNewApi(myAPIString);
             base.SaveChanges();
         }

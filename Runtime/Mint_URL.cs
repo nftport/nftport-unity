@@ -124,8 +124,8 @@ namespace NFTPort
         /// <summary>
         /// Action on succesfull API Fetch.
         /// </summary>
-        /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
-        /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
+        /// <param name="Minted_model"> Use: .OnComplete(model=> Model = model) , where Model = Minted_model;</param>
+        /// <returns> Minted_model </returns>
         public Mint_URL OnComplete(UnityAction<Minted_model> action)
         {
             this.OnCompleteAction = action;
@@ -185,7 +185,7 @@ namespace NFTPort
                 
             //headers
             request.SetRequestHeader("Content-Type",  "application/json");
-            request.SetRequestHeader("source", "NFTPort-Unity");
+            request.SetRequestHeader("source", PortUser.GetSource());
             request.SetRequestHeader("Authorization", _apiKey);
 
                 
