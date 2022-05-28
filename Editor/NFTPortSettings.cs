@@ -209,6 +209,8 @@ namespace NFTPort.Editor
             {
                 _userPrefs = JsonConvert.DeserializeObject<PortUser.UserPrefs>(targetFile.text);
                 myAPIString = _userPrefs.API_KEY;
+                PortUser.SetVersion(PkgInfo.GetPackageVer());
+                PortUser.SaveNewApi(myAPIString);
                 //PortUser.Initialise();
                 UserStats();
             }

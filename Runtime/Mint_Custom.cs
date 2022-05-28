@@ -12,7 +12,7 @@ namespace NFTPort
     /// Customizable minting. Mints an NFT to your previously contract for NFT products.
     /// </summary>
      [ExecuteInEditMode]
-    public class Product_Mint : MonoBehaviour
+    public class Mint_Custom : MonoBehaviour
     {
         public enum Chains
         {
@@ -20,7 +20,7 @@ namespace NFTPort
             rinkeby
         }
         
-        private class ProductMintNFT
+        private class CustomNFT
         {
             public string chain;
             public string contract_address;
@@ -87,9 +87,9 @@ namespace NFTPort
         /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
         /// </summary>
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
-        public static Product_Mint Initialize(bool destroyAtEnd = true)
+        public static Mint_Custom Initialize(bool destroyAtEnd = true)
         {
-            var _this = new GameObject("Product | Minting").AddComponent<Product_Mint>();
+            var _this = new GameObject("Product | Minting").AddComponent<Mint_Custom>();
             _this.destroyAtEnd = destroyAtEnd;
             _this.onEnable = false;
             _this.debugErrorLog = false;
@@ -103,7 +103,7 @@ namespace NFTPort
         /// <param name="metadata_uri"> Metadata URI obtained from metadata or file upload feature </param>
         /// <param name="MintToAddress"> Blockchain address to mint to. </param>
         /// <param name="token_id"> Int Token ID for the NFT</param>
-        public Product_Mint SetParameters(string contract_address = null, string metadata_uri = null , string MintToAddress = null , int token_id = 0)
+        public Mint_Custom SetParameters(string contract_address = null, string metadata_uri = null , string MintToAddress = null , int token_id = 0)
         {
             if(contract_address!=null)
                 _contract_address = contract_address;
@@ -120,7 +120,7 @@ namespace NFTPort
         /// Blockchain to mint NFTs om.
         /// </summary>
         /// <param name="chain"> Choose from available 'Chains' enum</param>
-        public Product_Mint SetChain(Chains chain)
+        public Mint_Custom SetChain(Chains chain)
         {
             this._chain = chain;
             return this;
@@ -131,7 +131,7 @@ namespace NFTPort
         /// </summary>
         /// <param name="Minted_model"> Use: .OnComplete(model=> Model = model) , where Model = Minted_model;</param>
         /// <returns> Minted_model </returns>
-        public Product_Mint OnComplete(UnityAction<Minted_model> action)
+        public Mint_Custom OnComplete(UnityAction<Minted_model> action)
         {
             this.OnCompleteAction = action;
             return this;
@@ -142,7 +142,7 @@ namespace NFTPort
         /// </summary>
         /// <param name="UnityAction action"> string.</param>
         /// <returns> Information on Error as string text.</returns>
-        public Product_Mint OnError(UnityAction<string> action)
+        public Mint_Custom OnError(UnityAction<string> action)
         {
             this.OnErrorAction = action;
             return this;
@@ -159,9 +159,9 @@ namespace NFTPort
             return minted;
         }
 
-        ProductMintNFT CreateProductNFT()
+        CustomNFT CreateProductNFT()
         {
-            var nft = new ProductMintNFT();
+            var nft = new CustomNFT();
             nft.chain = _chain.ToString().ToLower();
             nft.contract_address = _contract_address;
             nft.metadata_uri = _metadata_uri;
@@ -177,10 +177,10 @@ namespace NFTPort
         }
         
         
-        IEnumerator CallAPIProcess(ProductMintNFT nft)
+        IEnumerator CallAPIProcess(CustomNFT nft)
         {
              if(debugErrorLog)
-                 Debug.Log("Mint Started ⊂(▀¯▀⊂)");
+                 Debug.Log("Mint Started ⊂(▀¯▀⊂)   |  Custom");
              
              string json = JsonConvert.SerializeObject(
                 nft, 

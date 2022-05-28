@@ -11,6 +11,7 @@ namespace NFTPort
     /// <summary>
     /// Easy minting w/URL, If you wish to customize the minting process e.g. use your own contract, set more metadata, see Customizable minting.
     /// </summary>
+    [ExecuteInEditMode]
     public class Mint_URL : MonoBehaviour
     {
         public enum Chains
@@ -74,7 +75,7 @@ namespace NFTPort
         
         private void OnEnable()
         {
-            if (onEnable)
+            if (onEnable & Application.isPlaying)
                 Run();
         }
         
@@ -174,9 +175,14 @@ namespace NFTPort
         
         IEnumerator CallAPIProcess(EasyMintNFT nft)
         {
-
+            if(debugErrorLog)
+                Debug.Log("Mint Started ⊂(▀¯▀⊂)   |  URL");
+            
             string json = JsonUtility.ToJson(nft);
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+            
+            if(debugErrorLog)
+                Debug.Log(json);
             
             var request = new UnityWebRequest(WEB_URL, "POST");
             
@@ -204,7 +210,7 @@ namespace NFTPort
                 if(OnErrorAction!=null)
                     OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                 if(debugErrorLog)
-                    Debug.Log($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                    Debug.Log($"(⊙.◎) Null data. Response code: {request.responseCode}. Result {jsonResult}");
                 if(afterError!=null)
                     afterError.Invoke();
             }
@@ -218,6 +224,9 @@ namespace NFTPort
                         
                 if(afterSuccess!=null)
                     afterSuccess.Invoke();
+                
+                if(debugErrorLog)
+                    Debug.Log($"NFTPort | Mint Success (⌐■_■) : at: {minted.transaction_external_url}" );
             }
 
             request.Dispose();

@@ -10,6 +10,7 @@ namespace NFTPort
     /// <summary>
     /// NFTs of a contract / collections
     /// </summary>
+    [ExecuteInEditMode]
     public class NFTs_OfAContract : MonoBehaviour
     {
         /// <summary>
@@ -80,7 +81,7 @@ namespace NFTPort
 
         private void OnEnable()
         {
-            if (onEnable)
+            if (onEnable & Application.isPlaying)
                 Run();
         }
 

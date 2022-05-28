@@ -11,6 +11,9 @@ using UnityEngine.Events;
 
 namespace NFTPort.Internal
 {
+#if UNITY_EDITOR
+    [ExecuteInEditMode]
+#endif
     public static class PortUser
     {
         //Global Class Model for UserPrefs
@@ -116,6 +119,11 @@ namespace NFTPort.Internal
             public static void SaveNewApi(string newAPI)
             {
                 _userPrefs.API_KEY = newAPI;
+                SaveUserPrefs();
+            }
+
+            public static void SaveUserPrefs()
+            {
                 if(_initialised == false)
                 {
                     if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources"))
@@ -125,7 +133,6 @@ namespace NFTPort.Internal
                     
                     WriteToUserPrefs();
                 }
-
             }
             
             static  void WriteToUserPrefs()

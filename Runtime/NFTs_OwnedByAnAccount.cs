@@ -40,10 +40,8 @@ namespace NFTPort
             
             [SerializeField]
             private string address = "Input Account Address To Fetch NFT's from";
-            
-            [Header("Filter by and return NFTs only from the given contract address/collection")]
-            
-            [Header("Optional:")]
+
+            [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
            
             [SerializeField]
             [Tooltip("Leave blank if not using")]

@@ -5,28 +5,27 @@ namespace NFTPort.Editor
     using UnityEditor;
     using Internal;
 
-    [CustomEditor(typeof(Product_Mint))]
-    public class Product_Mint_Editor : Editor
+    [CustomEditor(typeof(NFTs_OfAContract))]
+    public class NFTs_OfContract_Editor : Editor
     {
         public override void OnInspectorGUI()
         {
             
-            Product_Mint myScript = (Product_Mint)target;
+            NFTs_OfAContract myScript = (NFTs_OfAContract)target;
             
             
-            Texture banner = Resources.Load<Texture>("c_productmint");
+            Texture banner = Resources.Load<Texture>("c_nftdata_contract");
             GUILayout.BeginHorizontal();
             GUILayout.Box(banner);
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button("Mint Custom NFT", GUILayout.Height(45)))
+            if (GUILayout.Button("GET NFTs of Contract", GUILayout.Height(45)))
             {
                 myScript.Run();
             }
-        
 
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL(PortConstants.Docs_GettingStarted);
+                Application.OpenURL(PortConstants.NFTs_OfContract);
             DrawDefaultInspector();
         }
     }
