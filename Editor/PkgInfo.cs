@@ -8,7 +8,7 @@ namespace NFTPort.Editor
     ////â‰§â— â€¿â— â‰¦âœŒ _sz_ Î© //≧◠‿◠≦✌ _sz_ Ω
     public static class PkgInfo
     {
-        public static string GetPackageVer()
+        public static string GetInstalledPackageVer()
         {
             string path = "Packages/com.nftport.nftport/package.json";
             if (File.Exists(path))

@@ -124,15 +124,12 @@ namespace NFTPort.Internal
 
             public static void SaveUserPrefs()
             {
-                if(_initialised == false)
+                if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources")) 
                 {
-                    if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources"))
-                    {
-                        CreateFolder();
-                    }
-                    
-                    WriteToUserPrefs();
+                    CreateFolder();
                 }
+                
+                WriteToUserPrefs();
             }
             
             static  void WriteToUserPrefs()

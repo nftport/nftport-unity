@@ -209,6 +209,9 @@ namespace NFTPort
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
+                        
+                        if(debugErrorLog)
+                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFTs model" );
                     }
                 }
                 request.Dispose();
