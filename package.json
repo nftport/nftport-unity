@@ -37,6 +37,11 @@
       "displayName": "Player Wallet Connect + WebL Templates",
       "description": "Get Address of players wallet connect with events",
       "path": "Samples~/Player Connect + WebGL Templates"
+    },
+    {
+      "displayName": "NFTPort Playground - custom mint",
+      "description": "Showcases game sample to mint custom NFT's ,  connect wallet and more",
+      "path": "Samples~/NFTPort Playground"
     }
   ]
 }

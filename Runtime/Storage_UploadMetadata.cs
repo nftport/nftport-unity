@@ -173,7 +173,7 @@ namespace NFTPort
         public void SaveFile(string saveToPath, string fileName)
         {
             string json = JsonConvert.SerializeObject(
-                    metadata, 
+                ProcessMetadataToUpload.Process(metadata), 
                     new JsonSerializerSettings
                     {
                         DefaultValueHandling = DefaultValueHandling.Ignore,
