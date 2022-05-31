@@ -15,7 +15,8 @@ namespace NFTPort.Editor
         protected static Type WindowType = typeof(NFTPortSettings);
         private static bool windowopen = false;
         private bool ranLatestrel = false;
-        PkgJson releasedPkgJson = null;
+        static PkgJson releasedPkgJson = null;
+        static private bool NFTPortStarted;
         [MenuItem("NFTPort/Home")]
         public static void ShowWindow()
         {
@@ -37,6 +38,55 @@ namespace NFTPort.Editor
         {
             ReadFromUserPrefs(); 
         }
+
+        [InitializeOnLoad]
+        public class Startup
+        {  
+            static Startup()
+            {
+                EditorApplication.update += AfterLoad;
+            }
+
+            static void AfterLoad() //first load once
+            {
+                NFTPortStarted = SessionState.GetBool("NFTPortStarted", false);
+                if(!NFTPortStarted)
+                {
+                    ReadFromUserPrefs();
+                    GetlatestRelease();
+                    SessionState.SetBool("NFTPortStarted", true);
+                } 
+            }
+        }
+        
+
+        static void  GetlatestRelease()
+        {
+            var ls = LatestRel.Initialize();
+            if (ls != null)
+            {
+                ls.OnComplete(pkg => LatestReleaseCallback(pkg));
+                ls.Run();
+            }
+        }
+
+        static void LatestReleaseCallback(PkgJson pkg)
+        {
+            releasedPkgJson = pkg;
+
+            if (SessionState.GetBool("FirstRelAfterFirstLoad", false) == false)
+            {
+                if (releasedPkgJson != null)
+                {
+                    string lv = releasedPkgJson.version;
+                    string iv = PkgInfo.GetInstalledPackageVer();
+                    if(lv!= iv)
+                        Debug.Log("New NFTPort release is available : " + lv + " , your installed version is: " + iv + " , you may update via the Package Manager. View NFTPort/Home.");
+                    SessionState.SetBool("FirstRelAfterFirstLoad", true);
+                }
+            }
+        }
+        
 
         void OnGUI()
         {
@@ -89,18 +139,12 @@ namespace NFTPort.Editor
             GuiLine();
             
             GUILayout.BeginHorizontal("box");
-            EditorGUILayout.LabelField("installed version: " + PkgInfo.GetPackageVer());
+            EditorGUILayout.LabelField("installed version: " + PkgInfo.GetInstalledPackageVer());
 
             if (!ranLatestrel)
             {
-                var ls = LatestRel.Initialize();
-                if (ls != null)
-                {
-                    ls.OnComplete(pkg => releasedPkgJson = pkg);
-                    ls.Run();
-                }
-
-                ranLatestrel = true;
+               GetlatestRelease();
+               ranLatestrel = true;
             }
 
             if (releasedPkgJson != null)
@@ -116,12 +160,27 @@ namespace NFTPort.Editor
 
         }
 
+        private bool firstload = true;
+
         void OnEnable()
         {
-            if(!windowopen)
-                ReadFromUserPrefs();
+            if (!windowopen)
+            {
+                if (!firstload)
+                {
+                    firstload = false;
+                    return;
+                    
+                }
+                else
+                {
+                    ReadFromUserPrefs();
+                }
+                
+            }
             windowopen = true;
             ranLatestrel = false;
+            
         }
 
         private void OnDisable()
@@ -137,7 +196,7 @@ namespace NFTPort.Editor
         
         static void ShowHomeWindow()
         {
-            if(myAPIString != PortConstants.DefaultAPIKey || windowopen)
+            if(windowopen)
                 return;
             
             NFTPortSettings win = GetWindow(WindowType, false, PortConstants.HomeWindowName, true) as NFTPortSettings;
@@ -174,6 +233,8 @@ namespace NFTPort.Editor
             {
                 _userPrefs = JsonConvert.DeserializeObject<PortUser.UserPrefs>(targetFile.text);
                 myAPIString = _userPrefs.API_KEY;
+                PortUser.SetVersion(PkgInfo.GetInstalledPackageVer());
+                PortUser.SaveNewApi(myAPIString);
                 //PortUser.Initialise();
                 UserStats();
             }
@@ -188,6 +249,7 @@ namespace NFTPort.Editor
         }
         void WriteToUserPrefs()
         {
+            PortUser.SetVersion(PkgInfo.GetInstalledPackageVer());
             PortUser.SaveNewApi(myAPIString);
             base.SaveChanges();
         }
@@ -201,12 +263,21 @@ namespace NFTPort.Editor
             userModel = null;
             User_Settings
                 .Initialize(true)
+                .OnError(usermodel=> StatsErrore())
                 .OnComplete(usermodel=> userModel = usermodel)
                 .Run();
         }
+
+        static void StatsErrore()
+        {
+            if (!windowopen && !APIkeyOk())
+            {
+                ShowHomeWindow();
+            }
+        }
          
 
-        bool APIkeyOk()
+        static bool APIkeyOk()
         {
             if (userModel == null)
             {

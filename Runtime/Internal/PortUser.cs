@@ -11,12 +11,16 @@ using UnityEngine.Events;
 
 namespace NFTPort.Internal
 {
+#if UNITY_EDITOR
+    [ExecuteInEditMode]
+#endif
     public static class PortUser
     {
         //Global Class Model for UserPrefs
         [System.Serializable]
         public class UserPrefs{
             public string API_KEY;
+            public string version = "x";
         }
         
         
@@ -27,6 +31,39 @@ namespace NFTPort.Internal
         {
             if(_initialised==false)
                 _userPrefs = getUserPrefs();
+        }
+
+        #region Get Set Gos
+
+        public static void SetVersion(string pkgVersion)
+        {
+            _userPrefs.version = pkgVersion;
+        }
+
+        class Source
+        {
+            public string from = "NFTPort-Unity";
+            public string version = _userPrefs.version;
+            public string isEditor = "";
+
+        }
+        
+        
+        public static string GetSource()
+        {
+            Source src = new Source();
+            src.version = _userPrefs.version;
+            src.isEditor = Application.isEditor.ToString();
+
+                string json = JsonConvert.SerializeObject(
+                    src, 
+                new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    //NullValueHandling = NullValueHandling.Ignore
+                });
+            
+            return json;
         }
 
         public static string GetUserApiKey()
@@ -42,6 +79,10 @@ namespace NFTPort.Internal
             else
                 return " Make sure to input your APIKEYS in NFTPort/Home ";
         }
+        
+
+        #endregion
+   
 
         #region Prefs File Read
 
@@ -78,16 +119,17 @@ namespace NFTPort.Internal
             public static void SaveNewApi(string newAPI)
             {
                 _userPrefs.API_KEY = newAPI;
-                if(_initialised == false)
-                {
-                    if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources"))
-                    {
-                        CreateFolder();
-                    }
-                    
-                    WriteToUserPrefs();
-                }
+                SaveUserPrefs();
+            }
 
+            public static void SaveUserPrefs()
+            {
+                if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources")) 
+                {
+                    CreateFolder();
+                }
+                
+                WriteToUserPrefs();
             }
             
             static  void WriteToUserPrefs()

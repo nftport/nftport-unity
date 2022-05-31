@@ -10,6 +10,7 @@ namespace NFTPort
     /// <summary>
     /// NFTs of a contract / collections
     /// </summary>
+    [ExecuteInEditMode]
     public class NFTs_OfAContract : MonoBehaviour
     {
         /// <summary>
@@ -80,7 +81,7 @@ namespace NFTPort
 
         private void OnEnable()
         {
-            if (onEnable)
+            if (onEnable & Application.isPlaying)
                 Run();
         }
 
@@ -177,7 +178,7 @@ namespace NFTPort
                 //Make request
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SetRequestHeader("source", "NFTPort-Unity");
+                request.SetRequestHeader("source", PortUser.GetSource());
                 request.SetRequestHeader("Authorization", _apiKey);
                 
 
@@ -208,6 +209,9 @@ namespace NFTPort
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
+                        
+                        if(debugErrorLog)
+                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFTs model" );
                     }
                 }
                 request.Dispose();

@@ -65,7 +65,13 @@ namespace NFTPort
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
         public static User_Settings Initialize(bool destroyAtEnd = true)
         {
-            var _this = new GameObject("Port Initialize | Delete:" + destroyAtEnd).AddComponent<User_Settings>();
+            string name = "Port Initialize | Delete:";
+            var existing = (GameObject.Find(name + destroyAtEnd));
+            if (existing != null)
+            {
+                return existing.GetComponent<User_Settings>();
+            }
+            var _this = new GameObject(name + destroyAtEnd).AddComponent<User_Settings>();
             _this.destroyAtEnd = destroyAtEnd;
             _this.onEnable = false;
             _this.debugErrorLog = false;
@@ -134,7 +140,7 @@ namespace NFTPort
             //Make request
             request = UnityWebRequest.Get(WEB_URL);
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("source", "NFTPort-Unity");
+            request.SetRequestHeader("source",  PortUser.GetSource());
             request.SetRequestHeader("Authorization", _apiKey);
 
             

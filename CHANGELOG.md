@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/nftport/nftport-unity/compare/v0.2.2...v0.3.0) (2022-05-31)
+
+
+### Features
+
+* Added  Product | Fully Customizable minting Feature ([bf00946](https://github.com/nftport/nftport-unity/commit/bf0094661fa686d9cf722354661df3428d2b2a83))
+* Adds NFTPort Custom Mint Sample - Playground ([cd99a2c](https://github.com/nftport/nftport-unity/commit/cd99a2c7fe1efa9782809086673a5a5f5d7431f1))
+* Overall style updates ([b5320ab](https://github.com/nftport/nftport-unity/commit/b5320abf80ecd3c15dd76630ad22b9040e9f1d4f))
+* settings window updates ([6fc2e9a](https://github.com/nftport/nftport-unity/commit/6fc2e9a4e383e63a7cc5ed3735ba28b80354842d))
+* Style updates ([d4417db](https://github.com/nftport/nftport-unity/commit/d4417dbd6f0156cd440455fd369f473739755dab))
+
+
 ### [0.2.2](https://github.com/nftport/nftport-unity/compare/v0.2.0...v0.2.2) (2022-05-25)
 
 

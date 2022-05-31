@@ -13,6 +13,7 @@ namespace NFTPort
     /// <summary>
     /// NFTs owned by a given account (wallet address), Can also return each NFT metadata with include parameter and filter from specific collection.
     /// </summary>
+    [ExecuteInEditMode]
     public class NFTs_OwnedByAnAccount : MonoBehaviour
     {
         /// <summary>
@@ -39,10 +40,8 @@ namespace NFTPort
             
             [SerializeField]
             private string address = "Input Account Address To Fetch NFT's from";
-            
-            [Header("Filter by and return NFTs only from the given contract address/collection")]
-            
-            [Header("Optional:")]
+
+            [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
            
             [SerializeField]
             [Tooltip("Leave blank if not using")]
@@ -89,7 +88,7 @@ namespace NFTPort
 
         private void OnEnable()
         {
-            if (onEnable)
+            if (onEnable & Application.isPlaying)
                 Run();
         }
 
@@ -200,7 +199,7 @@ namespace NFTPort
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("Authorization", _apiKey);
-                request.SetRequestHeader("source", "NFTPort-Unity");
+                request.SetRequestHeader("source", PortUser.GetSource());
                 
                 {
                     yield return request.SendWebRequest();
@@ -214,7 +213,7 @@ namespace NFTPort
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)
-                            Debug.Log($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                            Debug.Log($" (⊙.◎) Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(afterError!=null)
                             afterError.Invoke();
                         //yield break;
@@ -229,6 +228,9 @@ namespace NFTPort
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
+                        
+                        if(debugErrorLog)
+                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFTs model" );
                     }
                 }
                 request.Dispose();

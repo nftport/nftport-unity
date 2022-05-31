@@ -1,0 +1,5 @@
+{
+	"displayName":"NFTPort Playground - custom mint",
+	"description": "Showcases game sample to mint custom NFT's connect wallet and more",
+	"createSeparatePackage": false
+}

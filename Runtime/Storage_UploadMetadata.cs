@@ -173,7 +173,7 @@ namespace NFTPort
         public void SaveFile(string saveToPath, string fileName)
         {
             string json = JsonConvert.SerializeObject(
-                    metadata, 
+                ProcessMetadataToUpload.Process(metadata), 
                     new JsonSerializerSettings
                     {
                         DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -223,7 +223,7 @@ namespace NFTPort
             request.uploadHandler = uploader;
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type",  "application/json");
-            request.SetRequestHeader("source", "NFTPort-Unity");
+            request.SetRequestHeader("source", PortUser.GetSource());
             request.SetRequestHeader("Authorization", _apiKey);
             request.SendWebRequest();
 

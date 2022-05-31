@@ -1,7 +1,7 @@
 {
   "name": "com.nftport.nftport",
   "displayName": "NFTPort",
-  "version": "0.2.2",
+  "version": "0.3.0-preview",
   "description": "NFTPort.xyz unity extension provides tools and features to integrate NFT's crosschain at lightning speed in Unity.\n\n https://github.com/nftport/nftport-unity.git",
   "type": "tool",
   "documentationUrl": "https://docs.nftport.xyz/docs/nftport",
@@ -37,6 +37,11 @@
       "displayName": "Player Wallet Connect + WebL Templates",
       "description": "Get Address of players wallet connect with events",
       "path": "Samples~/Player Connect + WebGL Templates"
+    },
+    {
+      "displayName": "NFTPort Playground - custom mint",
+      "description": "Showcases game sample to mint custom NFT's ,  connect wallet and more",
+      "path": "Samples~/NFTPort Playground"
     }
   ]
 }
