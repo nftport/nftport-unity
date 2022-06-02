@@ -16,63 +16,63 @@ namespace NFTPort.Editor
         [MenuItem(GameObjMenu + PortConstants.FeatureName_NFTs_OfAccount)]
         static void Spawn_NFtsOfAccount()
         {
-            new GameObject(PortConstants.FeatureName_NFTs_OfAccount).AddComponent<NFTs_OwnedByAnAccount>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_NFTs_OfAccount).AddComponent<NFTs_OwnedByAnAccount>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_NFTs_OfContract)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_NFTs_OfContract)]
         static void Spawn_NFtsOfContract()
         {
-            new GameObject(PortConstants.FeatureName_NFTs_OfContract).AddComponent<NFTs_OfAContract>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_NFTs_OfContract).AddComponent<NFTs_OfAContract>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_StorageFiles)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_StorageFiles)]
         static void Spawn_StorageFile()
         {
-            new GameObject(PortConstants.FeatureName_StorageFiles).AddComponent<Storage_UploadFile>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_StorageFiles).AddComponent<Storage_UploadFile>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_StorageMetadata)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_StorageMetadata)]
         static void Spawn_StorageMetadata()
         {
-            new GameObject(PortConstants.FeatureName_StorageMetadata).AddComponent<Storage_UploadMetadata>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_StorageMetadata).AddComponent<Storage_UploadMetadata>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_AssetDownloader)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_AssetDownloader)]
         static void FeatureName_AssetDownloader()
         {
-            new GameObject(PortConstants.FeatureName_AssetDownloader).AddComponent<AssetDownloader>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_AssetDownloader).AddComponent<AssetDownloader>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_ConnectUserWallet)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_ConnectUserWallet)]
         static void FeatureName_ConnectWallet()
         {
-            new GameObject(PortConstants.FeatureName_ConnectUserWallet).AddComponent<ConnectPlayerWallet>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_ConnectUserWallet).AddComponent<ConnectPlayerWallet>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Mint_Custom)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Mint_Custom)]
         static void FeatureName_Mint_Custom()
         {
-            new GameObject(PortConstants.FeatureName_Mint_Custom).AddComponent<Mint_Custom>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Mint_Custom).AddComponent<Mint_Custom>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Mint_URL)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Mint_URL)]
         static void FeatureName_Mint_URL()
         {
-            new GameObject(PortConstants.FeatureName_Mint_URL).AddComponent<Mint_URL>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Mint_URL).AddComponent<Mint_URL>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Deploy)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Deploy)]
         static void FeatureName_Deploy()
         {
-            new GameObject(PortConstants.FeatureName_Deploy).AddComponent<Deploy>();
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Deploy).AddComponent<Deploy>().gameObject;
         }
         
 
