@@ -10,7 +10,9 @@ namespace NFTPort
     /// <summary>
     /// NFTs of a contract / collections
     /// </summary>
-    [ExecuteInEditMode]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFTs_OfContract)]
+    [ExecuteAlways]
+    [HelpURL(PortConstants.NFTs_OfContract)]
     public class NFTs_OfAContract : MonoBehaviour
     {
         /// <summary>

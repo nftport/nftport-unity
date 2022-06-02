@@ -1,4 +1,6 @@
 using System.Collections;
+using System.ComponentModel.Design;
+using NFTPort.Internal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -9,6 +11,8 @@ namespace NFTPort
     /// <summary>
     /// Downloads Asset from given url 
     /// </summary>
+    [AddComponentMenu(PortConstants.BaseComponentMenu + PortConstants.FeatureName_AssetDownloader)]
+    [HelpURL(PortConstants.Docs_AssetDownloader)]
     public class AssetDownloader : MonoBehaviour
     {
         public bool debugErrorLog = true;

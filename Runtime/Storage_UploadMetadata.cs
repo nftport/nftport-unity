@@ -13,7 +13,9 @@ namespace NFTPort
 {
     using Internal;
     using Utils;
-    [ExecuteInEditMode]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_StorageMetadata)]
+    [ExecuteAlways]
+    [HelpURL(PortConstants.Docs_StorageMetadata)]
     public class Storage_UploadMetadata : MonoBehaviour
     {
         #region Parameter Defines

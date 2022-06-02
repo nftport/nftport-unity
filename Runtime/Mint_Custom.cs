@@ -11,7 +11,10 @@ namespace NFTPort
     /// <summary>
     /// Customizable minting. Mints an NFT to your previously contract for NFT products.
     /// </summary>
-     [ExecuteInEditMode]
+    ///
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_Mint_Custom)]
+    [ExecuteAlways]
+    [HelpURL(PortConstants.Docs_Mint_Custom)]
     public class Mint_Custom : MonoBehaviour
     {
         public enum Chains

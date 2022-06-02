@@ -11,7 +11,9 @@ namespace NFTPort
     /// <summary>
     /// Easy minting w/URL, If you wish to customize the minting process e.g. use your own contract, set more metadata, see Customizable minting.
     /// </summary>
-    [ExecuteInEditMode]
+    [AddComponentMenu(PortConstants.BaseComponentMenu + PortConstants.FeatureName_Mint_URL)]
+    [ExecuteAlways]
+    [HelpURL(PortConstants.Docs_Mint_URL)]
     public class Mint_URL : MonoBehaviour
     {
         public enum Chains

@@ -5,13 +5,13 @@ namespace NFTPort.Editor
     using UnityEditor;
     using Internal;
 
-    [CustomEditor(typeof(Mint_Custom))]
-    public class Mint_Custom_Editor : Editor
+    [CustomEditor(typeof(Deploy))]
+    public class Deploy_Contract_Editor : Editor
     {
         public override void OnInspectorGUI()
         {
             
-            Mint_Custom myScript = (Mint_Custom)target;
+            Deploy myScript = (Deploy)target;
             
             
             Texture banner = Resources.Load<Texture>("c_productmint");
@@ -19,14 +19,14 @@ namespace NFTPort.Editor
             GUILayout.Box(banner);
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button("Mint Custom NFT", GUILayout.Height(45)))
+            if (GUILayout.Button("Deploy Product Contract", GUILayout.Height(45)))
             {
                 myScript.Run();
             }
         
 
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL(PortConstants.Docs_Mint_Custom);
+                Application.OpenURL(PortConstants.Docs_DeployContract);
             DrawDefaultInspector();
         }
     }

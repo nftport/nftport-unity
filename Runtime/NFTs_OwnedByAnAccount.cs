@@ -13,7 +13,9 @@ namespace NFTPort
     /// <summary>
     /// NFTs owned by a given account (wallet address), Can also return each NFT metadata with include parameter and filter from specific collection.
     /// </summary>
-    [ExecuteInEditMode]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFTs_OfAccount)]
+    [ExecuteAlways]
+    [HelpURL(PortConstants.NFTs_OfAccount)]
     public class NFTs_OwnedByAnAccount : MonoBehaviour
     {
         /// <summary>
