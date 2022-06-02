@@ -14,7 +14,7 @@ namespace NFTPort.Editor
             Deploy myScript = (Deploy)target;
             
             
-            Texture banner = Resources.Load<Texture>("c_productmint");
+            Texture banner = Resources.Load<Texture>("c_productcontract");
             GUILayout.BeginHorizontal();
             GUILayout.Box(banner);
             GUILayout.EndHorizontal();
