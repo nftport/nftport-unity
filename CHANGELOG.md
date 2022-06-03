@@ -1,5 +1,15 @@
 # Changelog
 
+### [0.3.1](https://github.com/nftport/nftport-unity/compare/v0.3.0...v0.3.1) (2022-06-03)
+
+
+### Features
+
+* Adds deploy contract feature ([72cda62](https://github.com/nftport/nftport-unity/commit/72cda62dca3da9b7dd2d36fe5906f0a21373312e))
+* Adds Deploy Contract feature ([ced6372](https://github.com/nftport/nftport-unity/commit/ced6372a220f6264cd24a68eeccab60fbfd1007e))
+* Adds newtonsoft Json as external dependency solving any library conflict errors ([290c81a](https://github.com/nftport/nftport-unity/commit/290c81aa17c148100c08c4946f9ecea4c011cd34))
+* Style updates and Feature Spawners : NFTPort Features now available in Component and Game Object Add menus ([8e33d74](https://github.com/nftport/nftport-unity/commit/8e33d74d4438786743d55e358b81a418ff89298a))
+
 ## [0.3.0](https://github.com/nftport/nftport-unity/compare/v0.2.2...v0.3.0) (2022-05-31)
 
 
