@@ -5,7 +5,10 @@ namespace NFTPort
 {
     using UnityEngine;
     using UnityEngine.Events;
+    using Internal;
     
+    [AddComponentMenu(PortConstants.BaseComponentMenu + PortConstants.FeatureName_ConnectUserWallet)]
+    [HelpURL(PortConstants.Docs_ConnectUserWallet)]
     public class ConnectPlayerWallet : MonoBehaviour
     {
         public string connectedWalletAddress;

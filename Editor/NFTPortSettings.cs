@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEditor;
-using Newtonsoft.Json;
+using Newtonsoft.Json; 
 using UnityEditor.PackageManager;
 
 namespace NFTPort.Editor
@@ -36,7 +36,22 @@ namespace NFTPort.Editor
 
         static void RegisteredPackagesEventHandler(PackageRegistrationEventArgs packageRegistrationEventArgs)
         {
-            ReadFromUserPrefs(); 
+            ReadFromUserPrefs();
+
+            InstallPortDependencies.OnListCheckComplete(arg0 => DependencyAction(arg0));
+            InstallPortDependencies.CheckPkgsListAndInstall();
+        }
+
+        static void DependencyAction(bool exists)
+        {
+            if (exists)
+            {
+              
+            }
+            else
+            {
+                InstallPortDependencies.ShowWindow();
+            }
         }
 
         [InitializeOnLoad]
