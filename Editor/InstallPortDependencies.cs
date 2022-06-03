@@ -108,7 +108,7 @@ namespace NFTPort.Internal {
         {
             // Add a package to the project
             RmRequest = Client.Remove("com.unity.nuget.newtonsoft-json");
-            EditorApplication.update += AddProgress;
+            EditorApplication.update += RemoveProgress;
         }
         
         static void RemoveProgress()
@@ -116,9 +116,9 @@ namespace NFTPort.Internal {
             if (RmRequest.IsCompleted)
             {
                 if (RmRequest.Status == StatusCode.Success)
-                    Debug.Log("removed: " + RmRequest.Result.packageId);
+                    Debug.Log("removed: " + "com.unity.nuget.newtonsoft-json");
                 else if (RmRequest.Status >= StatusCode.Failure)
-                    Debug.Log(Request.Error.message);
+                    Debug.Log(RmRequest.Error.message);
 
                 EditorApplication.update -= RemoveProgress;
             }
