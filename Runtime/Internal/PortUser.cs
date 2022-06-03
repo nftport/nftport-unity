@@ -45,6 +45,7 @@ namespace NFTPort.Internal
             public string from = "NFTPort-Unity";
             public string version = _userPrefs.version;
             public string isEditor = "";
+            public string UnityVersion = "";
 
         }
         
@@ -54,6 +55,7 @@ namespace NFTPort.Internal
             Source src = new Source();
             src.version = _userPrefs.version;
             src.isEditor = Application.isEditor.ToString();
+            src.UnityVersion = Application.unityVersion;
 
                 string json = JsonConvert.SerializeObject(
                     src, 
