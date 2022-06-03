@@ -113,11 +113,11 @@ namespace NFTPort.Internal {
         
         static void RemoveProgress()
         {
-            if (Request.IsCompleted)
+            if (RmRequest.IsCompleted)
             {
-                if (Request.Status == StatusCode.Success)
-                    Debug.Log("removed: " + Request.Result.packageId);
-                else if (Request.Status >= StatusCode.Failure)
+                if (RmRequest.Status == StatusCode.Success)
+                    Debug.Log("removed: " + RmRequest.Result.packageId);
+                else if (RmRequest.Status >= StatusCode.Failure)
                     Debug.Log(Request.Error.message);
 
                 EditorApplication.update -= RemoveProgress;
