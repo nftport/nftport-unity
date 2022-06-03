@@ -43,8 +43,5 @@
       "description": "Showcases game sample to mint custom NFT's ,  connect wallet and more",
       "path": "Samples~/NFTPort Playground"
     }
-  ],
-  "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "3.0.2"
-  }
+  ]
 }
