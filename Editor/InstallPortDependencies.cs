@@ -9,6 +9,7 @@ namespace NFTPort.Internal {
     class InstallPortDependencies : EditorWindow
     {
         static AddRequest Request;
+        private static RemoveRequest RmRequest;
 
 
         [MenuItem("NFTPort/Install Dependencies")]
@@ -27,13 +28,16 @@ namespace NFTPort.Internal {
             
             if (GUILayout.Button("Install Now", GUILayout.Height(25)))
                 Add();
+            
+            if (GUILayout.Button("Remove Dependency", GUILayout.Height(25)))
+                Remove();
 
         }
         
         static void SetSize(InstallPortDependencies win) 
         {
-            win.minSize = new Vector2(330, 100);
-            win.maxSize = new Vector2(330, 100);
+            win.minSize = new Vector2(330, 120);
+            win.maxSize = new Vector2(330, 120);
         }
         
         
@@ -96,6 +100,27 @@ namespace NFTPort.Internal {
                     Debug.Log(Request.Error.message);
 
                 EditorApplication.update -= AddProgress;
+            }
+        }
+        
+        //////////// ADD
+        public static void Remove()
+        {
+            // Add a package to the project
+            RmRequest = Client.Remove("com.unity.nuget.newtonsoft-json");
+            EditorApplication.update += RemoveProgress;
+        }
+        
+        static void RemoveProgress()
+        {
+            if (RmRequest.IsCompleted)
+            {
+                if (RmRequest.Status == StatusCode.Success)
+                    Debug.Log("removed: " + "com.unity.nuget.newtonsoft-json");
+                else if (RmRequest.Status >= StatusCode.Failure)
+                    Debug.Log(RmRequest.Error.message);
+
+                EditorApplication.update -= RemoveProgress;
             }
         }
         
