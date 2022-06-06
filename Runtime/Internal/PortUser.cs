@@ -49,10 +49,9 @@ namespace NFTPort.Internal
 
         }
         
-        
+        static Source src = new Source();
         public static string GetSource()
         {
-            Source src = new Source();
             src.version = _userPrefs.version;
             src.isEditor = Application.isEditor.ToString();
             src.UnityVersion = Application.unityVersion;

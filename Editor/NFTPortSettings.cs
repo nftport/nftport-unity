@@ -39,7 +39,7 @@ namespace NFTPort.Editor
             ReadFromUserPrefs();
 
             InstallPortDependencies.OnListCheckComplete(arg0 => DependencyAction(arg0));
-            InstallPortDependencies.CheckPkgsListAndInstall();
+            InstallPortDependencies.CheckPkgsList();
         }
 
         static void DependencyAction(bool exists)

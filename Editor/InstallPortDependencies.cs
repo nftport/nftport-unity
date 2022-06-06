@@ -43,7 +43,7 @@ namespace NFTPort.Internal {
         
         /// ///////// CHECK
         static ListRequest listRequest;
-        public static void CheckPkgsListAndInstall()
+        public static void CheckPkgsList()
         {
             listRequest = Client.List();    // List packages installed for the Project
             EditorApplication.update += CheckPackageProgress;
@@ -103,10 +103,9 @@ namespace NFTPort.Internal {
             }
         }
         
-        //////////// ADD
+        //////////// RM
         public static void Remove()
         {
-            // Add a package to the project
             RmRequest = Client.Remove("com.unity.nuget.newtonsoft-json");
             EditorApplication.update += RemoveProgress;
         }
