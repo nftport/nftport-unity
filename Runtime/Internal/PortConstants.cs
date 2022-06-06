@@ -8,6 +8,7 @@ namespace NFTPort.Internal
         public const string Docs_GettingStarted = "https://docs.nftport.xyz/docs/nftport/ZG9jOjUwMzc2NzA5-getting-started"; 
         public const string Docs_StorageFile = "https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY3-storage-upload-file";
         public const string Docs_StorageMetadata= "https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY4-storage-upload-metadata";
+        public const string Docs_NFTDetails = "https://docs.nftport.xyz/docs/nftport/ZG9jOjU3MTU2NTE5-player-wallet-connect";
         public const string NFTs_OfAccount = "https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account";
         public const string NFTs_OfContract = "https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection";
         public const string Docs_Mint_URL = "https://docs.nftport.xyz/docs/nftport/ZG9jOjU1MDM4OTgw-minting-w-url";
@@ -24,6 +25,7 @@ namespace NFTPort.Internal
         public const string BaseComponentMenu = "NFTPort/";
         public const string BaseFeatureSpawnerMenu = "NFTPort/Spawner/";
         public const string FeatureName_ConnectUserWallet = "Connect Player Wallet";
+        public const string FeatureName_NFT_Details = "NFT Data | Details";
         public const string FeatureName_NFTs_OfContract = "NFT Data | of a contract-collection";
         public const string FeatureName_NFTs_OfAccount = "NFT Data | of an Account";
         public const string FeatureName_StorageFiles = "Storage | Upload File";

@@ -12,7 +12,9 @@ namespace NFTPort
     {
         public string response;
         public List<Nft> nfts;
+        public Nft nft;
         public Contract contract;
+        public string owner;
         public int total;
         public object continuation;
     }
@@ -83,12 +85,15 @@ namespace NFTPort
         public string metadata_url;
         public string file_url;
         public string cached_file_url;
+        public string animation_url;
+        public string cached_animation_url;
         public DateTime mint_date;
         public FileInformation file_information;
         public DateTime updated_date;
         public string description;
         public string creator_address;
         public Assets assets;
+
     }
     
     [Serializable]

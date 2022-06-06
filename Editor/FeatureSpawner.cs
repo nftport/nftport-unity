@@ -11,6 +11,12 @@ namespace NFTPort.Editor
         //GameObject
         private const string GameObjMenu = "GameObject/NFTPort/";
         
+        [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_NFT_Details)]
+        [MenuItem(GameObjMenu + PortConstants.FeatureName_NFT_Details)]
+        static void Spawn_NFTDetails()
+        {
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_NFT_Details).AddComponent<NFT_Details>().gameObject;
+        }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_NFTs_OfAccount)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_NFTs_OfAccount)]
