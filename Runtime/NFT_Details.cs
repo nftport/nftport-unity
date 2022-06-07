@@ -100,6 +100,7 @@ namespace NFTPort
         /// </summary>
         /// <param name="contract_address"> as string.</param>
         /// <param name="token_id"> as int.</param>
+        /// <param name="refresh_metadata"> Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded</param>
         public NFT_Details SetParameters(string contract_address = null, int token_id = -1, bool refresh_metadata = false)
             {
                 if(contract_address!=null)
@@ -193,7 +194,13 @@ namespace NFTPort
                     else
                     {
                         //Fill Data Model from recieved class
-                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(jsonResult);
+                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(
+                            jsonResult,
+                            new JsonSerializerSettings
+                            {
+                            NullValueHandling = NullValueHandling.Ignore,
+                            MissingMemberHandling = MissingMemberHandling.Ignore
+                            });
                         
                         if(OnCompleteAction!=null)
                             OnCompleteAction.Invoke(NFTs);

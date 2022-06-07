@@ -223,7 +223,13 @@ namespace NFTPort
                     else
                     {
                         //Fill Data Model from recieved class
-                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(jsonResult);
+                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(
+                            jsonResult,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore,
+                                MissingMemberHandling = MissingMemberHandling.Ignore
+                            });
                         
                         if(OnCompleteAction!=null)
                             OnCompleteAction.Invoke(NFTs);
