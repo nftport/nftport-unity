@@ -21,6 +21,7 @@ namespace NFTPort.Editor
 
             if (GUILayout.Button("GET NFT Details", GUILayout.Height(45)))
             {
+                PortUser.SetFromEditorWin();
                 myScript.Run();
             }
 

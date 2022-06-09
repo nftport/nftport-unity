@@ -19,6 +19,7 @@ namespace NFTPort.Editor
             
             if (GUILayout.Button("Upload File to IPFS", GUILayout.Height(45)))
             {
+                PortUser.SetFromEditorWin();
                 myScript.Run();
             }
             

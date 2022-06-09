@@ -21,6 +21,7 @@ namespace NFTPort.Editor
 
             if (GUILayout.Button("MINT EET", GUILayout.Height(45)))
             {
+                PortUser.SetFromEditorWin();
                 myScript.Run();
             }
 
