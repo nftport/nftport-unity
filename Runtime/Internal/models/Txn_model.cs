@@ -7,7 +7,7 @@ namespace NFTPort
     {
         public string response ;
         public Statistics statistics ;
-        public Transactions transactions ;
+        public Transactions[] transactions ;
         public string continuation ;
     }
     

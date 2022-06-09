@@ -8,21 +8,24 @@ namespace NFTPort
 { using Internal;
     
     /// <summary>
-    /// Details of particular NFT
+    /// Get NFT Transactions of an account
     /// </summary>
-    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFT_Details)]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_Txn_Account)]
     [ExecuteAlways]
-    [HelpURL(PortConstants.Docs_NFTDetails)]
-    public class NFT_Details : MonoBehaviour
+    [HelpURL(PortConstants.Docs_Txns_Account)]
+    public class Txn_Account : MonoBehaviour
     {
         /// <summary>
         /// Currently Supported chains for this endpoint.
         /// </summary>
         public enum Chains
         {
-            ethereum,
-            polygon,
-            rinkeby
+            ethereum
+        }
+        
+        public enum Type
+        {
+            all, mint, burn, transfer_from, transfer_to, list, buy, sell, make_bid , get_bid
         }
 
         #region Parameter Defines
@@ -31,24 +34,18 @@ namespace NFTPort
             private Chains chain = Chains.ethereum;
             
             [SerializeField]
-            private string _contract_address = "Input Contract Address of the NFT collection";
-            
-            [SerializeField]
-            [Tooltip("Token ID of the NFT")]
-            private int _token_id = 0;
+            private string _account_address = "Input Account Address to get NFT Transactions of";
 
-            [SerializeField]
-            [Tooltip("Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded")]
-            private bool _refresh_metadata = false;
+            [SerializeField] private Type _type = Type.all;
 
-            private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
+            private string RequestUriInit = "https://api.nftport.xyz/v0/transactions/accounts/";
             private string WEB_URL;
             private string _apiKey;
             private bool destroyAtEnd = false;
 
 
             private UnityAction<string> OnErrorAction;
-            private UnityAction<NFTs_model> OnCompleteAction;
+            private UnityAction<Txn_model> OnCompleteAction;
             
             [Space(20)]
             //[Header("Called After Successful API call")]
@@ -62,7 +59,7 @@ namespace NFTPort
             public bool debugLogRawApiResponse = false;
             
             [Header("Gets filled with data and can be referenced:")]
-            public NFTs_model NFTs;
+            public Txn_model txnModel;
 
         #endregion
 
@@ -86,9 +83,9 @@ namespace NFTPort
         /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
         /// </summary>
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
-        public static NFT_Details Initialize(bool destroyAtEnd = true)
+        public static Txn_Account Initialize(bool destroyAtEnd = true)
             {
-                var _this = new GameObject(PortConstants.FeatureName_NFT_Details).AddComponent<NFT_Details>();
+                var _this = new GameObject(PortConstants.FeatureName_Txn_Account).AddComponent<Txn_Account>();
                 _this.destroyAtEnd = destroyAtEnd;
                 _this.onEnable = false;
                 _this.debugErrorLog = false;
@@ -96,19 +93,17 @@ namespace NFTPort
             }
 
         /// <summary>
-        /// Set Parameters to retrieve NFT From.  ≧◔◡◔≦ .
+        /// Set Parameters to retrieve NFT From
         /// </summary>
-        /// <param name="contract_address"> as string.</param>
-        /// <param name="token_id"> as int.</param>
-        /// <param name="refresh_metadata"> Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded</param>
-        public NFT_Details SetParameters(string contract_address = null, int token_id = -1, bool refresh_metadata = false)
+        /// <param name="account_address"> as string.</param>
+        /// <param name="type"> as Type{ all, mint, burn, transfer_from, transfer_to, list, buy, sell, make_bid , get_bid}.</param>
+        public Txn_Account SetParameters(string account_address = null, Type type = Type.all)
             {
-                if(contract_address!=null)
-                    this._contract_address = contract_address;
-                if (token_id != -1)
-                    _token_id = token_id;
-                if (refresh_metadata != _refresh_metadata)
-                    _refresh_metadata = refresh_metadata;
+                if(account_address!=null)
+                    this._account_address = account_address;
+                if (_type != type)
+                    _type = type;
+                
                 return this;
             }
             
@@ -116,7 +111,7 @@ namespace NFTPort
             /// Blockchain from which to query NFTs.
             /// </summary>
             /// <param name="chain"> Choose from available 'Chains' enum</param>
-            public NFT_Details SetChain(Chains chain)
+            public Txn_Account SetChain(Chains chain)
             {
                 this.chain = chain;
                 return this;
@@ -125,20 +120,20 @@ namespace NFTPort
             /// <summary>
             /// Action on successful API Fetch. (*^∇^)ヾ(￣▽￣*)
             /// </summary>
-            /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
+            /// <param name="Txn_model"> Use: .OnComplete(Txns=> txns = Txns) , where txns is of type Txn_model;</param>
             /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
-            public NFT_Details OnComplete(UnityAction<NFTs_model> action)
+            public Txn_Account OnComplete(UnityAction<Txn_model> action)
             {
                 this.OnCompleteAction = action;
                 return this;
             }
             
             /// <summary>
-            /// Action on Error (⊙.◎)
+            /// Action on Error (;•͈́༚•͈̀)(•͈́༚•͈̀;)՞༘՞༘՞
             /// </summary>
             /// <param name="UnityAction action"> string.</param>
             /// <returns> Information on Error as string text.</returns>
-            public NFT_Details OnError(UnityAction<string> action)
+            public Txn_Account OnError(UnityAction<string> action)
             {
                 this.OnErrorAction = action;
                 return this;
@@ -151,17 +146,17 @@ namespace NFTPort
             /// <summary>
             /// Runs the Api call and fills the corresponding model in the component on success.
             /// </summary>
-            public NFTs_model Run()
+            public Txn_model Run()
             {
                 WEB_URL = BuildUrl();
                 StopAllCoroutines();
                 StartCoroutine(CallAPIProcess());
-                return NFTs;
+                return txnModel;
             }
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit + _contract_address + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
+                WEB_URL = RequestUriInit + _account_address + "?chain=" + chain.ToString().ToLower() + "&type=" + _type.ToString();
                 return WEB_URL;
             }
             
@@ -186,7 +181,7 @@ namespace NFTPort
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)
-                            Debug.Log($"(⊙.◎) Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                            Debug.Log($"(;•͈́༚•͈̀)(•͈́༚•͈̀;)՞༘՞༘՞ Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(afterError!=null)
                             afterError.Invoke();
                         //yield break;
@@ -194,7 +189,7 @@ namespace NFTPort
                     else
                     {
                         //Fill Data Model from recieved class
-                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(
+                        txnModel = JsonConvert.DeserializeObject<Txn_model>(
                             jsonResult,
                             new JsonSerializerSettings
                             {
@@ -203,13 +198,13 @@ namespace NFTPort
                             });
                         
                         if(OnCompleteAction!=null)
-                            OnCompleteAction.Invoke(NFTs);
+                            OnCompleteAction.Invoke(txnModel);
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
                         
                         if(debugErrorLog)
-                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFTs model" );
+                            Debug.Log($"(*^∇^)ヾ(￣▽￣*) Success , view Txns model" );
                     }
                 }
                 request.Dispose();
