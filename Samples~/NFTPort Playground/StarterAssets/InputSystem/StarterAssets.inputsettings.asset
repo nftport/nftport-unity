@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+version https://git-lfs.github.com/spec/v1
+oid sha256:6b256e1c5aebd04893b651b4421a70418039161a6004d5b8702c190faa9ce5a7
+size 740
+=======
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
@@ -24,3 +29,4 @@ MonoBehaviour:
   m_DefaultHoldTime: 0.4
   m_TapRadius: 5
   m_MultiTapDelayTime: 0.75
+>>>>>>> f3e1c07c8a81323ac680f5f2332ec418ffbf9616

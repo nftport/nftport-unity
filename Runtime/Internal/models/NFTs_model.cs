@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Internal;
 using UnityEngine.Video;
 using Object = UnityEngine.Object;
 
@@ -12,7 +11,9 @@ namespace NFTPort
     {
         public string response;
         public List<Nft> nfts;
+        public Nft nft;
         public Contract contract;
+        public string owner;
         public int total;
         public object continuation;
     }
@@ -77,17 +78,24 @@ namespace NFTPort
     {
         public string name;
         public string chain;
-        public string contract_address;
-        public string token_id;
         public Metadata metadata;
-        public string metadata_url;
+        public string description;
+        public string creator_address;
         public string file_url;
         public string cached_file_url;
+        public string animation_url;
+        public string cached_animation_url;
         public DateTime mint_date;
         public FileInformation file_information;
         public DateTime updated_date;
-        public string description;
-        public string creator_address;
+        public string metadata_url;
+        public string token_id;
+        public string contract_address;
+        public string contract_type;
+        public List<Creator> creators;
+        public List<Royalty> royalties;
+        public List<string> signatures;
+        public int total;
         public Assets assets;
     }
     

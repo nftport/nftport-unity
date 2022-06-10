@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.0](https://github.com/nftport/nftport-unity/compare/v0.3.1...v0.4.0) (2022-06-10)
+
+
+### Features
+
+* Adds feature - Transaction Data | Account ([e32f4d1](https://github.com/nftport/nftport-unity/commit/e32f4d176927e24d98093cdbb5fdfbbc7169822e))
+* Adds new metadata properties in NFT class including cached_animation_url and royalty etc,/ for transaction feature set. ([f66aab8](https://github.com/nftport/nftport-unity/commit/f66aab8669f6d10a6fb1e475384f6a494342a83a))
+* Adds NFT Data | NFT Details feature ([74d6ba1](https://github.com/nftport/nftport-unity/commit/74d6ba109eb780a52af02bc7ede3ba3b4fd258bd))
+
+
+### Bug Fixes
+
+* Null value handling for all NFT Data features while Deserializing data ([fac3856](https://github.com/nftport/nftport-unity/commit/fac38567df2ae50e4861e63184baaacbf5f7ee7c))
+
 ### [0.3.1](https://github.com/nftport/nftport-unity/compare/v0.3.0...v0.3.1) (2022-06-03)
 
 

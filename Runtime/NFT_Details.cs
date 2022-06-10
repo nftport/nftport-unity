@@ -1,22 +1,19 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
-using UnityEngine.Serialization;
 
 namespace NFTPort  
 { using Internal;
     
     /// <summary>
-    /// NFTs owned by a given account (wallet address), Can also return each NFT metadata with include parameter and filter from specific collection.
+    /// Details of particular NFT
     /// </summary>
-    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFTs_OfAccount)]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFT_Details)]
     [ExecuteAlways]
-    [HelpURL(PortConstants.NFTs_OfAccount)]
-    public class NFTs_OwnedByAnAccount : MonoBehaviour
+    [HelpURL(PortConstants.Docs_NFTDetails)]
+    public class NFT_Details : MonoBehaviour
     {
         /// <summary>
         /// Currently Supported chains for this endpoint.
@@ -27,35 +24,24 @@ namespace NFTPort
             polygon,
             rinkeby
         }
-        
-        public enum Includes
-        {
-            Default,
-            metadata, 
-            contract_information
-        }
-        
+
         #region Parameter Defines
 
             [SerializeField]
             private Chains chain = Chains.ethereum;
             
             [SerializeField]
-            private string address = "Input Account Address To Fetch NFT's from";
-
-            [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
-           
-            [SerializeField]
-            [Tooltip("Leave blank if not using")]
-            string contract_address;
+            private string _contract_address = "Input Contract Address of the NFT collection";
             
-            [Header("Include optional data in the response.")]
-            [Tooltip("Default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract.")]
             [SerializeField]
-            Includes include = Includes.metadata;
+            [Tooltip("Token ID of the NFT")]
+            private int _token_id = 0;
 
-            
-            private string RequestUriInit = "https://api.nftport.xyz/v0/accounts/";
+            [SerializeField]
+            [Tooltip("Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded")]
+            private bool _refresh_metadata = false;
+
+            private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
             private string WEB_URL;
             private string _apiKey;
             private bool destroyAtEnd = false;
@@ -100,22 +86,29 @@ namespace NFTPort
         /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
         /// </summary>
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
-        public static NFTs_OwnedByAnAccount Initialize(bool destroyAtEnd = true)
+        public static NFT_Details Initialize(bool destroyAtEnd = true)
             {
-                var _this = new GameObject("NFTs Of Account").AddComponent<NFTs_OwnedByAnAccount>();
+                var _this = new GameObject(PortConstants.FeatureName_NFT_Details).AddComponent<NFT_Details>();
                 _this.destroyAtEnd = destroyAtEnd;
                 _this.onEnable = false;
                 _this.debugErrorLog = false;
                 return _this;
             }
-            
-            /// <summary>
-            /// Set Account Address to retrieve NFTs from as string
-            /// </summary>
-            /// <param name="account_address"> as string.</param>
-            public NFTs_OwnedByAnAccount SetAddress(string account_address)
+
+        /// <summary>
+        /// Set Parameters to retrieve NFT From.  ≧◔◡◔≦ .
+        /// </summary>
+        /// <param name="contract_address"> as string.</param>
+        /// <param name="token_id"> as int.</param>
+        /// <param name="refresh_metadata"> Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded</param>
+        public NFT_Details SetParameters(string contract_address = null, int token_id = -1, bool refresh_metadata = false)
             {
-                this.address = account_address;
+                if(contract_address!=null)
+                    this._contract_address = contract_address;
+                if (token_id != -1)
+                    _token_id = token_id;
+                if (refresh_metadata != _refresh_metadata)
+                    _refresh_metadata = refresh_metadata;
                 return this;
             }
             
@@ -123,49 +116,29 @@ namespace NFTPort
             /// Blockchain from which to query NFTs.
             /// </summary>
             /// <param name="chain"> Choose from available 'Chains' enum</param>
-            public NFTs_OwnedByAnAccount SetChain(Chains chain)
+            public NFT_Details SetChain(Chains chain)
             {
                 this.chain = chain;
                 return this;
             }
-            
-            /// <summary>
-            /// Include optional data in the response. default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract, Choose from Includes.
-            /// </summary>
-            /// <param name="include"> Choose from available 'Includes' enum </param>
-            public NFTs_OwnedByAnAccount SetInclude(Includes include)
-            {
-                this.include = include;
-                return this;
-            }
 
             /// <summary>
-            /// Set Filter by to return NFTs only from the given contract address/collection. 
-            /// </summary>
-            ///<param name="contract_address"> as string.</param>
-            public NFTs_OwnedByAnAccount SetFilterFromContract(string contract_address)
-            {
-                this.contract_address = contract_address;
-                return this;
-            }
-            
-            /// <summary>
-            /// Action on succesfull API Fetch.
+            /// Action on successful API Fetch. (*^∇^)ヾ(￣▽￣*)
             /// </summary>
             /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
             /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
-            public NFTs_OwnedByAnAccount OnComplete(UnityAction<NFTs_model> action)
+            public NFT_Details OnComplete(UnityAction<NFTs_model> action)
             {
                 this.OnCompleteAction = action;
                 return this;
             }
             
             /// <summary>
-            /// Action on Error
+            /// Action on Error (⊙.◎)
             /// </summary>
             /// <param name="UnityAction action"> string.</param>
             /// <returns> Information on Error as string text.</returns>
-            public NFTs_OwnedByAnAccount OnError(UnityAction<string> action)
+            public NFT_Details OnError(UnityAction<string> action)
             {
                 this.OnErrorAction = action;
                 return this;
@@ -188,10 +161,7 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit  + address + "?chain=" + chain.ToString().ToLower() + "&include=" + include.ToString().ToLower();
-                if (contract_address != "")
-                    WEB_URL = WEB_URL + "&contract_address=" + contract_address;
-                
+                WEB_URL = RequestUriInit + _contract_address + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
                 return WEB_URL;
             }
             
@@ -200,9 +170,10 @@ namespace NFTPort
                 //Make request
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SetRequestHeader("Authorization", _apiKey);
                 request.SetRequestHeader("source", PortUser.GetSource());
+                request.SetRequestHeader("Authorization", _apiKey);
                 
+
                 {
                     yield return request.SendWebRequest();
                     string jsonResult = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
@@ -215,7 +186,7 @@ namespace NFTPort
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)
-                            Debug.Log($" (⊙.◎) Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                            Debug.Log($"(⊙.◎) Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(afterError!=null)
                             afterError.Invoke();
                         //yield break;
@@ -227,8 +198,8 @@ namespace NFTPort
                             jsonResult,
                             new JsonSerializerSettings
                             {
-                                NullValueHandling = NullValueHandling.Ignore,
-                                MissingMemberHandling = MissingMemberHandling.Ignore
+                            NullValueHandling = NullValueHandling.Ignore,
+                            MissingMemberHandling = MissingMemberHandling.Ignore
                             });
                         
                         if(OnCompleteAction!=null)

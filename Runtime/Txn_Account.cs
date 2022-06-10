@@ -1,68 +1,51 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
-using UnityEngine.Serialization;
 
 namespace NFTPort  
 { using Internal;
     
     /// <summary>
-    /// NFTs owned by a given account (wallet address), Can also return each NFT metadata with include parameter and filter from specific collection.
+    /// Get NFT Transactions of an account
     /// </summary>
-    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFTs_OfAccount)]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_Txn_Account)]
     [ExecuteAlways]
-    [HelpURL(PortConstants.NFTs_OfAccount)]
-    public class NFTs_OwnedByAnAccount : MonoBehaviour
+    [HelpURL(PortConstants.Docs_Txns_Account)]
+    public class Txn_Account : MonoBehaviour
     {
         /// <summary>
         /// Currently Supported chains for this endpoint.
         /// </summary>
         public enum Chains
         {
-            ethereum,
-            polygon,
-            rinkeby
+            ethereum
         }
         
-        public enum Includes
+        public enum Type
         {
-            Default,
-            metadata, 
-            contract_information
+            all, mint, burn, transfer_from, transfer_to, list, buy, sell, make_bid , get_bid
         }
-        
+
         #region Parameter Defines
 
             [SerializeField]
             private Chains chain = Chains.ethereum;
             
             [SerializeField]
-            private string address = "Input Account Address To Fetch NFT's from";
+            private string _account_address = "Input Account Address to get NFT Transactions of";
 
-            [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
-           
-            [SerializeField]
-            [Tooltip("Leave blank if not using")]
-            string contract_address;
-            
-            [Header("Include optional data in the response.")]
-            [Tooltip("Default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract.")]
-            [SerializeField]
-            Includes include = Includes.metadata;
+            [SerializeField] private Type _type = Type.all;
 
-            
-            private string RequestUriInit = "https://api.nftport.xyz/v0/accounts/";
+            private string RequestUriInit = "https://api.nftport.xyz/v0/transactions/accounts/";
             private string WEB_URL;
             private string _apiKey;
             private bool destroyAtEnd = false;
 
 
             private UnityAction<string> OnErrorAction;
-            private UnityAction<NFTs_model> OnCompleteAction;
+            private UnityAction<Txn_model> OnCompleteAction;
             
             [Space(20)]
             //[Header("Called After Successful API call")]
@@ -76,7 +59,7 @@ namespace NFTPort
             public bool debugLogRawApiResponse = false;
             
             [Header("Gets filled with data and can be referenced:")]
-            public NFTs_model NFTs;
+            public Txn_model txnModel;
 
         #endregion
 
@@ -100,22 +83,27 @@ namespace NFTPort
         /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
         /// </summary>
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
-        public static NFTs_OwnedByAnAccount Initialize(bool destroyAtEnd = true)
+        public static Txn_Account Initialize(bool destroyAtEnd = true)
             {
-                var _this = new GameObject("NFTs Of Account").AddComponent<NFTs_OwnedByAnAccount>();
+                var _this = new GameObject(PortConstants.FeatureName_Txn_Account).AddComponent<Txn_Account>();
                 _this.destroyAtEnd = destroyAtEnd;
                 _this.onEnable = false;
                 _this.debugErrorLog = false;
                 return _this;
             }
-            
-            /// <summary>
-            /// Set Account Address to retrieve NFTs from as string
-            /// </summary>
-            /// <param name="account_address"> as string.</param>
-            public NFTs_OwnedByAnAccount SetAddress(string account_address)
+
+        /// <summary>
+        /// Set Parameters to retrieve NFT From
+        /// </summary>
+        /// <param name="account_address"> as string.</param>
+        /// <param name="type"> as Type{ all, mint, burn, transfer_from, transfer_to, list, buy, sell, make_bid , get_bid}.</param>
+        public Txn_Account SetParameters(string account_address = null, Type type = Type.all)
             {
-                this.address = account_address;
+                if(account_address!=null)
+                    this._account_address = account_address;
+                if (_type != type)
+                    _type = type;
+                
                 return this;
             }
             
@@ -123,49 +111,29 @@ namespace NFTPort
             /// Blockchain from which to query NFTs.
             /// </summary>
             /// <param name="chain"> Choose from available 'Chains' enum</param>
-            public NFTs_OwnedByAnAccount SetChain(Chains chain)
+            public Txn_Account SetChain(Chains chain)
             {
                 this.chain = chain;
                 return this;
             }
-            
-            /// <summary>
-            /// Include optional data in the response. default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract, Choose from Includes.
-            /// </summary>
-            /// <param name="include"> Choose from available 'Includes' enum </param>
-            public NFTs_OwnedByAnAccount SetInclude(Includes include)
-            {
-                this.include = include;
-                return this;
-            }
 
             /// <summary>
-            /// Set Filter by to return NFTs only from the given contract address/collection. 
+            /// Action on successful API Fetch. (*^∇^)ヾ(￣▽￣*)
             /// </summary>
-            ///<param name="contract_address"> as string.</param>
-            public NFTs_OwnedByAnAccount SetFilterFromContract(string contract_address)
-            {
-                this.contract_address = contract_address;
-                return this;
-            }
-            
-            /// <summary>
-            /// Action on succesfull API Fetch.
-            /// </summary>
-            /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
+            /// <param name="Txn_model"> Use: .OnComplete(Txns=> txns = Txns) , where txns is of type Txn_model;</param>
             /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
-            public NFTs_OwnedByAnAccount OnComplete(UnityAction<NFTs_model> action)
+            public Txn_Account OnComplete(UnityAction<Txn_model> action)
             {
                 this.OnCompleteAction = action;
                 return this;
             }
             
             /// <summary>
-            /// Action on Error
+            /// Action on Error (;•͈́༚•͈̀)(•͈́༚•͈̀;)՞༘՞༘՞
             /// </summary>
             /// <param name="UnityAction action"> string.</param>
             /// <returns> Information on Error as string text.</returns>
-            public NFTs_OwnedByAnAccount OnError(UnityAction<string> action)
+            public Txn_Account OnError(UnityAction<string> action)
             {
                 this.OnErrorAction = action;
                 return this;
@@ -178,20 +146,17 @@ namespace NFTPort
             /// <summary>
             /// Runs the Api call and fills the corresponding model in the component on success.
             /// </summary>
-            public NFTs_model Run()
+            public Txn_model Run()
             {
                 WEB_URL = BuildUrl();
                 StopAllCoroutines();
                 StartCoroutine(CallAPIProcess());
-                return NFTs;
+                return txnModel;
             }
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit  + address + "?chain=" + chain.ToString().ToLower() + "&include=" + include.ToString().ToLower();
-                if (contract_address != "")
-                    WEB_URL = WEB_URL + "&contract_address=" + contract_address;
-                
+                WEB_URL = RequestUriInit + _account_address + "?chain=" + chain.ToString().ToLower() + "&type=" + _type.ToString();
                 return WEB_URL;
             }
             
@@ -200,9 +165,10 @@ namespace NFTPort
                 //Make request
                 UnityWebRequest request = UnityWebRequest.Get(WEB_URL);
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SetRequestHeader("Authorization", _apiKey);
                 request.SetRequestHeader("source", PortUser.GetSource());
+                request.SetRequestHeader("Authorization", _apiKey);
                 
+
                 {
                     yield return request.SendWebRequest();
                     string jsonResult = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
@@ -215,7 +181,7 @@ namespace NFTPort
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)
-                            Debug.Log($" (⊙.◎) Null data. Response code: {request.responseCode}. Result {jsonResult}");
+                            Debug.Log($"(;•͈́༚•͈̀)(•͈́༚•͈̀;)՞༘՞༘՞ Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(afterError!=null)
                             afterError.Invoke();
                         //yield break;
@@ -223,22 +189,22 @@ namespace NFTPort
                     else
                     {
                         //Fill Data Model from recieved class
-                        NFTs = JsonConvert.DeserializeObject<NFTs_model>(
+                        txnModel = JsonConvert.DeserializeObject<Txn_model>(
                             jsonResult,
                             new JsonSerializerSettings
                             {
-                                NullValueHandling = NullValueHandling.Ignore,
-                                MissingMemberHandling = MissingMemberHandling.Ignore
+                            NullValueHandling = NullValueHandling.Ignore,
+                            MissingMemberHandling = MissingMemberHandling.Ignore
                             });
                         
                         if(OnCompleteAction!=null)
-                            OnCompleteAction.Invoke(NFTs);
+                            OnCompleteAction.Invoke(txnModel);
                         
                         if(afterSuccess!=null)
                             afterSuccess.Invoke();
                         
                         if(debugErrorLog)
-                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFTs model" );
+                            Debug.Log($"(*^∇^)ヾ(￣▽￣*) Success , view Txns model" );
                     }
                 }
                 request.Dispose();

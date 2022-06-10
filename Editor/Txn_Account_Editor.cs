@@ -5,21 +5,21 @@ namespace NFTPort.Editor
     using UnityEditor;
     using Internal;
 
-    [CustomEditor(typeof(Mint_Custom))]
-    public class Mint_Custom_Editor : Editor
+    [CustomEditor(typeof(Txn_Account))]
+    public class Txn_Account_Editor : Editor
     {
         public override void OnInspectorGUI()
         {
             
-            Mint_Custom myScript = (Mint_Custom)target;
+            Txn_Account myScript = (Txn_Account)target;
             
             
-            Texture banner = Resources.Load<Texture>("c_productmint");
+            Texture banner = Resources.Load<Texture>("c_tx_account");
             GUILayout.BeginHorizontal();
             GUILayout.Box(banner);
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button("Mint Custom NFT", GUILayout.Height(45)))
+            if (GUILayout.Button("Get Account NFT TXNs", GUILayout.Height(45)))
             {
                 PortUser.SetFromEditorWin();
                 myScript.Run();
@@ -27,7 +27,7 @@ namespace NFTPort.Editor
         
 
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL(PortConstants.Docs_Mint_Custom);
+                Application.OpenURL(PortConstants.Docs_Txns_Account);
             DrawDefaultInspector();
         }
     }

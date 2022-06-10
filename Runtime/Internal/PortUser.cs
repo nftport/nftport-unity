@@ -5,12 +5,12 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine.Events;
 #endif
 
 
 namespace NFTPort.Internal
 {
+    using NFTPort.Editor;
 #if UNITY_EDITOR
     [ExecuteInEditMode]
 #endif
@@ -29,8 +29,16 @@ namespace NFTPort.Internal
         
         public static void Initialise()
         {
-            if(_initialised==false)
+            if (_initialised == false)
+            {
                 _userPrefs = getUserPrefs();
+                
+#if UNITY_EDITOR
+                CheckNftportPkg.OnListCheckComplete(isUPM => src.UPMImport = isUPM.ToString());
+                CheckNftportPkg.CheckPkgsList();
+#endif
+            }
+                
         }
 
         #region Get Set Gos
@@ -46,25 +54,39 @@ namespace NFTPort.Internal
             public string version = _userPrefs.version;
             public string isEditor = "";
             public string UnityVersion = "";
+            public string ToolWin = "";
+            public string UPMImport = "na";
+        }
 
+        private static bool isEditorwin;
+        public static void SetFromEditorWin()
+        {
+            isEditorwin = true;
         }
         
-        
+        static Source src = new Source();
         public static string GetSource()
         {
-            Source src = new Source();
             src.version = _userPrefs.version;
             src.isEditor = Application.isEditor.ToString();
             src.UnityVersion = Application.unityVersion;
-
-                string json = JsonConvert.SerializeObject(
-                    src, 
-                new JsonSerializerSettings
-                {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    //NullValueHandling = NullValueHandling.Ignore
-                });
             
+            if(isEditorwin)
+                src.ToolWin = "NFTPortEditor";
+            else
+            {
+                src.ToolWin = "UserScript";
+            }
+
+            string json = JsonConvert.SerializeObject(
+                src, 
+            new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                //NullValueHandling = NullValueHandling.Ignore
+            });
+
+            isEditorwin = false;
             return json;
         }
 

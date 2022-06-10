@@ -21,6 +21,7 @@ namespace NFTPort.Editor
 
             if (GUILayout.Button("GET NFTs of Contract", GUILayout.Height(45)))
             {
+                PortUser.SetFromEditorWin();
                 myScript.Run();
             }
 
