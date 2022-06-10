@@ -5,12 +5,12 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine.Events;
 #endif
 
 
 namespace NFTPort.Internal
 {
+    using NFTPort.Editor;
 #if UNITY_EDITOR
     [ExecuteInEditMode]
 #endif
@@ -29,8 +29,16 @@ namespace NFTPort.Internal
         
         public static void Initialise()
         {
-            if(_initialised==false)
+            if (_initialised == false)
+            {
                 _userPrefs = getUserPrefs();
+                
+#if UNITY_EDITOR
+                CheckNftportPkg.OnListCheckComplete(isUPM => src.UPMImport = isUPM.ToString());
+                CheckNftportPkg.CheckPkgsList();
+#endif
+            }
+                
         }
 
         #region Get Set Gos
@@ -47,6 +55,7 @@ namespace NFTPort.Internal
             public string isEditor = "";
             public string UnityVersion = "";
             public string ToolWin = "";
+            public string UPMImport = "na";
         }
 
         private static bool isEditorwin;
@@ -63,7 +72,7 @@ namespace NFTPort.Internal
             src.UnityVersion = Application.unityVersion;
             
             if(isEditorwin)
-                src.ToolWin = "CustomEditor";
+                src.ToolWin = "NFTPortEditor";
             else
             {
                 src.ToolWin = "UserScript";
