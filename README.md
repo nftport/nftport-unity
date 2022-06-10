@@ -38,6 +38,6 @@ Import as a package using Git URL: In Unity's Package Manager, click the '+' on 
 
 -------
 
-![](https://i.imgur.com/LTtYXhm.jpg)![3dfree](https://user-images.githubusercontent.com/43649755/171636786-994d25aa-9429-489f-b489-1894046e85a5.gif)
+![](https://i.imgur.com/LTtYXhm.jpg)
 
 <img src="https://user-images.githubusercontent.com/43649755/171636786-994d25aa-9429-489f-b489-1894046e85a5.gif" style="width:200%"/>
