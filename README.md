@@ -2,9 +2,9 @@
 ![alt text](./Readme-Assets/Port_unity_early.png)
 
 
-## Getting Started: 
+## Getting Started:
 
-- Get your API keys: Your API requests are authenticated using API keys. You can [get your free API key by signing up for an NFTPort account](https://www.nftport.xyz/sign-up).
+- Get your API keys: Your API requests are authenticated using API keys. You can [get your free API key by signing up for an NFTPort account](https://dashboard.nftport.xyz/sign-up).
 
 - Download Unity 2020.3.18f [here](https://unity3d.com/unity/whats-new/2020.3.18) <br/>
   >*SDK is made using Unity 2020.3.18f , however is compatible with other versions as well. We'll be working towards Unity Asset Store release to make process easier.*
@@ -41,7 +41,7 @@ using NFTPort;
 
 ### Usage
 
-Getting All Addresses Of an NFT: 
+Getting All Addresses Of an NFT:
 ```csharp
 NFTPort_Interface.Instance.NFTsOfAccount(addressString);
 ```
@@ -79,7 +79,7 @@ NFTsOwnedbyanAccount._ownedbyAddressModel.nfts[i].name;
 
 
 #### Setting up Variables and Run()<br/>
-These can be setup directly through inspector. 
+These can be setup directly through inspector.
 For Runtime or setting up through script following can be used by refrencing the component, in this example as : _NFTsOwnedbyanAccount .
 ```
 _NFTsOwnedbyanAccount.Address = "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B";
@@ -94,17 +94,17 @@ _NFTsOwnedbyanAccount.Run();
 Any events after a successful fetch can be done via:
 <img src="./Readme-Assets/eventsafter.jpg"  width="400"  />
 
-##### Other Individual components can be used in similar fashion. 
+##### Other Individual components can be used in similar fashion.
 
 
 # Whats next?
-### Time to BUIDL. 
-*we will be iterating this extension and this is meant to provide a starter pack and tools in your journey with NFTPort and Unity3D. NFT's and GameEngines opens up a huge metaverse of creativity where possibilities are endless! What will you build?* 
+### Time to BUIDL.
+*we will be iterating this extension and this is meant to provide a starter pack and tools in your journey with NFTPort and Unity3D. NFT's and GameEngines opens up a huge metaverse of creativity where possibilities are endless! What will you build?*
 
-NFTPort has a number of api endpoints available at: https://docs.nftport.xyz/docs/nftport 
+NFTPort has a number of api endpoints available at: https://docs.nftport.xyz/docs/nftport
 
 # Join the community :
 Get support, showcase your work, share your thoughts and feedback, and engage in a vibrant community at:
-https://discord.gg/w92sXkNmBR 
+https://discord.gg/w92sXkNmBR
 
 ###### for your gaming endeavors, get in touch at sahaj@nftport.xyz
