@@ -38,8 +38,9 @@ namespace NFTPort.Editor
         {
             ReadFromUserPrefs();
 
-            InstallPortDependencies.OnListCheckComplete(arg0 => DependencyAction(arg0));
-            InstallPortDependencies.CheckPkgsList();
+            InstallPortDependencies.OnListCheckCompleteForNewtonSoft(arg0 => DependencyAction(arg0));
+            InstallPortDependencies.OnListCheckCompleteForGLTF(arg0 => DependencyAction(arg0));
+            InstallPortDependencies.CheckPkgsListForNewtonsoft();
         }
 
         static void DependencyAction(bool exists)
@@ -195,7 +196,12 @@ namespace NFTPort.Editor
             }
             windowopen = true;
             ranLatestrel = false;
-            
+            HighLightReadmeAsset();
+        }
+
+        void HighLightReadmeAsset()
+        {
+            Selection.activeObject=AssetDatabase.LoadMainAssetAtPath("Packages/com.nftport.nftport/Runtime/Readme.asset");
         }
 
         private void OnDisable()
@@ -276,6 +282,7 @@ namespace NFTPort.Editor
         static void UserStats()
         {
             userModel = null;
+            PortUser.SetFromAuto();
             User_Settings
                 .Initialize(true)
                 .OnError(usermodel=> StatsErrore())
