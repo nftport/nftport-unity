@@ -24,6 +24,12 @@ Import as a package using Git URL: In Unity's Package Manager, click the '+' on 
   ```
 
 </br>
+Upto 100 free NFT mints and 5 fully owned customizable contracts for your first product/development.
+
+</br></br>
+
+![3dfree](https://user-images.githubusercontent.com/43649755/175334913-12e4310f-06c5-407e-ac9d-fa0681c595f7.gif) 
+
 
 -------
 
@@ -38,6 +44,6 @@ Import as a package using Git URL: In Unity's Package Manager, click the '+' on 
 
 -------
 
+
 ![](https://i.imgur.com/LTtYXhm.jpg)
 
-<img src="https://user-images.githubusercontent.com/43649755/171636786-994d25aa-9429-489f-b489-1894046e85a5.gif" style="width:200%"/>
