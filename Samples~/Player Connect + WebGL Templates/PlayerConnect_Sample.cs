@@ -8,21 +8,23 @@ namespace NFTPort.Samples.PlayerConnect
 
     public class PlayerConnect_Sample : MonoBehaviour
     {
+        public ConnectPlayerWallet connectPlayerWallet;
         public Text addressText;
+        public Text NetworkIDText;
 
         void Start()
         {
-            ConnectPlayerWallet
-                .Initialize()
-                .OnComplete(address => UpdateUI(address));
+            connectPlayerWallet
+                .OnComplete((address, networkID )=> UpdateUI(address,networkID));
         }
 
-        void UpdateUI(string address)
+        void UpdateUI(string address, string networkID)
         {
             addressText.text = address;
             
             //This value can also be accessed from anywhere globally via Port.
             addressText.text = Port.ConnectedPlayerAddress;
+            NetworkIDText.text = Port.ConnectedPlayerNetworkID;
         }
         
     }

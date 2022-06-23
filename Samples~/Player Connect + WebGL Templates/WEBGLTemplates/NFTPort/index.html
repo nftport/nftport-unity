@@ -13,8 +13,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  
+
   <script>
+    //web3 metamask wallet >>>>>>>
+    src='NFTPortPlayerConnect.js'
     var unityGame;
     async function getAccount() {
       if (typeof window.ethereum !== 'undefined') {
@@ -35,10 +37,15 @@
 
     function getAddress(account) {
       // Unity sends
+      unityGame.SendMessage('PlayerConnect_NFTPort', 'WebHook_GetNetworkID', window.ethereum.networkVersion);
       unityGame.SendMessage('PlayerConnect_NFTPort', 'WebHook_GetAddress', account);
     }
+    
     //≧◠‿◠≦✌ _sz_ Ω 
+    //<<<<<<<<<<<<<<<<<<<<<<<
   </script>
+  
+  
   <body style="background-color:#151821;">
   <div class="topnav">
   <div id="unity-webgl-logo" onClick="window.open('https://www.nftport.xyz/','mywindow');" style="cursor: pointer;">&nbsp;></div>
