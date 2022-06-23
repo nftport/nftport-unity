@@ -9,10 +9,10 @@ namespace NFTPort
         /// <summary>
         /// Wallet Connect
         /// </summary>
-        public static string ConnectedPlayerAddress;
+        public static string ConnectedPlayerAddress = "";
         /// <summary>
         /// Wallet Connected Network ID
         /// </summary>
-        public static string ConnectedPlayerNetworkID;
+        public static string ConnectedPlayerNetworkID = "";
     }
 }

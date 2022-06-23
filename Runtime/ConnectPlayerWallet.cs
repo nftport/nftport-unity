@@ -7,12 +7,16 @@ namespace NFTPort
     using UnityEngine;
     using UnityEngine.Events;
     using Internal;
-    
+
     [AddComponentMenu(PortConstants.BaseComponentMenu + PortConstants.FeatureName_ConnectUserWallet)]
     [HelpURL(PortConstants.Docs_ConnectUserWallet)]
     public class ConnectPlayerWallet : MonoBehaviour
     {
         public string connectedWalletAddress;
+        public string connectedNetworkID;
+        
+        [HideInInspector] public string MockconnectedWalletAddress;
+        [HideInInspector] public string MockconnectedNetworkID;
         
         public UnityEvent afterSuccess;
         private UnityAction<string,string> OnCompleteAction;
@@ -47,8 +51,12 @@ namespace NFTPort
         public void WebSend_GetAddress()
         {
 #if UNITY_EDITOR
+            connectedWalletAddress = MockconnectedWalletAddress;
+            connectedNetworkID = MockconnectedNetworkID;
+            
             Port.ConnectedPlayerAddress = connectedWalletAddress;
-            Debug.Log("Editor Mock Wallet Connect , Address: " + Port.ConnectedPlayerAddress);
+            Port.ConnectedPlayerNetworkID = connectedNetworkID;
+            Debug.Log("Editor Mock Wallet Connected , Address: " + Port.ConnectedPlayerAddress + " at Network ID:" + Port.ConnectedPlayerNetworkID +" | Access it via Port.ConnectedPlayerAddress");
 #endif
 #if !UNITY_EDITOR
             SendCallTo_GetAddress();
@@ -59,7 +67,10 @@ namespace NFTPort
         {
             
 #if UNITY_EDITOR
+            
+            
             Port.ConnectedPlayerAddress = connectedWalletAddress;
+            Port.ConnectedPlayerNetworkID = connectedNetworkID;
 #endif
           
             this.gameObject.name = "PlayerConnect_NFTPort";
@@ -70,6 +81,7 @@ namespace NFTPort
         public void WebHook_GetNetworkID(string networkID)
         {
             Port.ConnectedPlayerNetworkID = networkID;
+            connectedNetworkID = networkID;
         }
         
         //called from index - For WebGL
