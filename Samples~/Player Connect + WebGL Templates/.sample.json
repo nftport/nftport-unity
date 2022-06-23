@@ -2,4 +2,5 @@
 	"displayName":"Player Wallet Connect + WebL Templates",
 	"description": "Get Address of players wallet connect with events.",
 	"createSeparatePackage": false
+
 }

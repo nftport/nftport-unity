@@ -22,6 +22,7 @@ namespace NFTPort.Internal
 
         public const string DiscordInvite = "https://discord.gg/w92sXkNmBR";
         public const string Github = "https://github.com/nftport/nftport-unity.git";
+        public const string Dashboard = "https://dashboard.nftport.xyz/";
 
 
         public const string BaseComponentMenu = "NFTPort/";

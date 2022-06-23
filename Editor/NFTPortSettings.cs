@@ -130,7 +130,15 @@ namespace NFTPort.Editor
             
             if (GUILayout.Button("Save API Key", GUILayout.Height(25)))
                 SaveChanges();
+
+            GuiLine();
             
+            EditorGUILayout.LabelField("");
+
+            if (userModel != null)
+            {
+                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name + "."); 
+            }
             EditorGUILayout.LabelField("");
             
             GuiLine();
@@ -140,17 +148,6 @@ namespace NFTPort.Editor
             
             if (GUILayout.Button("Community & Support", GUILayout.Height(25)))
                 Application.OpenURL(PortConstants.DiscordInvite);
-            
-            GuiLine();
-            
-            EditorGUILayout.LabelField("");
-
-            if (userModel != null)
-            {
-                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name + "."); 
-            }
-            
-            EditorGUILayout.LabelField("");
             
             GuiLine();
             
@@ -170,9 +167,14 @@ namespace NFTPort.Editor
 
             GUILayout.EndHorizontal();
             
-            
-            if (GUILayout.Button("star the github", GUILayout.Height(17), GUILayout.Width(155)))
+            GUILayout.BeginHorizontal("box");
+            if (GUILayout.Button("Star Github", GUILayout.Height(22))) 
                 Application.OpenURL(PortConstants.Github);
+            
+            if (GUILayout.Button("Go to My Dashboard", GUILayout.Height(22)))
+                Application.OpenURL(PortConstants.Dashboard);
+            
+            GUILayout.EndHorizontal();
 
         }
 
@@ -232,8 +234,8 @@ namespace NFTPort.Editor
         }
         static void SetSize(NFTPortSettings win) 
         {
-            win.minSize = new Vector2(530, 600);
-            win.maxSize = new Vector2(530, 600);
+            win.minSize = new Vector2(530, 650);
+            win.maxSize = new Vector2(530, 650);
         } 
         
         static void GuiLine( int i_height = 1 )
