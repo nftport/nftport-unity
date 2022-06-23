@@ -24,7 +24,7 @@ Import as a package using Git URL: In Unity's Package Manager, click the '+' on 
   ```
 
 </br>
-Upto 100 free NFT mints and 5 fully owned customizable contracts for your first product/development.
+Upto 100 or more free NFT mints and 5 fully owned customizable contracts for your first product/development.
 
 </br></br>
 
