@@ -1,7 +1,7 @@
 {
   "name": "com.nftport.nftport",
   "displayName": "NFTPort",
-  "version": "0.4.0",
+  "version": "0.4.1-preview",
   "description": "NFTPort.xyz unity extension provides tools and features to integrate NFT's crosschain at lightning speed in Unity.\n\n https://github.com/nftport/nftport-unity.git",
   "type": "tool",
   "documentationUrl": "https://docs.nftport.xyz/docs/nftport",
@@ -31,7 +31,7 @@
     {
       "displayName": "Asset Downloader",
       "description": "Download assets like NFTImage, Video, Audio etc from IPFS or Web2, Use in conjunction with NFTMetaData",
-      "path": "Samples~/Easy Mint URL"
+      "path": "Samples~/Asset Downloader"
     },
     {
       "displayName": "Player Wallet Connect + WebL Templates",
@@ -45,6 +45,6 @@
     }
   ],
   "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "3.0.2"
+    "com.unity.nuget.newtonsoft-json": "2.0.2"
   }
 }

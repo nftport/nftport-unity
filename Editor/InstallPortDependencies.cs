@@ -6,11 +6,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace NFTPort.Internal {
-    class InstallPortDependencies : EditorWindow
+    public class InstallPortDependencies : EditorWindow
     {
         static AddRequest Request;
         private static RemoveRequest RmRequest;
-
+        private static bool newtonsoftInstalled = false;
+        private static bool GLTFInstalled = false;    
 
         [MenuItem("NFTPort/Install Dependencies")]
         public static void ShowWindow()
@@ -24,35 +25,81 @@ namespace NFTPort.Internal {
                             " NFTPort needs the following packages : \n" +
                             "", EditorStyles.label);
             
+            GUILayout.BeginHorizontal("box");
             GUILayout.Label("com.unity.nuget.newtonsoft-json");
+            var defaultcol = GUI.contentColor;
+
+            if (newtonsoftInstalled)
+            {
+                GUI.contentColor = Color.green;
+                GUILayout.Label(": installed");
+                GUI.contentColor = defaultcol;
+            }
+            else
+            {
+                GUILayout.Label(": Not Installed in UPM");
+            }
             
+            GUILayout.EndHorizontal();
+            
+            GUILayout.BeginHorizontal("box");
             if (GUILayout.Button("Install Now", GUILayout.Height(25)))
                 Add();
             
+            //if (GUILayout.Button("Remove Dependency", GUILayout.Height(25)))
+             //   Remove();
+            GUILayout.EndHorizontal();
+            
+            GUILayout.Label("");
+            
+            GUILayout.BeginHorizontal("box");
+            GUILayout.Label("GLTF-Utility | Used by NFTPort Playground Sample");
+            if (GLTFInstalled)
+            {
+                GUI.contentColor = Color.green;
+                GUILayout.Label(": installed");
+                GUI.contentColor = defaultcol;
+            }
+            else
+            {
+                GUILayout.Label(": Not Installed in UPM");
+            }
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal("box");
+            if (GUILayout.Button("Install Now", GUILayout.Height(25)))
+                AddGLTF();
+            
             if (GUILayout.Button("Remove Dependency", GUILayout.Height(25)))
-                Remove();
-
+               RemoveGLTF();
+            GUILayout.EndHorizontal();
         }
         
         static void SetSize(InstallPortDependencies win) 
         {
-            win.minSize = new Vector2(330, 120);
-            win.maxSize = new Vector2(330, 120);
+            win.minSize = new Vector2(330*2, 120*2);
+            win.maxSize =  new Vector2(330*2, 120*2);
         }
-        
-        
-        /// ///////// CHECK
+
+        private void OnEnable()
+        {
+         
+            CheckPkgsListForNewtonsoft();
+            CheckPkgsListForGLTFt();
+        }
+
+        #region newtonsoft
+       /// ///////// CHECK
         static ListRequest listRequest;
-        public static void CheckPkgsList()
+        public static void CheckPkgsListForNewtonsoft()
         {
             listRequest = Client.List();    // List packages installed for the Project
             EditorApplication.update += CheckPackageProgress;
         }
         
-        private static UnityAction<bool> OnListCheckCompleteActionPackageExists;
-        public static void OnListCheckComplete(UnityAction<bool> action)
+        private static UnityAction<bool> OnListCheckCompleteActionNewtonPackageExists;
+        public static void OnListCheckCompleteForNewtonSoft(UnityAction<bool> action)
         {
-            OnListCheckCompleteActionPackageExists = action;
+            OnListCheckCompleteActionNewtonPackageExists = action;
           
         }
 
@@ -63,14 +110,19 @@ namespace NFTPort.Internal {
                 if (listRequest.Status == StatusCode.Success)
                     foreach (var package in listRequest.Result)
                     {
+                        newtonsoftInstalled = false;
                         if (package.name.Contains("newtonsoft"))
                         {
-                            OnListCheckCompleteActionPackageExists.Invoke(true);
+                            newtonsoftInstalled = true;
                             EndListCheck();
+                            break;
                         }
                     }
                 else if (listRequest.Status >= StatusCode.Failure)
+                {
                     Debug.Log(listRequest.Error.message);
+                }
+                    
 
                 EndListCheck();
             }
@@ -78,6 +130,17 @@ namespace NFTPort.Internal {
         static void EndListCheck()
         {
             EditorApplication.update -= CheckPackageProgress;
+                
+            if (newtonsoftInstalled)
+            {
+                if(OnListCheckCompleteActionNewtonPackageExists!=null)
+                    OnListCheckCompleteActionNewtonPackageExists.Invoke(true); 
+            }
+            else
+            {
+                if(OnListCheckCompleteActionNewtonPackageExists!=null)
+                    OnListCheckCompleteActionNewtonPackageExists.Invoke(false); 
+            }
         }
         
         
@@ -100,6 +163,7 @@ namespace NFTPort.Internal {
                     Debug.Log(Request.Error.message);
 
                 EditorApplication.update -= AddProgress;
+                CheckPkgsListForNewtonsoft();
             }
         }
         
@@ -115,7 +179,10 @@ namespace NFTPort.Internal {
             if (RmRequest.IsCompleted)
             {
                 if (RmRequest.Status == StatusCode.Success)
+                {
                     Debug.Log("removed: " + "com.unity.nuget.newtonsoft-json");
+                    CheckPkgsListForNewtonsoft();
+                }
                 else if (RmRequest.Status >= StatusCode.Failure)
                     Debug.Log(RmRequest.Error.message);
 
@@ -123,5 +190,112 @@ namespace NFTPort.Internal {
             }
         }
         
+
+        #endregion
+
+        #region gltfutility
+        private static UnityAction<bool> OnListCheckCompleteActionGLTFxists;
+        public static void OnListCheckCompleteForGLTF(UnityAction<bool> action)
+        {
+            OnListCheckCompleteActionGLTFxists = action;
+          
+        }
+        /// ///////// CHECK
+        static ListRequest listRequestgltf;
+        public static void CheckPkgsListForGLTFt()
+        {
+            listRequestgltf = Client.List();    // List packages installed for the Project
+            EditorApplication.update += CheckPackageProgressGLTF;
+        }
+
+        static void CheckPackageProgressGLTF()
+        {
+            if (listRequestgltf.IsCompleted)
+            {
+                if (listRequestgltf.Status == StatusCode.Success)
+                    foreach (var package in listRequestgltf.Result)
+                    {
+                        GLTFInstalled = false;
+                        if (package.name.Contains("com.siccity.gltfutility"))
+                        {
+                            GLTFInstalled = true;
+                            break;
+                        }
+                    }
+                else if (listRequestgltf.Status >= StatusCode.Failure)
+                {
+                    Debug.Log(listRequestgltf.Error.message);
+                }  
+                
+                EndListCheckGLTF();
+            }
+        }
+        static void EndListCheckGLTF()
+        {
+            EditorApplication.update -= CheckPackageProgressGLTF;
+            
+            if (GLTFInstalled)
+            {
+                if(OnListCheckCompleteActionGLTFxists!=null)
+                    OnListCheckCompleteActionGLTFxists.Invoke(true); 
+            }
+            else
+            {
+                if(OnListCheckCompleteActionGLTFxists!=null)
+                    OnListCheckCompleteActionGLTFxists.Invoke(false); 
+            }
+        }
+        
+        
+        //////////// ADD
+        public static void AddGLTF()
+        {
+            // Add a package to the project
+            //TODO: if PR https://github.com/Siccity/GLTFUtility/pull/203 then change to https://github.com/Siccity/GLTFUtility.git ?? 
+            Request = Client.Add("https://github.com/saszer/GLTFUtility.git");
+            EditorApplication.update += AddProgressGLTF;
+        }
+        
+        static void AddProgressGLTF()
+        {
+            if (Request.IsCompleted)
+            {
+                if (Request.Status == StatusCode.Success)
+                {
+                    Debug.Log("Installed: " + Request.Result.packageId);
+                    CheckPkgsListForGLTFt();
+                }
+                    
+                else if (Request.Status >= StatusCode.Failure)
+                    Debug.Log(Request.Error.message);
+
+                EditorApplication.update -= AddProgressGLTF;  
+            }
+        }
+        
+        //////////// RM
+        public static void RemoveGLTF()
+        {
+            RmRequest = Client.Remove("com.siccity.gltfutility");
+            EditorApplication.update += RemoveProgressGLTF;
+        }
+        
+        static void RemoveProgressGLTF()
+        {
+            if (RmRequest.IsCompleted)
+            {
+                if (RmRequest.Status == StatusCode.Success)
+                {
+                    Debug.Log("removed: " + "https://github.com/Siccity/GLTFUtility.git");
+                    CheckPkgsListForGLTFt();
+                }
+                else if (RmRequest.Status >= StatusCode.Failure)
+                    Debug.Log(RmRequest.Error.message);
+
+                EditorApplication.update -= RemoveProgressGLTF;
+            }
+        }
+
+        #endregion
     }
 }
