@@ -102,8 +102,9 @@ namespace NFTPort.Editor
                 }
             }
         }
-        
 
+
+        private bool apiIsPass = true;
         void OnGUI()
         {
             Texture banner = Resources.Load<Texture>("banner");
@@ -117,19 +118,48 @@ namespace NFTPort.Editor
             
             GUILayout.BeginHorizontal("box");
             var defaultColor = GUI.backgroundColor;
-            if(APIkeyOk())
-                GUI.color = UnityEngine.Color.green;
+
+            if (myAPIString == PortConstants.DefaultAPIKey)
+            {
+                apiIsPass = false;
+                GUI.color = UnityEngine.Color.cyan;
+            }
             else
             {
-                GUI.color = UnityEngine.Color.red;
+                if(APIkeyOk())
+                    GUI.color = UnityEngine.Color.green;
+                else
+                {
+                    GUI.color = UnityEngine.Color.red;
+                }
             }
-            myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString);
+
+            if (!apiIsPass)
+            {
+                if (GUILayout.Button("hide", GUILayout.Width(42)))
+                    apiIsPass = true;
+                
+                myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString); 
+            }
+            else
+            {
+                if (GUILayout.Button("show", GUILayout.Width(42)))
+                    apiIsPass = false;
+                
+                myAPIString = EditorGUILayout.PasswordField("APIKEY", myAPIString); 
+            }
+            
+
             GUI.color = defaultColor;
             GUILayout.EndHorizontal();
-            
-            
+
+
             if (GUILayout.Button("Save API Key", GUILayout.Height(25)))
+            {
                 SaveChanges();
+                apiIsPass = true;
+            }
+                
 
             GuiLine();
             

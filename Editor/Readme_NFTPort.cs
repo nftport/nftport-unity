@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NFTPort.Editor
 {
-	public class Readme : ScriptableObject {
+	public class Readme_NFTPort : ScriptableObject {
 		public Texture2D icon;
 		public string title;
 		public Section[] sections;
