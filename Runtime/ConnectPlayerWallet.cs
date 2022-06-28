@@ -57,6 +57,7 @@ namespace NFTPort
             Port.ConnectedPlayerAddress = connectedWalletAddress;
             Port.ConnectedPlayerNetworkID = connectedNetworkID;
             Debug.Log("Editor Mock Wallet Connected , Address: " + Port.ConnectedPlayerAddress + " at Network ID:" + Port.ConnectedPlayerNetworkID +" | Access it via Port.ConnectedPlayerAddress");
+            GetAddressSuccess();
 #endif
 #if !UNITY_EDITOR
             SendCallTo_GetAddress();
@@ -89,8 +90,11 @@ namespace NFTPort
         {
             connectedWalletAddress = recievedaddress;
             Port.ConnectedPlayerAddress = connectedWalletAddress;
-           
-            
+            GetAddressSuccess();
+        }
+
+        void GetAddressSuccess()
+        {
             if(OnCompleteAction!=null)
                 OnCompleteAction.Invoke(connectedWalletAddress,Port.ConnectedPlayerNetworkID );
                         
