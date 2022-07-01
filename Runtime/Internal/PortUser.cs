@@ -56,6 +56,7 @@ namespace NFTPort.Internal
             public string UnityVersion = "";
             public string ToolWin = "";
             public string UPMImport = "na";
+            public string AppPlatform = "ni";
         }
         
         public static void SetFromEditorWin()
@@ -88,6 +89,7 @@ namespace NFTPort.Internal
             src.isEditor = Application.isEditor.ToString();
             src.UnityVersion = Application.unityVersion;
             src.ToolWin = _toolWin.ToString();
+            src.AppPlatform = Application.platform.ToString();
 
             string json = JsonConvert.SerializeObject(
                 src, 
