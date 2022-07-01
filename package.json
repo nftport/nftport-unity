@@ -13,22 +13,6 @@
     "type": "git",
     "url": "https://github.com/nftport/nftport-unity.git"
   },
-  "keywords": [
-    "Web3",
-    "Blockchain",
-    "NFT",
-    "NFTs",
-    "Ethereum",
-    "NFTPort",
-    "Unity",
-    "Mint",
-    "Solana",
-    "Polygon",
-    "Connect",
-    "Data",
-    "Wallet",
-    "Games"
-  ],
   "author": {
     "name": "NFTPort.xyz",
     "email": "sahaj@nftport.xyz",
@@ -63,5 +47,21 @@
   ],
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "2.0.2"
-  }
+  },
+  "keywords": [
+    "Web3",
+    "Blockchain",
+    "NFT",
+    "NFTs",
+    "Ethereum",
+    "NFTPort",
+    "Unity",
+    "Mint",
+    "Solana",
+    "Polygon",
+    "Connect",
+    "Data",
+    "Wallet",
+    "Games"
+  ]
 }
