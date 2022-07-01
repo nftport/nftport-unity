@@ -4,13 +4,30 @@
   "version": "0.4.1-preview",
   "description": "NFTPort.xyz unity extension provides tools and features to integrate NFT's crosschain at lightning speed in Unity.\n\n https://github.com/nftport/nftport-unity.git",
   "type": "tool",
-  "documentationUrl": "https://docs.nftport.xyz/docs/nftport",
+  "homepage": "https://www.nftport.xyz/",
+  "documentationUrl": "https://docs.nftport.xyz/docs/nftport/ZG9jOjUwMzc2NzA5-getting-started#unity-extension-feature-list-br",
+  "changelogUrl": "https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md",
+  "license": "MIT License",
+  "licensesUrl": "https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nftport/nftport-unity.git"
+  },
   "keywords": [
-    "web3",
-    "blockchain",
+    "Web3",
+    "Blockchain",
     "NFT",
     "NFTs",
-    "ethereum"
+    "Ethereum",
+    "NFTPort",
+    "Unity",
+    "Mint",
+    "Solana",
+    "Polygon",
+    "Connect",
+    "Data",
+    "Wallet",
+    "Games"
   ],
   "author": {
     "name": "NFTPort.xyz",
