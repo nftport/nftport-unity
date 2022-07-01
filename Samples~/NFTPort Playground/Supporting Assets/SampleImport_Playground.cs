@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using NFTPort.Internal;
-using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
 namespace NFTPort.Editor
 {
     using Internal;
@@ -13,14 +14,14 @@ namespace NFTPort.Editor
     {
         private static bool notFirstLoad;
 
-        private static NFTPort.Editor.Readme _readme;
+        private static NFTPort.Editor.Readme_NFTPort _readme;
         [InitializeOnLoadMethod]
         static void Recompile()
         {
             if(notFirstLoad)
                 return;
 
-            _readme = AssetDatabase.LoadAssetAtPath<Readme>(ReadMePath());
+            _readme = AssetDatabase.LoadAssetAtPath<Readme_NFTPort>(ReadMePath());
 
             if (!_readme.notFirstload)
                 FirstLoad();
@@ -46,6 +47,7 @@ namespace NFTPort.Editor
         {
             if (!exists)
             {
+                Debug.Log("This Sample needs GLTF Utility as it uses .glb models which makes the 3D NFT models compatible to show at browser and at marketplaces like opensea, please install it via NFTPort/Install Dependencies");
                 InstallPortDependencies.ShowWindow();
             }
         }
@@ -70,3 +72,4 @@ namespace NFTPort.Editor
     }
 
 }
+#endif
