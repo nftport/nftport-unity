@@ -58,6 +58,7 @@ namespace NFTPort.Editor
         static void HighLightReadmeAsset(string path)
         {
             Selection.activeObject=AssetDatabase.LoadMainAssetAtPath(path);
+            Debug.Log("View Read Me in samples folder");
         }
 
         static string ReadMePath()
