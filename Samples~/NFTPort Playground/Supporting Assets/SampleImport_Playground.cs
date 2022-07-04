@@ -23,8 +23,8 @@ namespace NFTPort.Editor
 
             _readme = AssetDatabase.LoadAssetAtPath<Readme_NFTPort>(ReadMePath());
 
-            if (!_readme.notFirstload)
-                FirstLoad();
+            //if (!_readme.notFirstload)
+               // FirstLoad();
         }     
 
         static void FirstLoad()
@@ -53,6 +53,9 @@ namespace NFTPort.Editor
                 Debug.Log("This Sample needs GLTF Utility as it uses .glb models which makes the 3D NFT models compatible to show at browser and at marketplaces like opensea, and Unity's New Input System. Please install it via NFTPort/Install Dependencies");
                 InstallPortDependencies.ShowWindow();
             }
+            
+             if (!_readme.notFirstload)
+                FirstLoad();
         }
 
         static void HighLightReadmeAsset(string path)
