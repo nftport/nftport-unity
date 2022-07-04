@@ -77,7 +77,10 @@ namespace NFTPort
         private void OnEnable()
         {
             if (onEnable & Application.isPlaying)
+            {
+                PortUser.SetFromOnEnable();
                 Run();
+            }
         }
 
         #region SetParams and Chain Functions

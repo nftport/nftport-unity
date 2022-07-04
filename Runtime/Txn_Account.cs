@@ -74,7 +74,10 @@ namespace NFTPort
         private void OnEnable()
         {
             if (onEnable & Application.isPlaying)
+            {
+                PortUser.SetFromOnEnable();
                 Run();
+            }
         }
 
         #region SetParams and Chain Functions
@@ -98,46 +101,46 @@ namespace NFTPort
         /// <param name="account_address"> as string.</param>
         /// <param name="type"> as Type{ all, mint, burn, transfer_from, transfer_to, list, buy, sell, make_bid , get_bid}.</param>
         public Txn_Account SetParameters(string account_address = null, Type type = Type.all)
-            {
-                if(account_address!=null)
-                    this._account_address = account_address;
-                if (_type != type)
-                    _type = type;
-                
-                return this;
-            }
+        {
+            if(account_address!=null)
+                this._account_address = account_address;
+            if (_type != type)
+                _type = type;
             
-            /// <summary>
-            /// Blockchain from which to query NFTs.
-            /// </summary>
-            /// <param name="chain"> Choose from available 'Chains' enum</param>
-            public Txn_Account SetChain(Chains chain)
-            {
-                this.chain = chain;
-                return this;
-            }
+            return this;
+        }
+        
+        /// <summary>
+        /// Blockchain from which to query NFTs.
+        /// </summary>
+        /// <param name="chain"> Choose from available 'Chains' enum</param>
+        public Txn_Account SetChain(Chains chain)
+        {
+            this.chain = chain;
+            return this;
+        }
 
-            /// <summary>
-            /// Action on successful API Fetch. (*^∇^)ヾ(￣▽￣*)
-            /// </summary>
-            /// <param name="Txn_model"> Use: .OnComplete(Txns=> txns = Txns) , where txns is of type Txn_model;</param>
-            /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
-            public Txn_Account OnComplete(UnityAction<Txn_model> action)
-            {
-                this.OnCompleteAction = action;
-                return this;
-            }
-            
-            /// <summary>
-            /// Action on Error (;•͈́༚•͈̀)(•͈́༚•͈̀;)՞༘՞༘՞
-            /// </summary>
-            /// <param name="UnityAction action"> string.</param>
-            /// <returns> Information on Error as string text.</returns>
-            public Txn_Account OnError(UnityAction<string> action)
-            {
-                this.OnErrorAction = action;
-                return this;
-            }
+        /// <summary>
+        /// Action on successful API Fetch. (*^∇^)ヾ(￣▽￣*)
+        /// </summary>
+        /// <param name="Txn_model"> Use: .OnComplete(Txns=> txns = Txns) , where txns is of type Txn_model;</param>
+        /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
+        public Txn_Account OnComplete(UnityAction<Txn_model> action)
+        {
+            this.OnCompleteAction = action;
+            return this;
+        }
+        
+        /// <summary>
+        /// Action on Error (;•͈́༚•͈̀)(•͈́༚•͈̀;)՞༘՞༘՞
+        /// </summary>
+        /// <param name="UnityAction action"> string.</param>
+        /// <returns> Information on Error as string text.</returns>
+        public Txn_Account OnError(UnityAction<string> action)
+        {
+            this.OnErrorAction = action;
+            return this;
+        }
             
         #endregion
 

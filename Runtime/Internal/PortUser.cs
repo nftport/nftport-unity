@@ -56,27 +56,40 @@ namespace NFTPort.Internal
             public string UnityVersion = "";
             public string ToolWin = "";
             public string UPMImport = "na";
-        }
-
-        private static bool isEditorwin;
-        public static void SetFromEditorWin()
-        {
-            isEditorwin = true;
+            public string AppPlatform = "ni";
         }
         
+        public static void SetFromEditorWin()
+        {
+            _toolWin = ToolWin.NFTPortEditor;
+        }
+        public static void SetFromAuto()
+        {
+            _toolWin = ToolWin.auto;
+        }
+        public static void SetFromOnEnable()
+        {
+            _toolWin = ToolWin.OnEnable;
+        }
+
+        private static ToolWin _toolWin;
+        enum ToolWin
+        {
+            UserScript, // keepontop
+            NFTPortEditor,
+            auto,
+            OnEnable
+        }
         static Source src = new Source();
         public static string GetSource()
         {
+            if (!_initialised)
+                return "";
             src.version = _userPrefs.version;
             src.isEditor = Application.isEditor.ToString();
             src.UnityVersion = Application.unityVersion;
-            
-            if(isEditorwin)
-                src.ToolWin = "NFTPortEditor";
-            else
-            {
-                src.ToolWin = "UserScript";
-            }
+            src.ToolWin = _toolWin.ToString();
+            src.AppPlatform = Application.platform.ToString();
 
             string json = JsonConvert.SerializeObject(
                 src, 
@@ -86,7 +99,8 @@ namespace NFTPort.Internal
                 //NullValueHandling = NullValueHandling.Ignore
             });
 
-            isEditorwin = false;
+            _toolWin = ToolWin.UserScript;
+            
             return json;
         }
 

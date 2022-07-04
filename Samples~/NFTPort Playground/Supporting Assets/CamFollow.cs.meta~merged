@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: ba45c51b30dc5554aa085ac5fe2bf795
+=======
+<<<<<<< HEAD:NFT_UnitySDK/Packages/com.nftport.nftport/Editor/ReadmeEditor_NFTPort.cs.meta
+guid: a057215713c1e8c4187028bfbc6474dd
+=======
+guid: ba45c51b30dc5554aa085ac5fe2bf795
+>>>>>>> dadb4cb58949b3ae0b0d343159fb69ee186022d3:NFT_UnitySDK/Packages/com.nftport.nftport/Samples~/NFTPort Playground/Supporting Assets/CamFollow.cs.meta
+>>>>>>> dadb4cb58949b3ae0b0d343159fb69ee186022d3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

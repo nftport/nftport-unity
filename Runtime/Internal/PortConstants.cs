@@ -16,12 +16,14 @@ namespace NFTPort.Internal
         public const string Docs_AssetDownloader = "https://docs.nftport.xyz/docs/nftport/ZG9jOjU2NjAzOTE0-asset-downloader";
         public const string Docs_ConnectUserWallet = "https://docs.nftport.xyz/docs/nftport/ZG9jOjU3MTU2NTE5-player-wallet-connect";
         public const string Docs_DeployContract = "https://docs.nftport.xyz/docs/nftport/ZG9jOjYzOTc1Mzgw-deploy-contract";
+        public const string Docs_PlayerWalletConnect = "https://docs.nftport.xyz/docs/nftport/ZG9jOjU3MTU2NTE5-connect-player-wallet";
         
         public const string Docs_Txns_Account = "https://docs.nftport.xyz/docs/nftport/ZG9jOjYzOTc1Mzgw-deploy-contract";
 
 
         public const string DiscordInvite = "https://discord.gg/w92sXkNmBR";
         public const string Github = "https://github.com/nftport/nftport-unity.git";
+        public const string Dashboard = "https://dashboard.nftport.xyz/";
 
 
         public const string BaseComponentMenu = "NFTPort/";

@@ -6,6 +6,13 @@ namespace NFTPort
 {
     public static class Port
     {
-        public static string ConnectedPlayerAddress;
+        /// <summary>
+        /// Wallet Connect
+        /// </summary>
+        public static string ConnectedPlayerAddress = "";
+        /// <summary>
+        /// Wallet Connected Network ID
+        /// </summary>
+        public static string ConnectedPlayerNetworkID = "";
     }
 }

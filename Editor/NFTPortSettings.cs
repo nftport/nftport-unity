@@ -38,8 +38,9 @@ namespace NFTPort.Editor
         {
             ReadFromUserPrefs();
 
-            InstallPortDependencies.OnListCheckComplete(arg0 => DependencyAction(arg0));
-            InstallPortDependencies.CheckPkgsList();
+            InstallPortDependencies.OnListCheckCompleteForNewtonSoft(arg0 => DependencyAction(arg0));
+            InstallPortDependencies.OnListCheckCompleteForGLTF(arg0 => DependencyAction(arg0));
+            InstallPortDependencies.CheckPkgsListForNewtonsoft();
         }
 
         static void DependencyAction(bool exists)
@@ -101,8 +102,9 @@ namespace NFTPort.Editor
                 }
             }
         }
-        
 
+
+        private bool apiIsPass = true;
         void OnGUI()
         {
             Texture banner = Resources.Load<Texture>("banner");
@@ -116,20 +118,57 @@ namespace NFTPort.Editor
             
             GUILayout.BeginHorizontal("box");
             var defaultColor = GUI.backgroundColor;
-            if(APIkeyOk())
-                GUI.color = UnityEngine.Color.green;
+
+            if (myAPIString == PortConstants.DefaultAPIKey)
+            {
+                apiIsPass = false;
+                GUI.color = UnityEngine.Color.cyan;
+            }
             else
             {
-                GUI.color = UnityEngine.Color.red;
+                if(APIkeyOk())
+                    GUI.color = UnityEngine.Color.green;
+                else
+                {
+                    GUI.color = UnityEngine.Color.red;
+                }
             }
-            myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString);
+
+            if (!apiIsPass)
+            {
+                if (GUILayout.Button("hide", GUILayout.Width(42)))
+                    apiIsPass = true;
+                
+                myAPIString = EditorGUILayout.TextField("APIKEY", myAPIString); 
+            }
+            else
+            {
+                if (GUILayout.Button("show", GUILayout.Width(42)))
+                    apiIsPass = false;
+                
+                myAPIString = EditorGUILayout.PasswordField("APIKEY", myAPIString); 
+            }
+            
+
             GUI.color = defaultColor;
             GUILayout.EndHorizontal();
-            
-            
+
+
             if (GUILayout.Button("Save API Key", GUILayout.Height(25)))
+            {
                 SaveChanges();
+                apiIsPass = true;
+            }
+                
+
+            GuiLine();
             
+            EditorGUILayout.LabelField("");
+
+            if (userModel != null)
+            {
+                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name + "."); 
+            }
             EditorGUILayout.LabelField("");
             
             GuiLine();
@@ -139,17 +178,6 @@ namespace NFTPort.Editor
             
             if (GUILayout.Button("Community & Support", GUILayout.Height(25)))
                 Application.OpenURL(PortConstants.DiscordInvite);
-            
-            GuiLine();
-            
-            EditorGUILayout.LabelField("");
-
-            if (userModel != null)
-            {
-                EditorGUILayout.LabelField("   Welcome " + userModel.profile.name + "."); 
-            }
-            
-            EditorGUILayout.LabelField("");
             
             GuiLine();
             
@@ -169,9 +197,14 @@ namespace NFTPort.Editor
 
             GUILayout.EndHorizontal();
             
-            
-            if (GUILayout.Button("star the github", GUILayout.Height(17), GUILayout.Width(155)))
+            GUILayout.BeginHorizontal("box");
+            if (GUILayout.Button("Star Github", GUILayout.Height(22))) 
                 Application.OpenURL(PortConstants.Github);
+            
+            if (GUILayout.Button("Go to My Dashboard", GUILayout.Height(22)))
+                Application.OpenURL(PortConstants.Dashboard);
+            
+            GUILayout.EndHorizontal();
 
         }
 
@@ -195,7 +228,12 @@ namespace NFTPort.Editor
             }
             windowopen = true;
             ranLatestrel = false;
-            
+            HighLightReadmeAsset();
+        }
+
+        void HighLightReadmeAsset()
+        {
+            Selection.activeObject=AssetDatabase.LoadMainAssetAtPath("Packages/com.nftport.nftport/Runtime/Readme.asset");
         }
 
         private void OnDisable()
@@ -226,8 +264,8 @@ namespace NFTPort.Editor
         }
         static void SetSize(NFTPortSettings win) 
         {
-            win.minSize = new Vector2(530, 600);
-            win.maxSize = new Vector2(530, 600);
+            win.minSize = new Vector2(530, 650);
+            win.maxSize = new Vector2(530, 650);
         } 
         
         static void GuiLine( int i_height = 1 )
@@ -276,6 +314,7 @@ namespace NFTPort.Editor
         static void UserStats()
         {
             userModel = null;
+            PortUser.SetFromAuto();
             User_Settings
                 .Initialize(true)
                 .OnError(usermodel=> StatsErrore())
