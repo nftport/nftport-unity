@@ -33,7 +33,6 @@ namespace NFTPort.Editor
             notFirstLoad = true;
             
             HighLightReadmeAsset(ReadMePath());
-            _readme.notFirstload = true;
 
         }
 
@@ -53,11 +52,15 @@ namespace NFTPort.Editor
                 Debug.Log("This Sample needs GLTF Utility as it uses .glb models which makes the 3D NFT models compatible to show at browser and at marketplaces like opensea, and Unity's New Input System. Please install it via NFTPort/Install Dependencies");
                 InstallPortDependencies.ShowWindow();
             }
+            
+             HighLightReadmeAsset(ReadMePath());
+            _readme.notFirstload = true;
         }
 
         static void HighLightReadmeAsset(string path)
         {
             Selection.activeObject=AssetDatabase.LoadMainAssetAtPath(path);
+            Debug.Log("View Read Me in samples folder");
         }
 
         static string ReadMePath()
