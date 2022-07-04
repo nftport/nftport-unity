@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 112d799e9f2629740b07ca5ac702b602, type: 3}
+  title: 'NFTPort Playground '
+  sections:
+  - heading: Playground Sample Readme
+    text: This sample explores NFTPort features including custom minting NFTs to
+      player walllet. We will be constantly updating this to include more in game
+      scenarios like galleries, NFT data, Upgrading NFTs and more, so keep an eye
+      out.
+    linkText: Try live WebGL build
+    url: https://nftport.github.io/nftport-unity-PlaygroundSample/
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  - heading: Dependencies
+    text: Playground sample requires GLTFUtility which can be installed via NFTPort/Dependencies
+      and Unity's Input System package available via Package Manager.
+    linkText: 
+    url: 
+  - heading: Setting up input system
+    text: In Project Settings > Player > Other Settings > Active Input Handling ->
+      Select 'Both'.
+    linkText: 
+    url: 
+  - heading: Play and Explore
+    text: The sample is fully playable in editor, when building its initially made
+      for WebGL and requires NFTPort WebGL template for connect wallet feature. Available
+      via player connect sample.
+    linkText: 
+    url: 
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  - heading: Ready Player Me
+    text: This sample uses avatar from our partner Ready Player Me.
+    linkText: https://readyplayer.me/
+    url: https://readyplayer.me/
+  - heading: 
+    text: This sample also uses parts of starter assets provided by official unity,
+      it has been stripped, modded and included within.
+    linkText: 
+    url: 
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  - heading: 
+    text: Looking for a particular usecase or functionality? Read out to us and we'll
+      be happy to help your vision come alive.
+    linkText: Contact Form
+    url: https://form.typeform.com/to/OpyZtxcs?typeform-source=github.com
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  loadedLayout: 1
+  notFirstload: 0
