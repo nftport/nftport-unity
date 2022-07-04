@@ -9,65 +9,21 @@ namespace NFTPort.Internal {
     public class InstallPortDependencies : EditorWindow
     {
         static AddRequest Request;
-        static AddRequest Request2;
         private static RemoveRequest RmRequest;
         private static bool newtonsoftInstalled = false;
         private static bool GLTFInstalled = false;    
-        private static bool InputsysInstalled = false;    
 
-        private static bool refreshing = false;    
         [MenuItem("NFTPort/Install Dependencies")]
         public static void ShowWindow()
         {
             var win = GetWindow<InstallPortDependencies>("Port Dependencies");
             SetSize(win);
         }
-
-        #region Scri[tinDefines
-        public static bool CheckScriptingDefine(string scriptingDefine)
-        {
-            BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-            return defines.Contains(scriptingDefine);
-        }
-
-        public static void SetScriptingDefine(string scriptingDefine)
-        {
-            BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-            if (!defines.Contains(scriptingDefine))
-            {
-                defines += $";{scriptingDefine}";
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, defines);
-            }
-        }
-
-        public static void RemoveScriptingDefine(string scriptingDefine)
-        {
-            BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-            if (defines.Contains(scriptingDefine))
-            {
-                string newDefines = defines.Replace(scriptingDefine, "");
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, newDefines);
-            }
-        }
-        
-
-        #endregion
-        
-        
-        
         void OnGUI()
         {
-            GUILayout.BeginHorizontal("box");
             GUILayout.Label("\n" +
                             " NFTPort needs the following packages : \n" +
                             "", EditorStyles.label);
-            
-            if (GUILayout.Button("Refresh", GUILayout.Height(18)))
-                OnEnable();
-            GUILayout.EndHorizontal();
             
             GUILayout.BeginHorizontal("box");
             GUILayout.Label("com.unity.nuget.newtonsoft-json");
@@ -116,38 +72,12 @@ namespace NFTPort.Internal {
             if (GUILayout.Button("Remove Dependency", GUILayout.Height(25)))
                RemoveGLTF();
             GUILayout.EndHorizontal();
-            
-            GUILayout.BeginHorizontal("box");
-            GUILayout.Label("Unity Input System | Used by NFTPort Playground Sample");
-            if (InputsysInstalled)
-            {
-                GUI.contentColor = Color.green;
-                GUILayout.Label(": installed");
-                GUI.contentColor = defaultcol;
-            }
-            else
-            {
-                GUILayout.Label(": Not Installed in UPM");
-            }
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal("box");
-            if (GUILayout.Button("Install Now", GUILayout.Height(25)))
-                AddInputSys();
-            
-            if (GUILayout.Button("Remove Dependency", GUILayout.Height(25)))
-                RemoveInputSys();
-            GUILayout.EndHorizontal();
-            
-            
-            GUI.contentColor = Color.yellow;
-            if(refreshing)
-                GUILayout.Label("refreshing...");
         }
         
         static void SetSize(InstallPortDependencies win) 
         {
-            win.minSize = new Vector2(330*2, 290);
-            win.maxSize =  new Vector2(330*2, 290);
+            win.minSize = new Vector2(330*2, 120*2);
+            win.maxSize =  new Vector2(330*2, 120*2);
         }
 
         private void OnEnable()
@@ -155,7 +85,6 @@ namespace NFTPort.Internal {
          
             CheckPkgsListForNewtonsoft();
             CheckPkgsListForGLTFt();
-            CheckPkgsListForInputsyst();
         }
 
         #region newtonsoft
@@ -165,7 +94,6 @@ namespace NFTPort.Internal {
         {
             listRequest = Client.List();    // List packages installed for the Project
             EditorApplication.update += CheckPackageProgress;
-            refreshing = true;
         }
         
         private static UnityAction<bool> OnListCheckCompleteActionNewtonPackageExists;
@@ -202,7 +130,6 @@ namespace NFTPort.Internal {
         static void EndListCheck()
         {
             EditorApplication.update -= CheckPackageProgress;
-            refreshing = false;
                 
             if (newtonsoftInstalled)
             {
@@ -279,7 +206,6 @@ namespace NFTPort.Internal {
         {
             listRequestgltf = Client.List();    // List packages installed for the Project
             EditorApplication.update += CheckPackageProgressGLTF;
-            refreshing = true;
         }
 
         static void CheckPackageProgressGLTF()
@@ -307,12 +233,11 @@ namespace NFTPort.Internal {
         static void EndListCheckGLTF()
         {
             EditorApplication.update -= CheckPackageProgressGLTF;
-            refreshing = false;
+            
             if (GLTFInstalled)
             {
                 if(OnListCheckCompleteActionGLTFxists!=null)
                     OnListCheckCompleteActionGLTFxists.Invoke(true); 
-                
             }
             else
             {
@@ -368,115 +293,6 @@ namespace NFTPort.Internal {
                     Debug.Log(RmRequest.Error.message);
 
                 EditorApplication.update -= RemoveProgressGLTF;
-            }
-        }
-
-        #endregion
-        
-        #region UnityInputSystem
-        private static UnityAction<bool> OnListCheckCompleteActionInputSysxists;
-        public static void OnListCheckCompleteForInputSys(UnityAction<bool> action)
-        {
-            OnListCheckCompleteActionInputSysxists = action;
-          
-        }
-        /// ///////// CHECK
-        static ListRequest listRequestinputsys;
-        public static void CheckPkgsListForInputsyst()
-        {
-            listRequestinputsys = Client.List();    // List packages installed for the Project
-            EditorApplication.update += CheckPackageProgressInputsys;
-            refreshing = true;
-        }
-
-        static void CheckPackageProgressInputsys()
-        {
-            if (listRequestinputsys.IsCompleted)
-            {
-                if (listRequestinputsys.Status == StatusCode.Success)
-                    foreach (var package in listRequestinputsys.Result)
-                    {
-                        InputsysInstalled = false;
-                        if (package.name.Contains("com.unity.inputsystem"))
-                        {
-                            InputsysInstalled = true;
-                            break;
-                        }
-                    }
-                else if (listRequestinputsys.Status >= StatusCode.Failure)
-                {
-                    Debug.Log(listRequestinputsys.Error.message);
-                }  
-                
-                EndListCheckInputsys();
-            }
-        }
-        static void EndListCheckInputsys()
-        {
-            EditorApplication.update -= CheckPackageProgressInputsys;
-            refreshing = false;
-            if (InputsysInstalled)
-            {
-                if(OnListCheckCompleteActionInputSysxists!=null)
-                    OnListCheckCompleteActionInputSysxists.Invoke(true);
-
-                SetScriptingDefine("ENABLE_INPUT_SYSTEM");
-            }
-            else
-            {
-                if(OnListCheckCompleteActionInputSysxists!=null)
-                    OnListCheckCompleteActionInputSysxists.Invoke(false); 
-                RemoveScriptingDefine("ENABLE_INPUT_SYSTEM");
-            }
-        }
-        
-        
-        //////////// ADD
-        public static void AddInputSys()
-        {
-            // Add a package to the project
-            Request2 = Client.Add("com.unity.inputsystem");
-            EditorApplication.update += AddProgressInputSys;
-        }
-        
-        static void AddProgressInputSys()
-        {
-            if (Request2.IsCompleted)
-            {
-                if (Request2.Status == StatusCode.Success)
-                {
-                    Debug.Log("Installed: " + Request2.Result.packageId);
-                    CheckPackageProgressInputsys();
-                }
-                    
-                else if (Request2.Status >= StatusCode.Failure)
-                    Debug.Log(Request2.Error.message);
-
-                EditorApplication.update -= AddProgressInputSys;  
-            }
-        }
-        
-        //////////// RM
-        public static void RemoveInputSys()
-        {
-            RemoveScriptingDefine("ENABLE_INPUT_SYSTEM");
-            RmRequest = Client.Remove("com.unity.inputsystem");
-            EditorApplication.update += RemoveProgressInputSys;
-        }
-        
-        static void RemoveProgressInputSys()
-        {
-            if (RmRequest.IsCompleted)
-            {
-                if (RmRequest.Status == StatusCode.Success)
-                {
-                    Debug.Log("removed: " + RmRequest.PackageIdOrName);
-                }
-                else if (RmRequest.Status >= StatusCode.Failure)
-                    Debug.Log(RmRequest.Error.message);
-
-                EditorApplication.update -= RemoveProgressInputSys;
-                CheckPackageProgressInputsys();
             }
         }
 
