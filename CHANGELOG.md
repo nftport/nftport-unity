@@ -1,5 +1,23 @@
 # Changelog
 
+### [0.4.1](https://github.com/nftport/nftport-unity/compare/v0.4.0...v0.4.1) (2022-07-04)
+
+
+### Features
+
+* new SDK readme ([ac10099](https://github.com/nftport/nftport-unity/commit/ac1009968e225da6651b0f16f173b5cade690bc7))
+* Player wallet connect can now also be used from a button inside unity ([0501954](https://github.com/nftport/nftport-unity/commit/0501954bcf7b9c9128b03912aad1325dfaaf0683))
+* Player wallet connect now also provides users connected network ID at Port.ConnectedPlayerNetworkID. ([add3604](https://github.com/nftport/nftport-unity/commit/add3604015ca30f680d8092995f7ed7a11b186c0))
+* Player wallet connect supports editor mock for development ([38ca195](https://github.com/nftport/nftport-unity/commit/38ca195a154d1fcd53329680f147430817bb34ca))
+* Updated home window plus go to dashboard link ([f612772](https://github.com/nftport/nftport-unity/commit/f612772236537224496dc6c2706d3c8186a783b0))
+* Updated home window with hide API option ([9020054](https://github.com/nftport/nftport-unity/commit/9020054ec1fe0bb852c00753b95b1a0b10dd1d97))
+
+
+### Bug Fixes
+
+* Custom dependency check and tool for Playground sample for unity Input System ([e51027b](https://github.com/nftport/nftport-unity/commit/e51027b62a487bea03ed19bfdcd2bd2049858de3))
+* custom dependency check tool and updated window for playground sample ([6dda1fa](https://github.com/nftport/nftport-unity/commit/6dda1fae4383ae2bb8f55514e2828b6dff4fe82f))
+
 ## [0.4.0](https://github.com/nftport/nftport-unity/compare/v0.3.1...v0.4.0) (2022-06-10)
 
 
