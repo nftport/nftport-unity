@@ -23,8 +23,8 @@ namespace NFTPort.Editor
 
             _readme = AssetDatabase.LoadAssetAtPath<Readme_NFTPort>(ReadMePath());
 
-            //if (!_readme.notFirstload)
-               // FirstLoad();
+            if (!_readme.notFirstload)
+                FirstLoad();
         }     
 
         static void FirstLoad()
@@ -33,7 +33,6 @@ namespace NFTPort.Editor
             notFirstLoad = true;
             
             HighLightReadmeAsset(ReadMePath());
-            _readme.notFirstload = true;
 
         }
 
@@ -54,8 +53,8 @@ namespace NFTPort.Editor
                 InstallPortDependencies.ShowWindow();
             }
             
-             if (!_readme.notFirstload)
-                FirstLoad();
+             HighLightReadmeAsset(ReadMePath());
+            _readme.notFirstload = true;
         }
 
         static void HighLightReadmeAsset(string path)
