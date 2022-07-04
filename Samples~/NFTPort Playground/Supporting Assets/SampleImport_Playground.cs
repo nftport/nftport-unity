@@ -41,13 +41,16 @@ namespace NFTPort.Editor
         {
             InstallPortDependencies.OnListCheckCompleteForGLTF(arg0 => GLTFDependencyAction(arg0));
             InstallPortDependencies.CheckPkgsListForGLTFt();
+            
+            InstallPortDependencies.OnListCheckCompleteForInputSys((arg0 => GLTFDependencyAction(arg0)));
+            InstallPortDependencies.CheckPkgsListForInputsyst();
         }
 
         static void GLTFDependencyAction(bool exists)
         {
             if (!exists)
             {
-                Debug.Log("This Sample needs GLTF Utility as it uses .glb models which makes the 3D NFT models compatible to show at browser and at marketplaces like opensea, please install it via NFTPort/Install Dependencies");
+                Debug.Log("This Sample needs GLTF Utility as it uses .glb models which makes the 3D NFT models compatible to show at browser and at marketplaces like opensea, and Unity's New Input System. Please install it via NFTPort/Install Dependencies");
                 InstallPortDependencies.ShowWindow();
             }
         }
