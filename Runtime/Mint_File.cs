@@ -12,7 +12,8 @@ namespace NFTPort
     using Utils;
 
     /// <summary>
-    /// Easy minting w/URL, If you wish to customize the minting process e.g. use your own contract, set more metadata, see Customizable minting.
+    /// Easy minting via File Upload, Create and mint any file to any wallet as NFT using file upload at any moment in the game. Usefull to make anything into NFT including game objects, audio, textures, files, unity prefabs, procedural objects and more.
+    /// If you wish to customize the minting process e.g. use your own contract, set more metadata, see Customizable minting.
     /// </summary>
     [AddComponentMenu(PortConstants.BaseComponentMenu + PortConstants.FeatureName_Mint_File)]
     [ExecuteAlways]
@@ -141,7 +142,7 @@ namespace NFTPort
         }
 
         /// <summary>
-        /// Action on File Upload Progress returining Progress percentage
+        /// Action on File Upload Progress returning Progress percentage
         /// </summary>
         /// <returns> float uploadProgress .</returns>
         public Mint_File OnProgress(UnityAction<int> action)
