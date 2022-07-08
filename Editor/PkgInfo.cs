@@ -21,7 +21,7 @@ namespace NFTPort.Editor
                     return pkgJson.version;
                 }
             }
-            return null;
+            return String.Empty;
         }
     }
 }
