@@ -73,6 +73,14 @@ namespace NFTPort.Editor
         {
             Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Mint_URL).AddComponent<Mint_URL>().gameObject;
         }
+        
+        [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Mint_File)]
+        [MenuItem(GameObjMenu + PortConstants.FeatureName_Mint_File)]
+        static void Spawn_Mint_File()
+        {
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Mint_File).AddComponent<Mint_File>().gameObject;
+        }
+        
         /*
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Deploy)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Deploy)]

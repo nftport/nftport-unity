@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/nftport/nftport-unity/compare/v0.4.1...v0.5.0) (2022-07-08)
+
+
+### Features
+
+* Easy Mint via File upload : Mint any in-game provedural NFTs to any wallet with single call. ([8bdd1c0](https://github.com/nftport/nftport-unity/commit/8bdd1c0229eb98dbaeaaff2a5753d4b4bd7f0132))
+
 ### [0.4.1](https://github.com/nftport/nftport-unity/compare/v0.4.0...v0.4.1) (2022-07-04)
 
 
@@ -11,6 +18,7 @@
 * Player wallet connect supports editor mock for development ([38ca195](https://github.com/nftport/nftport-unity/commit/38ca195a154d1fcd53329680f147430817bb34ca))
 * Updated home window plus go to dashboard link ([f612772](https://github.com/nftport/nftport-unity/commit/f612772236537224496dc6c2706d3c8186a783b0))
 * Updated home window with hide API option ([9020054](https://github.com/nftport/nftport-unity/commit/9020054ec1fe0bb852c00753b95b1a0b10dd1d97))
+* Ready Player Me avatars for Playground sample
 
 
 ### Bug Fixes
