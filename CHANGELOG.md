@@ -5,7 +5,7 @@
 
 ### Features
 
-* Easy Mint via File upload : Mint any in-game provedural NFTs to any wallet with single call. ([8bdd1c0](https://github.com/nftport/nftport-unity/commit/8bdd1c0229eb98dbaeaaff2a5753d4b4bd7f0132))
+* Easy Mint via File upload : Mint any in-game procedural NFTs to any wallet with single call. ([8bdd1c0](https://github.com/nftport/nftport-unity/commit/8bdd1c0229eb98dbaeaaff2a5753d4b4bd7f0132))
 
 ### [0.4.1](https://github.com/nftport/nftport-unity/compare/v0.4.0...v0.4.1) (2022-07-04)
 
