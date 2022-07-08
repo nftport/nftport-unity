@@ -11,6 +11,7 @@
 * Player wallet connect supports editor mock for development ([38ca195](https://github.com/nftport/nftport-unity/commit/38ca195a154d1fcd53329680f147430817bb34ca))
 * Updated home window plus go to dashboard link ([f612772](https://github.com/nftport/nftport-unity/commit/f612772236537224496dc6c2706d3c8186a783b0))
 * Updated home window with hide API option ([9020054](https://github.com/nftport/nftport-unity/commit/9020054ec1fe0bb852c00753b95b1a0b10dd1d97))
+* Ready Player Me avatars for Playground sample
 
 
 ### Bug Fixes
