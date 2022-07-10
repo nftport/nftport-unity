@@ -51,7 +51,7 @@ namespace NFTPort.Editor
             }
             else
             {
-                InstallPortDependencies.ShowWindow();
+                //InstallPortDependencies.ShowWindow(); //auto newtonsoft pkg dependency in unity 2021. // gltf only needed on sample scene, checks there.
             }
         }
 
