@@ -54,6 +54,8 @@ namespace NFTPort
             [SerializeField]
             Includes include = Includes.metadata;
 
+            [Tooltip("One API call might not be able to provide all NFTs in one go if user holds a lot of NFTs and not filtered, this string is passed in API call which can be used in next one to continue from last query")]
+            public string continuation;
             
             private string RequestUriInit = "https://api.nftport.xyz/v0/accounts/";
             private string WEB_URL;
@@ -153,6 +155,17 @@ namespace NFTPort
             }
             
             /// <summary>
+            /// Set Continuation
+            /// </summary>
+            ///<param name="continuation"> as string.</param>
+            public NFTs_OwnedByAnAccount SetContinuation(string continuation)
+            {
+                this.continuation = continuation;
+                return this;
+            }
+            
+            
+            /// <summary>
             /// Action on succesfull API Fetch.
             /// </summary>
             /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
@@ -191,7 +204,13 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit  + address + "?chain=" + chain.ToString().ToLower() + "&include=" + include.ToString().ToLower();
+                WEB_URL = RequestUriInit + address + "?chain=" + chain.ToString().ToLower();
+                if (continuation != "")
+                {
+                    WEB_URL = WEB_URL + "&continuation=" + continuation;
+                } 
+                WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
+             
                 if (contract_address != "")
                     WEB_URL = WEB_URL + "&contract_address=" + contract_address;
                 

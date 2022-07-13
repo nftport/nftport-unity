@@ -15,7 +15,7 @@ namespace NFTPort
         public Contract contract;
         public string owner;
         public int total;
-        public object continuation;
+        public string continuation;
     }
     
     [Serializable]
