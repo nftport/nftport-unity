@@ -96,7 +96,7 @@ namespace NFTPort
         public List<Royalty> royalties;
         public List<string> signatures;
         public int total;
-        public Assets assets;
+        public Assets assets = new Assets();
     }
     
     [Serializable]

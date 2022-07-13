@@ -30,6 +30,7 @@ namespace NFTPort
         {
             private UnityAction<string> OnErrorAction;
             private UnityAction<UnityEngine.Texture2D> OnCompleteAction;
+            private UnityAction<Nft> OnCompleteReturnLinkedNftAction;
             private static UnityAction<string> OnAllAssetsDownloadEnded;
             
             /// <summary>
@@ -47,10 +48,22 @@ namespace NFTPort
             /// <summary>
             /// Action on succesfull Download
             /// </summary>
-            /// <returns> Texture2D </returns>
+            /// <returns> Texture2D of Nft</returns>
             public GetImage OnComplete(UnityAction<Texture2D> action)
             {
                 this.OnCompleteAction = action;
+                return this;
+            }
+
+            /// <summary>
+            /// Action on succesfull Download
+            /// </summary>
+            /// <returns>  Nft class with attched Texture2D</returns>
+            private Nft OnCompleteLinkNft;
+            public GetImage OnCompleteReturnLinkedNft(Nft Nft, UnityAction<Nft> action)
+            {
+                OnCompleteLinkNft = Nft;
+                this.OnCompleteReturnLinkedNftAction = action;
                 return this;
             }
             
@@ -95,12 +108,18 @@ namespace NFTPort
                 StartCoroutine(DownloadTexture(URL, NFT));
                 return this;
             }
-
             
+            public void Stop(bool destroy = true)
+            {
+                StopAllCoroutines();
+                End();
+            }
+
+            private UnityWebRequest request;
             IEnumerator DownloadTexture(string URL, Nft NFT = null)
             {
                 assetsDownloaders++;
-                using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(URL))
+                using (request = UnityWebRequestTexture.GetTexture(URL))
                 {
                     yield return request.SendWebRequest();
 
@@ -111,6 +130,7 @@ namespace NFTPort
                             Debug.Log($"Null data. Response code: {request.responseCode}. Result {request.downloadHandler.text}");
                         if(afterError!=null)
                             afterError.Invoke();
+                        End();
                     }
                     else
                     {
@@ -122,7 +142,13 @@ namespace NFTPort
 
                         if (NFT != null)
                             NFT.assets.image_texture = lastGetImage;
+
                         
+                        if ((OnCompleteReturnLinkedNftAction != null && OnCompleteLinkNft != null && lastGetImage != null))
+                        {
+                            OnCompleteLinkNft.assets.image_texture = lastGetImage;
+                            OnCompleteReturnLinkedNftAction.Invoke(OnCompleteLinkNft);
+                        }
                         if(OnCompleteAction!=null && lastGetImage!=null)
                             OnCompleteAction.Invoke(lastGetImage);
                         
@@ -137,9 +163,16 @@ namespace NFTPort
                             OnAllAssetsDownloadEnded("assetsDownloaders Ended");
                     }
                     
-                    if(_destroyAtEnd)
-                        Destroy (this.gameObject);
                 }
+            }
+
+            public void End()
+            {
+                if(request != null)
+                    request.Dispose();
+                StopAllCoroutines();
+                if(_destroyAtEnd)
+                    Destroy (this.gameObject);
             }
               
         }
