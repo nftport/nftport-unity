@@ -82,8 +82,8 @@ namespace NFTPort
             /// </summary>
             /// <param name="URL"> Pass URL of Image asset as string.</param>
             /// <param name="bool isIPFS"> Pass true if URL is of format https://ipfs.io/ipfs/bafybeiejnu5pteh2rqqewes2vj2nyuos6zbrrm6ctoglpq6k6cdgbmn44i' </param>
-            /// <param name="NFT_Assets in NFTs_model"> Optional nft reference can be passed here to assign fetched texture to Nft.assets.image_texture </param>
-            public GetImage Download(string URL, Assets NFT_Assets = null, bool isIPFS = false)
+            /// <param name="NFT in NFTs_model"> Optional nft reference can be passed here to assign fetched texture to NFT.assets.image_texture </param>
+            public GetImage Download(string URL, Nft NFT = null, bool isIPFS = false)
             {
                 if(isIPFS)
                     URL = "https://cloudflare-ipfs.com/ipfs/" + URL.Replace("ipfs://", "");
@@ -92,12 +92,12 @@ namespace NFTPort
                     OnFetchStart.Invoke();
                 
                 StopAllCoroutines();
-                StartCoroutine(DownloadTexture(URL, NFT_Assets));
+                StartCoroutine(DownloadTexture(URL, NFT));
                 return this;
             }
 
             
-            IEnumerator DownloadTexture(string URL, Assets NFT_Assets = null)
+            IEnumerator DownloadTexture(string URL, Nft NFT = null)
             {
                 assetsDownloaders++;
                 using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(URL))
@@ -120,8 +120,8 @@ namespace NFTPort
                         request.Dispose();
                         //yield return request.result;
 
-                        if (NFT_Assets != null)
-                            NFT_Assets.image_texture = lastGetImage;
+                        if (NFT != null)
+                            NFT.assets.image_texture = lastGetImage;
                         
                         if(OnCompleteAction!=null && lastGetImage!=null)
                             OnCompleteAction.Invoke(lastGetImage);
