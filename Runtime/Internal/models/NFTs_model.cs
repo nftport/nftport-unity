@@ -83,8 +83,10 @@ namespace NFTPort
         public string creator_address;
         public string file_url;
         public string cached_file_url;
+        //public AssetDownloader.Type cached_file_urlType;
         public string animation_url;
         public string cached_animation_url;
+        //public AssetDownloader.Type cached_animation_urlType;
         public DateTime mint_date;
         public FileInformation file_information;
         public DateTime updated_date;
