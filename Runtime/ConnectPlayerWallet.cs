@@ -12,12 +12,12 @@ namespace NFTPort
     [HelpURL(PortConstants.Docs_ConnectUserWallet)]
     public class ConnectPlayerWallet : MonoBehaviour
     {
+        public string MockconnectedWalletAddress = "0x3691Ca2c8D2051f0B8b9d4aCb8941771aBc1bf9b";
+        public string MockconnectedNetworkID = "1";
+        [Space(30)]
         public string connectedWalletAddress;
         public string connectedNetworkID;
-        
-        [HideInInspector] public string MockconnectedWalletAddress;
-        [HideInInspector] public string MockconnectedNetworkID;
-        
+
         public UnityEvent afterSuccess;
         private UnityAction<string,string> OnCompleteAction;
 
@@ -68,8 +68,6 @@ namespace NFTPort
         {
             
 #if UNITY_EDITOR
-            
-            
             Port.ConnectedPlayerAddress = connectedWalletAddress;
             Port.ConnectedPlayerNetworkID = connectedNetworkID;
 #endif
@@ -77,6 +75,14 @@ namespace NFTPort
             this.gameObject.name = "PlayerConnect_NFTPort";
         }
 
+        /// <summary>
+        /// Use this to hook up other wallet connect features to NFTPort wallet connect to access Port.connectedplayeraddress
+        /// </summary>
+        /// <param name="walletaddress"></param>
+        public void ConnectThisToNFTPortWalletConnect(string connectedWalletAddress)
+        {
+            Port.ConnectedPlayerAddress = connectedWalletAddress;
+        }
 
         //called from index - For WebGL
         public void WebHook_GetNetworkID(string networkID)
