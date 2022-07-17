@@ -97,7 +97,7 @@ namespace NFTPort.Internal {
             GUILayout.Label("");
             
             GUILayout.BeginHorizontal("box");
-            GUILayout.Label("prefrontalcortex/org.khronos.unitygltf | Used by NFTPort Playground Sample");
+            GUILayout.Label("gltFast| Used by NFTPort Playground Sample");
             if (GLTFInstalled)
             {
                 GUI.contentColor = Color.green;
@@ -326,7 +326,7 @@ namespace NFTPort.Internal {
         public static void AddGLTF()
         {
             // Add a package to the project
-            Request = Client.Add("https://github.com/prefrontalcortex/UnityGLTF.git?path=/UnityGLTF/Assets/UnityGLTF");
+            Request = Client.Add("https://github.com/atteneder/glTFast.git");
             EditorApplication.update += AddProgressGLTF;
         }
         
@@ -350,7 +350,7 @@ namespace NFTPort.Internal {
         //////////// RM
         public static void RemoveGLTF()
         {
-            RmRequest = Client.Remove("org.khronos.unitygltf");
+            RmRequest = Client.Remove("com.atteneder.gltfast");
             EditorApplication.update += RemoveProgressGLTF;
         }
         
@@ -360,7 +360,7 @@ namespace NFTPort.Internal {
             {
                 if (RmRequest.Status == StatusCode.Success)
                 {
-                    Debug.Log("removed: " + "org.khronos.unitygltf");
+                    Debug.Log("removed: " + "com.atteneder.gltfast");
                     CheckPkgsListForGLTFt();
                 }
                 else if (RmRequest.Status >= StatusCode.Failure)
