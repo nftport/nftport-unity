@@ -20,11 +20,26 @@
 ### Introduction
 NFTPort's Unity extension wraps NFTPort API's and provides tools and features to fast-track development and create cross-chain compatible NFT games and products in Unity with fast and reliable onchain data.
 
-### Get NFTPort Unity extension
-Import as a package using Git URL: In Unity's Package Manager, click the '+' on the top left corner and select 'Add package from git URL.' 
+# Installation
+
+You can install this package from git, compatible with UPM (Unity Package Manager).
+1. Open `Window > Package Manager`
+2. In Package Manager, click <kbd>+</kbd> and select <kbd>Add Package from git URL</kbd>
+3. Paste 
   ```
   https://github.com/nftport/nftport-unity.git
   ```
+4. Click <kbd>Add</kbd>.  
+   
+Done! 
+
+If you want to target a specific version, append `#release/<some-tag>` or another specific tag from the Release section.
+
+NFTPort is now available in the Packages/ folder. You can import a number of samples:
+1. Open `Window > Package Manager`
+2. Select `NFTPort`
+3. Select `Samples` and import the desired ones.
+4. Explore [Documentation Features](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details) 
 
 </br>
 Upto 100 or more free NFT mints and 5 fully owned customizable contracts for your first product/development.
