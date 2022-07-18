@@ -211,7 +211,7 @@ namespace NFTPort
 
         string BuildUrl()
         {
-            https: //api.nftport.xyz/v0/mints/easy/files?chain=polygon&name=s&description=sss&mint_to_address=s
+            //https: //api.nftport.xyz/v0/mints/easy/files?chain=polygon&name=s&description=sss&mint_to_address=s
             RequestURL = "?chain=" + _chain.ToString().ToLower() + "&name=" + _name + "&description=" + _description +
                          "&mint_to_address=" + _mintToAddress;
             WEB_URL = RequestUriInit + RequestURL;
