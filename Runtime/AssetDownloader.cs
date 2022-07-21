@@ -59,7 +59,6 @@ namespace NFTPort
             /// <returns>  Type </returns>
             public DetemineURLContentType OnComplete(UnityAction<Nft, string> action)
             {
-                
                 this.OnCompleteAction = action;
                 return this;
             }
@@ -81,6 +80,9 @@ namespace NFTPort
             /// </summary>
             public DetemineURLContentType Run(Nft Nft,string URL, bool isIPFS = false)
             {
+                if (URL.Contains("ipfs://")) //check just in case user is passing both types of strings
+                    isIPFS = true;
+                
                 if(isIPFS)
                     URL = "https://cloudflare-ipfs.com/ipfs/" + URL.Replace("ipfs://", "");
 
@@ -141,6 +143,11 @@ namespace NFTPort
                         End();
                     }
                 }
+            }
+            public void Stop(bool destroy = true)
+            {
+                StopAllCoroutines();
+                End();
             }
 
             public void End()
@@ -226,6 +233,8 @@ namespace NFTPort
             /// <param name="NFT in NFTs_model"> Optional nft reference can be passed here to assign fetched texture to NFT.assets.image_texture </param>
             public GetImage Download(string URL, Nft NFT = null, bool isIPFS = false)
             {
+                if (URL.Contains("ipfs://")) //check just in case user is passing both types of strings
+                    isIPFS = true;
                 if(isIPFS)
                     URL = "https://cloudflare-ipfs.com/ipfs/" + URL.Replace("ipfs://", "");
 

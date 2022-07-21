@@ -290,7 +290,7 @@ namespace NFTPort.Internal {
                     foreach (var package in listRequestgltf.Result)
                     {
                         GLTFInstalled = false;
-                        if (package.name.Contains("org.khronos.unitygltf"))
+                        if (package.name.Contains("com.atteneder.gltfast"))
                         {
                             GLTFInstalled = true;
                             break;
