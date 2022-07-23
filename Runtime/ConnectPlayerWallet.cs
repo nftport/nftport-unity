@@ -12,12 +12,12 @@ namespace NFTPort
     [HelpURL(PortConstants.Docs_ConnectUserWallet)]
     public class ConnectPlayerWallet : MonoBehaviour
     {
+        public string MockconnectedWalletAddress = "0x3691Ca2c8D2051f0B8b9d4aCb8941771aBc1bf9b";
+        public string MockconnectedNetworkID = "1";
+        [Space(30)]
         public string connectedWalletAddress;
         public string connectedNetworkID;
-        
-        [HideInInspector] public string MockconnectedWalletAddress;
-        [HideInInspector] public string MockconnectedNetworkID;
-        
+
         public UnityEvent afterSuccess;
         private UnityAction<string,string> OnCompleteAction;
 
@@ -35,7 +35,7 @@ namespace NFTPort
         }
         
         /// <summary>
-        /// Action when player successfully connects the wallet.
+        /// Action when player successfully connects the wallet returning connected address and connected networkID
         /// </summary>
         /// <returns> Player Wallet Address String </returns>
         public ConnectPlayerWallet OnComplete(UnityAction<string,string> action)
@@ -46,7 +46,7 @@ namespace NFTPort
         
         
         /// <summary>
-        /// Use this function on a Button from inside Unity to Connect Account
+        /// Use this function on a Button from inside Unity to Connect Account, If a mock wallet is entered It'll be connected only on editor level
         /// </summary>
         public void WebSend_GetAddress()
         {
@@ -68,8 +68,6 @@ namespace NFTPort
         {
             
 #if UNITY_EDITOR
-            
-            
             Port.ConnectedPlayerAddress = connectedWalletAddress;
             Port.ConnectedPlayerNetworkID = connectedNetworkID;
 #endif
@@ -77,6 +75,14 @@ namespace NFTPort
             this.gameObject.name = "PlayerConnect_NFTPort";
         }
 
+        /// <summary>
+        /// Use this to hook up other wallet connect features to NFTPort wallet connect to access Port.connectedplayeraddress
+        /// </summary>
+        /// <param name="walletaddress"></param>
+        public void ConnectThisToNFTPortWalletConnect(string connectedWalletAddress)
+        {
+            WebHook_GetAddress(connectedWalletAddress);
+        }
 
         //called from index - For WebGL
         public void WebHook_GetNetworkID(string networkID)

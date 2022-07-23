@@ -15,7 +15,7 @@ namespace NFTPort
         public Contract contract;
         public string owner;
         public int total;
-        public object continuation;
+        public string continuation;
     }
     
     [Serializable]
@@ -55,8 +55,8 @@ namespace NFTPort
         public string image;
         public int edition;
         public object date;
-        public List<Trait> traits;
-        public List<Attribute> attributes;
+        public List<Trait> traits = new List<Trait>();
+        public List<Attribute> attributes = new List<Attribute>();
         public string compiler;
         public string background_color;
         public string external_url;
@@ -78,7 +78,7 @@ namespace NFTPort
     {
         public string name;
         public string chain;
-        public Metadata metadata;
+        public Metadata metadata = new Metadata();
         public string description;
         public string creator_address;
         public string file_url;
@@ -92,11 +92,11 @@ namespace NFTPort
         public string token_id;
         public string contract_address;
         public string contract_type;
-        public List<Creator> creators;
-        public List<Royalty> royalties;
-        public List<string> signatures;
+        public List<Creator> creators = new List<Creator>();
+        public List<Royalty> royalties = new List<Royalty>();
+        public List<string> signatures = new List<string>();
         public int total;
-        public Assets assets;
+        public Assets assets = new Assets();
     }
     
     [Serializable]

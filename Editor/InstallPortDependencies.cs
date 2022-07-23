@@ -97,7 +97,7 @@ namespace NFTPort.Internal {
             GUILayout.Label("");
             
             GUILayout.BeginHorizontal("box");
-            GUILayout.Label("GLTF-Utility | Used by NFTPort Playground Sample");
+            GUILayout.Label("gltFast| Used by NFTPort Playground Sample");
             if (GLTFInstalled)
             {
                 GUI.contentColor = Color.green;
@@ -290,7 +290,7 @@ namespace NFTPort.Internal {
                     foreach (var package in listRequestgltf.Result)
                     {
                         GLTFInstalled = false;
-                        if (package.name.Contains("com.siccity.gltfutility"))
+                        if (package.name.Contains("com.atteneder.gltfast"))
                         {
                             GLTFInstalled = true;
                             break;
@@ -326,8 +326,7 @@ namespace NFTPort.Internal {
         public static void AddGLTF()
         {
             // Add a package to the project
-            //TODO: if PR https://github.com/Siccity/GLTFUtility/pull/203 then change to https://github.com/Siccity/GLTFUtility.git ?? 
-            Request = Client.Add("https://github.com/saszer/GLTFUtility.git");
+            Request = Client.Add("https://github.com/atteneder/glTFast.git");
             EditorApplication.update += AddProgressGLTF;
         }
         
@@ -351,7 +350,7 @@ namespace NFTPort.Internal {
         //////////// RM
         public static void RemoveGLTF()
         {
-            RmRequest = Client.Remove("com.siccity.gltfutility");
+            RmRequest = Client.Remove("com.atteneder.gltfast");
             EditorApplication.update += RemoveProgressGLTF;
         }
         
@@ -361,7 +360,7 @@ namespace NFTPort.Internal {
             {
                 if (RmRequest.Status == StatusCode.Success)
                 {
-                    Debug.Log("removed: " + "https://github.com/Siccity/GLTFUtility.git");
+                    Debug.Log("removed: " + "com.atteneder.gltfast");
                     CheckPkgsListForGLTFt();
                 }
                 else if (RmRequest.Status >= StatusCode.Failure)
