@@ -16,7 +16,6 @@
 * changes in AssetDownloader.GetImage Feature optional parameter field, allowing to pass full Nft class instead of just Nft.Assets. ([7cdec35](https://github.com/nftport/nftport-unity/commit/7cdec35ddeb6d532504eb99a857f35efe9a5921b))
 * Connect Player Wallet Mock wallet overiding bug fix ([5a19adc](https://github.com/nftport/nftport-unity/commit/5a19adc7398ebdc719c6add5ff207cfb8eb4a0a8))
 * GLTF-Utility dependency for playground sample is changed to gtlFast. ([26f4729](https://github.com/nftport/nftport-unity/commit/26f4729e2b24e0d2ec579c725f01886d58919cde))
-* GLTF-Utility dependency for playground sample is changed to prefrontalcorte/UnityGLTF by Kronos group for glb models ([a776663](https://github.com/nftport/nftport-unity/commit/a77666329b7737fba02e3de09c27bbb6aa5f3d30))
 
 ## [0.5.0](https://github.com/nftport/nftport-unity/compare/v0.4.1...v0.5.0) (2022-07-08)
 
