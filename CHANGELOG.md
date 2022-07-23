@@ -1,5 +1,23 @@
 # Changelog
 
+### [0.5.1](https://github.com/nftport/nftport-unity/compare/v0.5.0...v0.5.1) (2022-07-23)
+
+
+### Features
+
+* Adds continuation parameter to NFTs of Account Feature Allowing to query accounts with many NFTs ([4950e04](https://github.com/nftport/nftport-unity/commit/4950e04e4f873e9e2a45f026e8907845c647792f))
+* Adds continuation parameter to NFTs of Contract Feature at .SetContinuation() ([cee68e0](https://github.com/nftport/nftport-unity/commit/cee68e0e2bba0ff949bfdad43acfbba37187e1cc))
+* ConnectPlayerWallet feature adds a new public function ConnectThisToNFTPortWalletConnect making feature more composable with other wallet connect sdks for unity. ([537e39d](https://github.com/nftport/nftport-unity/commit/537e39d7590defdd0cd514450df5690e68c2df6c))
+* New member function in Asset Downloader, OnCompleteReturnLinkedNft() action returning Nft class with Texture2D ( NFTImage) attached in Nft.Assets.Texture when passed an Nft with it + Stop() fn to stop any in progress downloads ([d93ce27](https://github.com/nftport/nftport-unity/commit/d93ce273c7708723dbc7937f7e1d6eae60423001))
+
+
+### Bug Fixes
+
+* changes in AssetDownloader.GetImage Feature optional parameter field, allowing to pass full Nft class instead of just Nft.Assets. ([7cdec35](https://github.com/nftport/nftport-unity/commit/7cdec35ddeb6d532504eb99a857f35efe9a5921b))
+* Connect Player Wallet Mock wallet overiding bug fix ([5a19adc](https://github.com/nftport/nftport-unity/commit/5a19adc7398ebdc719c6add5ff207cfb8eb4a0a8))
+* GLTF-Utility dependency for playground sample is changed to gtlFast. ([26f4729](https://github.com/nftport/nftport-unity/commit/26f4729e2b24e0d2ec579c725f01886d58919cde))
+* GLTF-Utility dependency for playground sample is changed to prefrontalcorte/UnityGLTF by Kronos group for glb models ([a776663](https://github.com/nftport/nftport-unity/commit/a77666329b7737fba02e3de09c27bbb6aa5f3d30))
+
 ## [0.5.0](https://github.com/nftport/nftport-unity/compare/v0.4.1...v0.5.0) (2022-07-08)
 
 
