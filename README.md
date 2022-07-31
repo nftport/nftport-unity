@@ -67,7 +67,7 @@ Upto 100 or more free NFT mints and 5 fully owned customizable contracts for you
 
 -------
 
-#### View Advanced Playground Demo Template : https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template
+#### View Advanced Playground Demo Template Project: https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template
 <h1 align="center">
 
 ![ezgif-1-41d05440f3](https://user-images.githubusercontent.com/43649755/182003875-dd34ffaf-ebe2-4db5-8c2a-e7205220b227.gif)
