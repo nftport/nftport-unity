@@ -45,15 +45,17 @@ NFTPort is now available in the Packages/ folder. You can import a number of sam
 </br>
 Upto 100 or more free NFT mints and 5 fully owned customizable contracts for your first product/development.
 
-</br></br>
-
-![3dfree](https://user-images.githubusercontent.com/43649755/175334913-12e4310f-06c5-407e-ac9d-fa0681c595f7.gif) 
+</br>
 
 -------
 
 ### [Documentation](https://docs.nftport.xyz/docs/nftport/ZG9jOjUwMzc2NzA5-getting-started) 
 ### [Support](https://discord.gg/w92sXkNmBR)
 ### [ChangeLog](https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md)
+
+-------
+
+![3dfree](https://user-images.githubusercontent.com/43649755/175334913-12e4310f-06c5-407e-ac9d-fa0681c595f7.gif) 
 
 -------
 
