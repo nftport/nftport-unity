@@ -63,6 +63,32 @@ namespace NFTPort
         public string animation_url;
         public string dna;
         public string id;
+        public Properties properties;
+        public int seller_fee_basis_points;
+        public string symbol;
+        public Collection collection;
+    }
+    
+    [Serializable]
+    public class Collection
+    {
+        public string family;
+        public string name;
+    }
+    
+    [Serializable]
+    public class Properties
+    {
+        public string category;
+        public List<Creator> creators;
+        public List<Files> files;
+    }
+    
+    [Serializable]
+    public class Files
+    {
+        public string type;
+        public string uri;
     }
 
     [Serializable]
@@ -81,6 +107,8 @@ namespace NFTPort
         public Metadata metadata = new Metadata();
         public string description;
         public string creator_address;
+        public string mint_address;
+        public string collection_id;
         public string file_url;
         public string cached_file_url;
         public string animation_url;

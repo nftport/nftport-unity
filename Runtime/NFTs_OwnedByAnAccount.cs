@@ -25,7 +25,8 @@ namespace NFTPort
         {
             ethereum,
             polygon,
-            rinkeby
+            rinkeby,
+            solana
         }
         
         public enum Includes
@@ -46,7 +47,7 @@ namespace NFTPort
             [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
            
             [SerializeField]
-            [Tooltip("Leave blank if not using")]
+            [Tooltip("Filter from a collection, EVM only, Leave blank if not using")]
             string contract_address;
             
             [Header("Include optional data in the response.")]
@@ -204,16 +205,23 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit + address + "?chain=" + chain.ToString().ToLower();
-                if (continuation != "")
+                if (chain == Chains.solana)
                 {
-                    WEB_URL = WEB_URL + "&continuation=" + continuation;
-                } 
-                WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/accounts/" + address + "?include=" + include;
+                }
+                else
+                {
+                    WEB_URL = RequestUriInit + address + "?chain=" + chain.ToString().ToLower();
+                    if (continuation != "")
+                    {
+                        WEB_URL = WEB_URL + "&continuation=" + continuation;
+                    } 
+                    WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
              
-                if (contract_address != "")
-                    WEB_URL = WEB_URL + "&contract_address=" + contract_address;
-                
+                    if (contract_address != "")
+                        WEB_URL = WEB_URL + "&contract_address=" + contract_address;
+                }
+
                 return WEB_URL;
             }
             
@@ -234,6 +242,7 @@ namespace NFTPort
 
                     if (request.error != null)
                     {
+                        NFTs = null;
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)

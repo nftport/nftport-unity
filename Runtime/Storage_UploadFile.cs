@@ -153,7 +153,7 @@ namespace NFTPort
 
         void FileLocate(string path)
         {
-            if (!File.Exists(path))
+            if (!System.IO.File.Exists(path))
             {
                 if (OnErrorAction != null)
                     OnErrorAction("(~_^) ERROR! Can't locate the file to upload: " + path);
