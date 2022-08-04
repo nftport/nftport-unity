@@ -67,6 +67,86 @@ Create cross-chain games and products
 
 -------
 
+##Feature list: <br/>
+
+### Multi-Chain NFT Data
+Get fast and reliable data.
+
+| API Feature                               | Ethereum | Rinkeby | Polygon | Solana | 
+| ----------------------------------- | -------- | ------- | ------- |  ------- | 
+| **Contracts, Metadata & Assets**    |          |         |         |          
+| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅       |   ✅   | 🧭 planned  |     
+| [Retrieve contract NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection)              | ✅      |  ✅   | ✅    |  🧭 planned  |   
+|  |          |        |        |    
+| **Ownership including NFT metadata and details:**                       |          |        |        |     
+| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅      | ✅      |     🧭 planned  |   
+| [Retrieve NFTs owned by an account in a particular collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)  | ✅       | ✅      | ✅      |   🔧 in consideration  |     
+
+
+### Storage, contracts and customizable minting
+Deploy fully customizable NFTs and contracts with industry standards - decentralized web3 storage, metadata, custom attributes and more.
+
+| API Feature                                |  |
+| --------------------------------- | ---------- |
+| **Storage**                       |            |
+| [Upload a file to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY3-storage-upload-file)             |    ✅    |
+| [Create and upload advanced industry standard metadata to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY4-storage-upload-metadata)          |     ✅     |
+| Upload metadata directory to IPFS |   🧭 planned       |
+
+
+| API Feature                | Ethereum | Rinkeby | Polygon | Solana
+| ------------------ | -------- | ------- | ------- | ---- | 
+| **Product**  |          |        |        |
+|  |          |        |        |
+| ERC 721  |    ✅      |  ✅      |   ✅     | ❌
+| ERC 1155 |   🧭 planned         |  🧭 planned        | 🧭 planned         | ❌
+|  SPL  |     ❌     |    ❌    |     ❌   | 🧭 planned  
+|    |          |        |        |
+| Deploy a contract for NFT products  |     🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)      |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)       | 🧭 planned   
+| [Customizable minting : Mint NFTs of your contract to any wallet](https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting)  |     🧭 planned        | ✅       |  ✅    | 🧭 planned   
+| Update a minted NFT / Dynamic NFTs   |     🧭 planned        | 🧭 planned       | 🧭 planned    | 🧭 planned   
+| Burn a minted NFT   |     🔧 in consideration        | 🧭 planned       | 🧭 planned    | 🔧 in consideration    
+
+
+### Easy minting
+Easy mint NFTs with single component.
+
+| API Feature                 | Ethereum | Rinkeby | Polygon | Solana | 
+| ------------------ | -------- | ------- | ------- | ---- | 
+| **Easy Minting**        |          |         |         | 
+| [Via URL](https://docs.nftport.xyz/docs/nftport/ZG9jOjU1MDM4OTgw-minting-w-url)     |    🔧 in consideration      | ✅     |  ✅     |  🧭 planned   
+| [Via File](https://docs.nftport.xyz/docs/nftport/ZG9jOjczMDEwMjIx-easy-minting-with-file-upload)         |    🔧 in consideration       |   ✅   |   ✅   |      🧭 planned   
+
+### Transactions
+Get multichain transaction data.
+
+| API Feature                 | Ethereum | Rinkeby | Polygon | Solana |
+| ------------------ | -------- | ------- | ------- | ------ |
+| Retrieve transactions by NFT        | 🧭 planned        | ❌      | ❌     | 🧭 planned   
+| Retrieve transactions by contract   | 🧭 planned        | ❌      | ❌     |   🧭 planned   
+| Retrieve transactions by an account | ✅        | ❌      | ❌     | 🧭 planned   
+| Retrieve contract sales statistics  | 🔧 in consideration         | ❌      | ❌     | 🔧 in consideration    
+
+
+
+
+### Tools and Utilities
+| Tools                             | |
+| --------------------------------- | ---------- |
+| [Connect Player Wallet : WebGL](https://docs.nftport.xyz/docs/nftport/ZG9jOjU3MTU2NTE5-player-wallet-connect#member-functions)  |    ✅      |         |         |       |
+|  |          |         |         |       |
+| **Asset Downloader:**  |          |         |         |       |
+| [Determine URL Content Type](https://docs.nftport.xyz/docs/nftport/ZG9jOjU2NjAzOTE0-asset-downloader) |    ✅   |         |         |       |
+| [Fetch Image asset from IPFS / web cached image](https://docs.nftport.xyz/docs/nftport/ZG9jOjU2NjAzOTE0-asset-downloader) |   ✅        |         |         |       |
+| Fetch Audio file from IPFS / web |    🧭 planned      |         |         |       |
+| Fetch 3D object from IPFS / web |    Use determine content type with [gltFast](https://github.com/atteneder/glTFast) , [View Example](https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template/blob/main/Assets/Advanced%20Playground/Gallery/Gallery.cs#L165)   |         |         |       |
+|  |          |         |         |       |
+| **NFT Product Minting Suite**  |    🧭 planned     |         |         |       |
+
+  <br/>
+  
+----
+
 #### [Apply for the Community Partnership Program](https://www.nftport.xyz/community)
 #### [Feedback Form](https://form.typeform.com/to/OpyZtxcs)
 
