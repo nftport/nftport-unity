@@ -54,6 +54,14 @@ Upto 100 or more free NFT mints and 5 fully owned customizable contracts for you
 ### [ChangeLog](https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md)
 
 -------
+### Supported Networks
+Create cross-chain games and products
+- Ethereum ✅
+- Polygon ✅
+- Rinkeby ✅
+- Solana 🧭 coming soon
+
+-------
 
 ![3dfree](https://user-images.githubusercontent.com/43649755/175334913-12e4310f-06c5-407e-ac9d-fa0681c595f7.gif) 
 
