@@ -113,9 +113,9 @@ namespace NFTPort
         public string cached_file_url;
         public string animation_url;
         public string cached_animation_url;
-        public DateTime mint_date;
+        public string mint_date;
         public FileInformation file_information;
-        public DateTime updated_date;
+        public string updated_date;
         public string metadata_url;
         public string token_id;
         public string contract_address;

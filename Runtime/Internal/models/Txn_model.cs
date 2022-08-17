@@ -34,7 +34,7 @@ namespace NFTPort
         public double average_price ;
         public double market_cap ;
         public double floor_price ;
-        public DateTime updated_date ;
+        public string updated_date ;
     }
 
     [Serializable]
@@ -44,12 +44,16 @@ namespace NFTPort
         public string transfer_from ;
         public string transfer_to ;
         public string contract_address ;
+        public string mint_address;
         public string token_id ;
         public int quantity ;
+        public string transaction_signature;
         public string transaction_hash ;
         public string block_hash ;
+        public string slot_hash;
+        public string slot_number;
         public int block_number ;
-        public DateTime transaction_date ;
+        public string transaction_date ;
         public string lister_address ;
         public Nft nft ;
         public ListingDetails listing_details ;
