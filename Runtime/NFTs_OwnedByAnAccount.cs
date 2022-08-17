@@ -239,9 +239,7 @@ namespace NFTPort
                     Debug.Log(s);
 
                 }
-                    
-                    
-
+                
                 return WEB_URL;
             }
             
