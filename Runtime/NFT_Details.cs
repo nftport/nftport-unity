@@ -178,10 +178,14 @@ namespace NFTPort
                 if (chain == Chains.solana)
                 {
                     WEB_URL = "https://api.nftport.xyz/v0/solana/nft/" + _mint_address;
+                    if(debugErrorLog)
+                        Debug.Log("Querying Details of NFT: " + _mint_address + " on " + chain);
                 }
                 else
                 {
                     WEB_URL = RequestUriInit + _contract_address + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
+                    if(debugErrorLog)
+                        Debug.Log("Querying Details of NFT: " + _contract_address + "  token ID  " + _token_id + " on " + chain);
                 } 
                 return WEB_URL;
             }
