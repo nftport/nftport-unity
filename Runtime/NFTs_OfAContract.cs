@@ -22,7 +22,8 @@ namespace NFTPort
         {
             ethereum,
             polygon,
-            rinkeby
+            rinkeby,
+            solana
         }
         
         public enum Includes
@@ -46,9 +47,10 @@ namespace NFTPort
             [Tooltip("default is the default response, metadata includes NFT metadata and cached_file_url, and all includes extra information like file_information and mint_date in Retrieve NFT details.")]
             [SerializeField]
             Includes include = Includes.all;
-            
-            [Tooltip("One API call might not be able to provide all NFTs in one go if user holds a lot of NFTs and not filtered, this string is passed in API call which can be used in next one to continue from last query")]
-            public string continuation;
+
+            [Tooltip(
+                "One API call might not be able to provide all NFTs in one go if user holds a lot of NFTs and not filtered, this string is passed in API call which can be used in next one to continue from last query")]
+            public string continuation = "";
 
             
             private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
@@ -153,7 +155,7 @@ namespace NFTPort
             /// <summary>
             /// Set Continuation
             /// </summary>
-            ///<param name="continuation"> as string.</param>
+            ///<param name="continuation"> page number as int.</param>
             public NFTs_OfAContract SetContinuation(string continuation)
             {
                 this.continuation = continuation;
@@ -188,12 +190,27 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit + contract_address + "?chain=" + chain.ToString().ToLower();
-                if (continuation != "")
+                if (chain == Chains.solana)
                 {
-                    WEB_URL = WEB_URL + "&continuation=" + continuation;
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/nfts/" + contract_address;
+                    if (continuation != "")
+                    {
+                        WEB_URL = WEB_URL + "?page_number=" + continuation.ToString() + "&include=" + include.ToString().ToLower();;
+                    }
+                    else
+                    {
+                        WEB_URL += "?include=" + include.ToString().ToLower();
+                    }
                 }
-                WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
+                else
+                {
+                    WEB_URL = RequestUriInit + contract_address + "?chain=" + chain.ToString().ToLower();
+                    if (continuation != "")
+                    {
+                        WEB_URL = WEB_URL + "&page_number=" + continuation.ToString();
+                    }
+                    WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
+                }
                 return WEB_URL;
             }
             

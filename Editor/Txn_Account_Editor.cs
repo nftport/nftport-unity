@@ -19,7 +19,7 @@ namespace NFTPort.Editor
             GUILayout.Box(banner);
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button("Get Account NFT TXNs", GUILayout.Height(45)))
+            if (GUILayout.Button("Get Account NFT Transactions", GUILayout.Height(45)))
             {
                 PortUser.SetFromEditorWin();
                 myScript.Run();

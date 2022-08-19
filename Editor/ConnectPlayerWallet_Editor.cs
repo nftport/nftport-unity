@@ -25,8 +25,6 @@ namespace NFTPort.Editor
 
             if (GUILayout.Button("View Documentation", GUILayout.Height(25)))
                 Application.OpenURL(PortConstants.Docs_PlayerWalletConnect);
-            
-            EditorGUILayout.HelpBox("This feature currently only supports WebGL build with MetaMask wallet on EVM network", MessageType.Warning);
             EditorGUILayout.LabelField("");
 
             GuiLine();

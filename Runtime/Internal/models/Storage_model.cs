@@ -16,7 +16,7 @@ public class Storage_model
         public string metadata_uri;
         public string ipfs_uri;
         public string ipfs_url;
-        public DateTime uploaded_date;
+        public string uploaded_date;
         public string content_type;
         public int file_size;
         public double file_size_mb;

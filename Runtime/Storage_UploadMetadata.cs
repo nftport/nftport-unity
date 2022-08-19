@@ -188,7 +188,7 @@ namespace NFTPort
 #if UNITY_EDITOR
                 AssetDatabase.Refresh();
 #endif
-            if(File.Exists(saveToPath+fileName)){
+            if(System.IO.File.Exists(saveToPath+fileName)){
                 Debug.Log($"File Saved to: " + saveToPath + fileName);
             }
             else

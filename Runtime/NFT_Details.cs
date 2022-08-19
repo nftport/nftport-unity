@@ -22,7 +22,8 @@ namespace NFTPort
         {
             ethereum,
             polygon,
-            rinkeby
+            rinkeby,
+            solana
         }
 
         #region Parameter Defines
@@ -31,15 +32,22 @@ namespace NFTPort
             private Chains chain = Chains.ethereum;
             
             [SerializeField]
+            [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
             private string _contract_address = "Input Contract Address of the NFT collection";
             
             [SerializeField]
+            [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
             [Tooltip("Token ID of the NFT")]
             private int _token_id = 0;
+            
+            [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDraw)]
+            [SerializeField]
+            [Tooltip(" Mint Address of the NFT on Solana")]
+            private string _mint_address = "Input Mint Address of the NFT";
 
             [SerializeField]
             [Tooltip("Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded")]
-            private bool _refresh_metadata = false;
+            private bool _refresh_metadata = true;
 
             private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
             private string WEB_URL;
@@ -101,15 +109,18 @@ namespace NFTPort
         /// <summary>
         /// Set Parameters to retrieve NFT From.  ≧◔◡◔≦ .
         /// </summary>
-        /// <param name="contract_address"> as string.</param>
-        /// <param name="token_id"> as int.</param>
+        /// <param name="contract_address"> as string - EVM</param>
+        /// <param name="token_id"> as int - EVM.</param>
+        /// <param name="mint_address"> mint_address - Solana.</param>
         /// <param name="refresh_metadata"> Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded</param>
-        public NFT_Details SetParameters(string contract_address = null, int token_id = -1, bool refresh_metadata = false)
+        public NFT_Details SetParameters(string contract_address = null, int token_id = -1, string mint_address = null, bool refresh_metadata = false)
             {
                 if(contract_address!=null)
                     this._contract_address = contract_address;
                 if (token_id != -1)
                     _token_id = token_id;
+                if (mint_address != null)
+                    _mint_address = mint_address;
                 if (refresh_metadata != _refresh_metadata)
                     _refresh_metadata = refresh_metadata;
                 return this;
@@ -164,7 +175,18 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit + _contract_address + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
+                if (chain == Chains.solana)
+                {
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/nft/" + _mint_address;
+                    if(debugErrorLog)
+                        Debug.Log("Querying Details of NFT: " + _mint_address + " on " + chain);
+                }
+                else
+                {
+                    WEB_URL = RequestUriInit + _contract_address + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
+                    if(debugErrorLog)
+                        Debug.Log("Querying Details of NFT: " + _contract_address + "  token ID  " + _token_id + " on " + chain);
+                } 
                 return WEB_URL;
             }
             
@@ -186,6 +208,7 @@ namespace NFTPort
 
                     if (request.error != null)
                     {
+                        NFTs = null;
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)
@@ -212,7 +235,7 @@ namespace NFTPort
                             afterSuccess.Invoke();
                         
                         if(debugErrorLog)
-                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFTs model" );
+                            Debug.Log($" ´ ▽ ` )ﾉ Success , view NFT under NFTs model" );
                     }
                 }
                 request.Dispose();

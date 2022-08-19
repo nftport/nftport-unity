@@ -40,6 +40,74 @@ namespace NFTPort.Internal
             }
                 
         }
+        
+        #region Prefs File Write
+#if UNITY_EDITOR
+        
+        public static void SaveNewApi(string newAPI)
+        {
+            _userPrefs.API_KEY = newAPI;
+            SaveUserPrefs();
+        }
+
+        public static void SaveUserPrefs()
+        {
+            if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources")) 
+            {
+                CreateFolder();
+            }
+                
+            WriteToUserPrefs();
+        }
+            
+        static  void WriteToUserPrefs()
+        {
+            _initialised = false;
+            string json = JsonUtility.ToJson(_userPrefs);
+            System.IO.File.WriteAllText("Assets/NFTPort/Resources/" + "NFTPort UserPrefs.json", json);
+            AssetDatabase.Refresh();
+            PortUser.Initialise();
+        }
+
+        static void CreateFolder()
+        {
+            AssetDatabase.CreateFolder("Assets", "NFTPort");
+            string guid = AssetDatabase.CreateFolder("Assets/NFTPort", "Resources");
+            string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
+        }
+           
+#endif
+        #endregion
+        
+        
+        #region Prefs File Read
+
+        static UserPrefs getUserPrefs()
+        {
+            string _userfile = LoadUserPrefsTextfile();
+            if (_userfile.Length != 0)
+            {
+                _initialised = true;
+                return JsonConvert.DeserializeObject<UserPrefs>(_userfile);
+            }
+            else
+            {
+                _initialised = false;
+                Debug.LogError("Unable to Initialise, Make sure to input your APIKEYS in NFTPort/Home in Unity Editor");
+                return null;
+            }
+        }
+        private static TextAsset targetFile;
+        public static string LoadUserPrefsTextfile()
+        {
+            targetFile = Resources.Load<TextAsset>("NFTPort UserPrefs");;
+            if (targetFile != null)
+                return targetFile.text;
+            else
+                return string.Empty;
+        }
+
+        #endregion
 
         #region Get Set Gos
 
@@ -57,6 +125,7 @@ namespace NFTPort.Internal
             public string ToolWin = "";
             public string UPMImport = "na";
             public string AppPlatform = "ni";
+            public string ID = "na";
         }
         
         public static void SetFromEditorWin()
@@ -90,6 +159,7 @@ namespace NFTPort.Internal
             src.UnityVersion = Application.unityVersion;
             src.ToolWin = _toolWin.ToString();
             src.AppPlatform = Application.platform.ToString();
+            src.ID = Application.companyName.ToString() + " | " + Application.productName.ToString();
 
             string json = JsonConvert.SerializeObject(
                 src, 
@@ -120,76 +190,7 @@ namespace NFTPort.Internal
         
 
         #endregion
-   
-
-        #region Prefs File Read
-
-        static UserPrefs getUserPrefs()
-        {
-            string _userfile = LoadUserPrefsTextfile();
-            if (_userfile.Length != 0)
-            {
-                _initialised = true;
-                return JsonConvert.DeserializeObject<UserPrefs>(_userfile);
-            }
-            else
-            {
-                _initialised = false;
-                Debug.LogError("Unable to Initialise, Make sure to input your APIKEYS in NFTPort/Home in Unity Editor");
-                return null;
-            }
-        }
-        private static TextAsset targetFile;
-        public static string LoadUserPrefsTextfile()
-        {
-            targetFile = Resources.Load<TextAsset>("NFTPort UserPrefs");;
-            if (targetFile != null)
-                return targetFile.text;
-            else
-                return string.Empty;
-        }
-
-        #endregion
-
-        #region Prefs File Write
-        #if UNITY_EDITOR
         
-            public static void SaveNewApi(string newAPI)
-            {
-                _userPrefs.API_KEY = newAPI;
-                SaveUserPrefs();
-            }
-
-            public static void SaveUserPrefs()
-            {
-                if (!AssetDatabase.IsValidFolder("Assets/NFTPort/Resources")) 
-                {
-                    CreateFolder();
-                }
-                
-                WriteToUserPrefs();
-            }
-            
-            static  void WriteToUserPrefs()
-            {
-                _initialised = false;
-                string json = JsonUtility.ToJson(_userPrefs);
-                System.IO.File.WriteAllText("Assets/NFTPort/Resources/" + "NFTPort UserPrefs.json", json);
-                AssetDatabase.Refresh();
-                PortUser.Initialise();
-            }
-
-           static void CreateFolder()
-            {
-                AssetDatabase.CreateFolder("Assets", "NFTPort");
-                string guid = AssetDatabase.CreateFolder("Assets/NFTPort", "Resources");
-                string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-            }
-           
-        #endif
-        
-
-        #endregion
 
     }
 }

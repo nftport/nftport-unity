@@ -20,7 +20,8 @@ namespace NFTPort
         /// </summary>
         public enum Chains
         {
-            ethereum
+            ethereum,
+            solana
         }
         
         public enum Type
@@ -30,8 +31,7 @@ namespace NFTPort
 
         #region Parameter Defines
 
-            [SerializeField]
-            private Chains chain = Chains.ethereum;
+        [SerializeField] private Chains chain;
             
             [SerializeField]
             private string _account_address = "Input Account Address to get NFT Transactions of";
@@ -159,7 +159,15 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit + _account_address + "?chain=" + chain.ToString().ToLower() + "&type=" + _type.ToString();
+                if (chain == Chains.solana)
+                {
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/transactions/accounts/" + _account_address + "?type=" + _type.ToString();
+                }
+                else
+                {
+                    WEB_URL = RequestUriInit + _account_address + "?chain=" + chain.ToString().ToLower() + "&type=" + _type.ToString();
+                    
+                }
                 return WEB_URL;
             }
             
@@ -171,6 +179,8 @@ namespace NFTPort
                 request.SetRequestHeader("source", PortUser.GetSource());
                 request.SetRequestHeader("Authorization", _apiKey);
                 
+                if(debugErrorLog)
+                    Debug.Log("Querying Transactions of Account: " + _account_address + " on " + chain);
 
                 {
                     yield return request.SendWebRequest();
@@ -188,6 +198,7 @@ namespace NFTPort
                         if(afterError!=null)
                             afterError.Invoke();
                         //yield break;
+                        txnModel = null;
                     }
                     else
                     {

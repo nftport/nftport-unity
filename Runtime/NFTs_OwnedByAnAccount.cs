@@ -25,7 +25,8 @@ namespace NFTPort
         {
             ethereum,
             polygon,
-            rinkeby
+            rinkeby,
+            solana
         }
         
         public enum Includes
@@ -42,11 +43,12 @@ namespace NFTPort
             
             [SerializeField]
             private string address = "Input Account Address To Fetch NFT's from";
-
+            
             [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
            
             [SerializeField]
-            [Tooltip("Leave blank if not using")]
+            [Tooltip("Filter from a collection, EVM only, Leave blank if not using")]
+            [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
             string contract_address;
             
             [Header("Include optional data in the response.")]
@@ -55,7 +57,7 @@ namespace NFTPort
             Includes include = Includes.metadata;
 
             [Tooltip("One API call might not be able to provide all NFTs in one go if user holds a lot of NFTs and not filtered, this string is passed in API call which can be used in next one to continue from last query")]
-            public string continuation;
+            public string continuation = "";
             
             private string RequestUriInit = "https://api.nftport.xyz/v0/accounts/";
             private string WEB_URL;
@@ -204,15 +206,39 @@ namespace NFTPort
 
             string BuildUrl()
             {
-                WEB_URL = RequestUriInit + address + "?chain=" + chain.ToString().ToLower();
-                if (continuation != "")
+                if (chain == Chains.solana)
                 {
-                    WEB_URL = WEB_URL + "&continuation=" + continuation;
-                } 
-                WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/accounts/" + address;
+                    if (continuation != "")
+                    {
+                        WEB_URL += "?continuation=" + continuation + "?include=" + include;;
+                    }
+                    else
+                    {
+                        WEB_URL += "?include=" + include;
+                    }
+                }
+                else
+                {
+                    WEB_URL = RequestUriInit + address + "?chain=" + chain.ToString().ToLower();
+                    if (continuation != "")
+                    {
+                        WEB_URL = WEB_URL + "&continuation=" + continuation;
+                    } 
+                    WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
              
-                if (contract_address != "")
-                    WEB_URL = WEB_URL + "&contract_address=" + contract_address;
+                    if (contract_address != "")
+                        WEB_URL = WEB_URL + "&contract_address=" + contract_address;
+                }
+
+                if (debugErrorLog)
+                {
+                    var s = "Querying NFTs owned of Account: " + address + " on " + chain;
+                    if (contract_address != "")
+                        s += " / Filter from collection: " + contract_address;
+                    Debug.Log(s);
+
+                }
                 
                 return WEB_URL;
             }
@@ -224,7 +250,7 @@ namespace NFTPort
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("Authorization", _apiKey);
                 request.SetRequestHeader("source", PortUser.GetSource());
-                
+
                 {
                     yield return request.SendWebRequest();
                     string jsonResult = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
@@ -234,6 +260,7 @@ namespace NFTPort
 
                     if (request.error != null)
                     {
+                        NFTs = null;
                         if(OnErrorAction!=null)
                             OnErrorAction($"Null data. Response code: {request.responseCode}. Result {jsonResult}");
                         if(debugErrorLog)

@@ -26,7 +26,7 @@ namespace NFTPort.Editor
             }
 
             if(GUILayout.Button("View Documentation", GUILayout.Height(25)))
-                Application.OpenURL(PortConstants.NFTs_OfAccount);
+                Application.OpenURL(PortConstants.Docs_NFTDetails);
             DrawDefaultInspector();
         }
     }

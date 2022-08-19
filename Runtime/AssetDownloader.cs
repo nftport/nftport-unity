@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.ComponentModel.Design;
 using NFTPort.Internal;
@@ -24,7 +25,8 @@ namespace NFTPort
 
         public static int assetsDownloaders = 0;
 
-        public Texture2D lastGetImage;
+        [ReadOnly] public Texture2D lastGetImage;
+        [ReadOnly] public string lastDetemineURLContentType;
         public Nft OnCompleteLinkNft;
 
 
@@ -107,13 +109,13 @@ namespace NFTPort
                         if (debugErrorLog)
                             Debug.Log(
                                 $"Null data. Response code: {request.responseCode}. Result {request.downloadHandler.text}");
-                        
+                        lastDetemineURLContentType = String.Empty;
                         End();
                     }
                     else
                     {
                         string x = request.GetResponseHeader("content-type");
-                        
+                        lastDetemineURLContentType = x;
                         if (debugErrorLog)
                             Debug.Log(x);
                         

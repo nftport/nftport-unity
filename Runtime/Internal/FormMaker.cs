@@ -23,7 +23,7 @@ namespace NFTPort.Utils
             
             List<IMultipartFormSection> form= new List<IMultipartFormSection>
             {
-                new MultipartFormFileSection("file", File.ReadAllBytes(filePath), Path.GetFileName(filePath), filetype)
+                new MultipartFormFileSection("file", System.IO.File.ReadAllBytes(filePath), Path.GetFileName(filePath), filetype)
             };
             // generate a boundary then convert the form to byte[]
             byte[] boundary = UnityWebRequest.GenerateBoundary();

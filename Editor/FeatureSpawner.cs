@@ -95,6 +95,20 @@ namespace NFTPort.Editor
         {
             Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Txn_Account).AddComponent<Txn_Account>().gameObject;
         }
+        
+        [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Txn_NFT)]
+        [MenuItem(GameObjMenu + PortConstants.FeatureName_Txn_NFT)]
+        static void Spawn_Txn_NFT()
+        {
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Txn_NFT).AddComponent<Txn_NFT>().gameObject;
+        }
+        
+        [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Txn_Collection)]
+        [MenuItem(GameObjMenu + PortConstants.FeatureName_Txn_Collection)]
+        static void Spawn_Txn_Collection()
+        {
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Txn_Collection).AddComponent<Txn_Collection>().gameObject;
+        }
 
 
 
