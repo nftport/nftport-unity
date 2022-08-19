@@ -5,7 +5,7 @@
 
 ### Features
 
-* Asset downloader minor additions - now having a public cars for last Get Image and last Content type ([d9567b1](https://github.com/nftport/nftport-unity/commit/d9567b169b5b2c149f159f82364d84d57524230a))
+* Asset downloader minor additions - now having a public vars for last Get Image and last Content type ([d9567b1](https://github.com/nftport/nftport-unity/commit/d9567b169b5b2c149f159f82364d84d57524230a))
 * New component Transactions Data | of a collection / contract providing info like transfers mints burns sales etc - Solana + EVM ([78c8b3d](https://github.com/nftport/nftport-unity/commit/78c8b3d2d1a64715500e47f66599ec016ac827b3))
 * New component Transactions Data | of an NFT -  Solana + Ethereum ([b2eea29](https://github.com/nftport/nftport-unity/commit/b2eea297bb50fc9690196eea5d6291e69522437e))
 * NFTPort home window updates with new example projects ([a1a2479](https://github.com/nftport/nftport-unity/commit/a1a24790cbbe540923348949e4785589c0902411))
