@@ -12,7 +12,6 @@
 * Solana support for NFT Details component ([4e6871d](https://github.com/nftport/nftport-unity/commit/4e6871db39f799ab8bd43b2fe3d7e3d698904ec4))
 * Solana support for NFTs of a contract ([8561f5d](https://github.com/nftport/nftport-unity/commit/8561f5d47ff3e0b0d69652b91c08b51cdbf9cf32))
 * Solana support for NFTs owned by an account component ([7f979aa](https://github.com/nftport/nftport-unity/commit/7f979aaaeeead6e1cfbdc97ede900aa82d8e9b0b))
-* Solana support for NFTs_OwnedByAnAccount ([48dd3d5](https://github.com/nftport/nftport-unity/commit/48dd3d560aa3e4dcbee5bc38d49a7be0f2b0c636))
 * Solana support for Transactions of an account feature ([720616c](https://github.com/nftport/nftport-unity/commit/720616c6e71b74a17f445ba344385660f03be3e6))
 
 ### [0.5.1](https://github.com/nftport/nftport-unity/compare/v0.5.0...v0.5.1) (2022-07-23)
