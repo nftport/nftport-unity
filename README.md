@@ -55,7 +55,7 @@ Upto 100 or more free NFT mints and 5 fully owned customizable contracts for you
 
 -------
 ### Supported Networks
-Create cross-chain games and products
+Create cross-chain games and products with fast and reliable NFT data and mints
 - Ethereum ✅
 - Polygon ✅
 - Rinkeby ✅
