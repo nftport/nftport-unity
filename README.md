@@ -55,11 +55,11 @@ Upto 100 or more free NFT mints and 5 fully owned customizable contracts for you
 
 -------
 ### Supported Networks
-Create cross-chain games and products
+Create cross-chain games and products with fast and reliable NFT data and mints
 - Ethereum ✅
 - Polygon ✅
 - Rinkeby ✅
-- Solana 🧭 coming soon
+- Solana ✅
 
 -------
 
@@ -75,11 +75,11 @@ Get fast and reliable data.
 | API Feature                               | Ethereum | Rinkeby | Polygon | Solana | 
 | ----------------------------------- | -------- | ------- | ------- |  ------- | 
 | **Contracts, Metadata & Assets**    |          |         |         |          
-| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅       |   ✅   | 🧭 planned  |     
-| [Retrieve contract NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection)              | ✅      |  ✅   | ✅    |  🧭 planned  |   
+| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅       |   ✅   | ✅  |     
+| [Retrieve contract NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection)              | ✅      |  ✅   | ✅    |  ✅  |   
 |  |          |        |        |    
 | **Ownership including NFT metadata and details:**                       |          |        |        |     
-| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅      | ✅      |     🧭 planned  |   
+| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅      | ✅      |     ✅  |   
 | [Retrieve NFTs owned by an account in a particular collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)  | ✅       | ✅      | ✅      |   🔧 in consideration  |     
 
 
@@ -122,9 +122,9 @@ Get multichain transaction data.
 
 | API Feature                 | Ethereum | Rinkeby | Polygon | Solana |
 | ------------------ | -------- | ------- | ------- | ------ |
-| Retrieve transactions by NFT        | 🧭 planned        | ❌      | ❌     | 🧭 planned   
-| Retrieve transactions by contract   | 🧭 planned        | ❌      | ❌     |   🧭 planned   
-| Retrieve transactions by an account | ✅        | ❌      | ❌     | 🧭 planned   
+| Retrieve transactions by NFT        | ✅        | ❌      | ❌     | ✅ 
+| Retrieve transactions by contract   | ✅       | ❌      | ❌     |   ✅  
+| Retrieve transactions by an account | ✅        | ❌      | ❌     | ✅  
 | Retrieve contract sales statistics  | 🔧 in consideration         | ❌      | ❌     | 🔧 in consideration    
 
 
