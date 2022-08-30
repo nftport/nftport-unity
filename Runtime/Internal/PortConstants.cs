@@ -19,12 +19,14 @@ namespace NFTPort.Internal
         public const string Docs_DeployContract = "https://docs.nftport.xyz/docs/nftport/ZG9jOjYzOTc1Mzgw-deploy-contract";
         public const string Docs_PlayerWalletConnect = "https://docs.nftport.xyz/docs/nftport/ZG9jOjU3MTU2NTE5-connect-player-wallet";
         public const string Docs_Txns_Account = "https://docs.nftport.xyz/docs/nftport/ZG9jOjY1MjQwMTAw-transaction-data-account";
-        public const string Docs_Txns_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjY1MjQwMTAw-transaction-data-account";
-        public const string Txn_Collection = "https://docs.nftport.xyz/docs/nftport/ZG9jOjY1MjQwMTAw-transaction-data-account";
+        public const string Docs_Txns_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft";
+        public const string Txn_Collection = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract";
+        public const string Docs_Update_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
 
 
         public const string DiscordInvite = "https://discord.gg/w92sXkNmBR";
         public const string Github = "https://github.com/nftport/nftport-unity.git";
+        public const string ChangeLog = "https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md#changelog";
         public const string Dashboard = "https://dashboard.nftport.xyz/";
         public const string FeatureList = "https://docs.nftport.xyz/docs/nftport/ZG9jOjUwMzc2NzA5-getting-started#unity-extension-feature-list-br";
         
@@ -48,6 +50,7 @@ namespace NFTPort.Internal
         public const string FeatureName_Txn_Account = "Transaction Data | Account";
         public const string FeatureName_Txn_NFT = "Transaction Data | NFT";
         public const string FeatureName_Txn_Collection = "Transaction Data | Collection";
+        public const string FeatureName_Update_NFT = "Customizable minted | Update NFT";
 
     }
 }

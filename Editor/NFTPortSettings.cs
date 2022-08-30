@@ -230,7 +230,10 @@ namespace NFTPort.Editor
             if (GUILayout.Button("Star Github", GUILayout.Height(22))) 
                 Application.OpenURL(PortConstants.Github);
             
-            if (GUILayout.Button("Go to My Dashboard", GUILayout.Height(22)))
+            if (GUILayout.Button("Whats New", GUILayout.Height(22))) 
+                Application.OpenURL(PortConstants.ChangeLog);
+            
+            if (GUILayout.Button("My Dashboard", GUILayout.Height(22)))
                 Application.OpenURL(PortConstants.Dashboard);
             
             GUILayout.EndHorizontal();
