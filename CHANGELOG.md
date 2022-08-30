@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/nftport/nftport-unity/compare/v0.6.0...v0.7.0) (2022-08-30)
+
+
+### Features
+
+* New Feature - Update NFT / Dynamic NFTs. Useful in making evolutionary NFTs/ -Game NFT Assets like characters, fusions, evolutions - pokemons, potions, game character utilities etc. ([c6cf6da](https://github.com/nftport/nftport-unity/commit/c6cf6da399ecca00070da4b906ce387df0867961))
+
 ## [0.6.0](https://github.com/nftport/nftport-unity/compare/v0.5.1...v0.6.0) (2022-08-19)
 
 
