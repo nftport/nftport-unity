@@ -50,7 +50,7 @@ namespace NFTPort
 
             [Tooltip(
                 "One API call might not be able to provide all NFTs in one go if user holds a lot of NFTs and not filtered, this string is passed in API call which can be used in next one to continue from last query")]
-            public string continuation = "";
+            public int page_number = 0;
 
             
             private string RequestUriInit = "https://api.nftport.xyz/v0/nfts/";
@@ -156,9 +156,9 @@ namespace NFTPort
             /// Set Continuation
             /// </summary>
             ///<param name="continuation"> page number as int.</param>
-            public NFTs_OfAContract SetContinuation(string continuation)
+            public NFTs_OfAContract SetContinuation(int continuation)
             {
-                this.continuation = continuation;
+                this.page_number = continuation;
                 return this;
             }
             
@@ -193,9 +193,9 @@ namespace NFTPort
                 if (chain == Chains.solana)
                 {
                     WEB_URL = "https://api.nftport.xyz/v0/solana/nfts/" + contract_address;
-                    if (continuation != "")
+                    if (page_number != 0)
                     {
-                        WEB_URL = WEB_URL + "?page_number=" + continuation.ToString() + "&include=" + include.ToString().ToLower();;
+                        WEB_URL = WEB_URL + "?page_number=" + page_number.ToString() + "&include=" + include.ToString().ToLower();;
                     }
                     else
                     {
@@ -205,9 +205,9 @@ namespace NFTPort
                 else
                 {
                     WEB_URL = RequestUriInit + contract_address + "?chain=" + chain.ToString().ToLower();
-                    if (continuation != "")
+                    if (page_number != 0)
                     {
-                        WEB_URL = WEB_URL + "&page_number=" + continuation.ToString();
+                        WEB_URL = WEB_URL + "&page_number=" + page_number.ToString();
                     }
                     WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
                 }
