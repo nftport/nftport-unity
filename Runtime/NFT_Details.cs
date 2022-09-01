@@ -225,7 +225,8 @@ namespace NFTPort
                             new JsonSerializerSettings
                             {
                             NullValueHandling = NullValueHandling.Ignore,
-                            MissingMemberHandling = MissingMemberHandling.Ignore
+                            MissingMemberHandling = MissingMemberHandling.Ignore,
+                            Error = (sender, error) => error.ErrorContext.Handled = true
                             });
                         
                         if(OnCompleteAction!=null)
