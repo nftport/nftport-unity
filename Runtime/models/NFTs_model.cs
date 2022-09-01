@@ -63,10 +63,22 @@ namespace NFTPort
         public string animation_url;
         public string dna;
         public string id;
-        public Properties properties;
+        public List<Properties> properties = new List<Properties>();
         public int seller_fee_basis_points;
         public string symbol;
         public Collection collection;
+        public string thumbnail_url;
+        public string cached_thumbnail_url;
+        public string banner_url;
+        public string cached_banner_url;
+        public string external_link ;
+        public string destination_url ;
+        public string first_name ;
+        public string image_card ;
+        public string image_transparent ;
+        public string last_name ;
+        public string short_name ;
+        public int? tokenId ;
     }
     
     [Serializable]
@@ -146,5 +158,6 @@ namespace NFTPort
         public string name;
         public string symbol;
         public string type;
+        public Metadata metadata;
     }
 }
