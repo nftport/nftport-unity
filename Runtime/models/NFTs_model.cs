@@ -15,7 +15,9 @@ namespace NFTPort
         public Contract contract;
         public string owner;
         public int total;
-        public string continuation;
+        public string continuation;   
+        public object status;
+        public object status_message;
     }
     
     [Serializable]
@@ -80,7 +82,7 @@ namespace NFTPort
         public string short_name ;
         public int? tokenId ;
     }
-    
+
     [Serializable]
     public class Collection
     {
@@ -121,6 +123,7 @@ namespace NFTPort
         public string creator_address;
         public string mint_address;
         public string collection_id;
+        public string on_chain_collection_key;
         public string file_url;
         public string cached_file_url;
         public string animation_url;
@@ -136,7 +139,7 @@ namespace NFTPort
         public List<Royalty> royalties = new List<Royalty>();
         public List<string> signatures = new List<string>();
         public int total;
-        public Assets assets = new Assets();
+        public string owner;
     }
     
     [Serializable]
