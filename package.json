@@ -45,9 +45,6 @@
       "path": "Samples~/NFTPort Playground"
     }
   ],
-  "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "3.0.2"
-  },
   "keywords": [
     "Web3",
     "Blockchain",
@@ -64,5 +61,8 @@
     "Wallet",
     "Games",
     "Solana"
-  ]
+  ],
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^5.1.0"
+  }
 }
