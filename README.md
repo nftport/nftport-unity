@@ -104,7 +104,7 @@ Deploy fully customizable NFTs and contracts with industry standards - decentral
 |    |          |        |        |
 | Deploy a contract for NFT products  |     🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)      |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)       | 🧭 planned   
 | [Customizable minting : Mint NFTs of your contract to any wallet](https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting)  |     🧭 planned        | ✅       |  ✅    | 🧭 planned   
-| Update a minted NFT / Dynamic NFTs   |     🧭 planned        | 🧭 planned       | 🧭 planned    | 🧭 planned   
+| [Update a minted NFT / Dynamic NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft)   |     🧭 planned        |  ✅      |  ✅   | 🧭 planned   
 | Burn a minted NFT   |     🔧 in consideration        | 🧭 planned       | 🧭 planned    | 🔧 in consideration    
 
 

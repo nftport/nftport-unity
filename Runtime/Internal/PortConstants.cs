@@ -21,8 +21,7 @@ namespace NFTPort.Internal
         public const string Docs_Txns_Account = "https://docs.nftport.xyz/docs/nftport/ZG9jOjY1MjQwMTAw-transaction-data-account";
         public const string Docs_Txns_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft";
         public const string Txn_Collection = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract";
-        
-        public const string Docs_Update_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting";
+        public const string Docs_Update_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
 
 
         public const string DiscordInvite = "https://discord.gg/w92sXkNmBR";
