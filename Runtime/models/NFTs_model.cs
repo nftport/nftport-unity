@@ -124,6 +124,7 @@ namespace NFTPort
         public string mint_address;
         public string collection_id;
         public string on_chain_collection_key;
+        public string owner;
         public string file_url;
         public string cached_file_url;
         public string animation_url;
@@ -139,7 +140,7 @@ namespace NFTPort
         public List<Royalty> royalties = new List<Royalty>();
         public List<string> signatures = new List<string>();
         public int total;
-        public string owner;
+        public Assets assets = new Assets();
     }
     
     [Serializable]
