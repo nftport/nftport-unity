@@ -1,5 +1,21 @@
 # Changelog
 
+### [0.7.1](https://github.com/nftport/nftport-unity/compare/v0.7.0...v0.7.1) (2022-09-02)
+
+
+### Features
+
+* on_chain_collection_key + some extra NFT parameters for Solana support. ([ae54676](https://github.com/nftport/nftport-unity/commit/ae546769a0b900c964bc265c08e89564e22a8ce3))
+* Updated Home window with new links to report bugs, view API stats and more. ([bd03446](https://github.com/nftport/nftport-unity/commit/bd0344671a4b1b5c17b4a590fdd5393281e69e14))
+* Updated NFTs model ([9fd830b](https://github.com/nftport/nftport-unity/commit/9fd830b8e2c059560da4cfe8a8994b7a6552315e))
+
+
+### Bug Fixes
+
+* BREAKING: continuation loop in Nfts of Contract Feature is set by using an incremental page number (int) ([6eb9bd5](https://github.com/nftport/nftport-unity/commit/6eb9bd522d0f4a0afd735c6fd60b7936b5295fdd))
+* Error Ignore for Desterilize Json in case of unsupported metadata parameters - for All Data features (NFT Details/Contract/Account) ([fe1b6fd](https://github.com/nftport/nftport-unity/commit/fe1b6fdd9b670afec8407cc443f6a92fc6ae64e9))
+* Fix for properties field as List + parameter additions ([dfad5be](https://github.com/nftport/nftport-unity/commit/dfad5be31cc764968f4e628fdde95d3763dab29d))
+
 ## [0.7.0](https://github.com/nftport/nftport-unity/compare/v0.6.0...v0.7.0) (2022-08-30)
 
 

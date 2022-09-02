@@ -29,6 +29,10 @@ namespace NFTPort.Internal
         public const string ChangeLog = "https://github.com/nftport/nftport-unity/blob/com.nftport.nftport/CHANGELOG.md#changelog";
         public const string Dashboard = "https://dashboard.nftport.xyz/";
         public const string FeatureList = "https://docs.nftport.xyz/docs/nftport/ZG9jOjUwMzc2NzA5-getting-started#unity-extension-feature-list-br";
+        public const string ReportABug = "https://github.com/nftport/nftport-unity/issues";
+        public const string MyIPFS = "https://dashboard.nftport.xyz/files";
+        public const string MyNFTs = "https://dashboard.nftport.xyz/nfts";
+
         
         public const string AdvPlaygroundGallery = "https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template";
         public const string PlaygroundButterflyMint = "https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template/blob/main/Assets/Advanced%20Playground/CustomMintSample.cs";

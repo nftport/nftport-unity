@@ -225,18 +225,42 @@ namespace NFTPort.Editor
             }
 
             GUILayout.EndHorizontal();
-            
+
+            var buttonHeight = 44;
             GUILayout.BeginHorizontal("box");
-            if (GUILayout.Button("Star Github", GUILayout.Height(22))) 
+            if (GUILayout.Button("Star Github", GUILayout.Height(buttonHeight))) 
                 Application.OpenURL(PortConstants.Github);
             
-            if (GUILayout.Button("Whats New", GUILayout.Height(22))) 
+            if (GUILayout.Button("Whats New", GUILayout.Height(buttonHeight))) 
                 Application.OpenURL(PortConstants.ChangeLog);
             
-            if (GUILayout.Button("My Dashboard", GUILayout.Height(22)))
+            if (GUILayout.Button("Report a Bug or Request Feature", GUILayout.Height(buttonHeight))) 
+                Application.OpenURL(PortConstants.ReportABug);
+
+            GUILayout.EndHorizontal();
+            
+            GUILayout.BeginHorizontal("box");
+            if (GUILayout.Button("My Stats", GUILayout.Height(buttonHeight)))
                 Application.OpenURL(PortConstants.Dashboard);
             
+            if (GUILayout.Button("View my IPFS Uploads", GUILayout.Height(buttonHeight))) 
+                Application.OpenURL(PortConstants.MyIPFS);
+            
+            if (GUILayout.Button("View my API NFTs", GUILayout.Height(buttonHeight)))
+                Application.OpenURL(PortConstants.MyNFTs);
+            
             GUILayout.EndHorizontal();
+            
+            /*
+            GUILayout.BeginHorizontal("box");
+            if (GUILayout.Button("Get More / Go Pro", GUILayout.Height(buttonHeight)))
+                Application.OpenURL(PortConstants.ChangeSubscriptionPlan);
+            
+            if (GUILayout.Button("Change API Key", GUILayout.Height(buttonHeight))) 
+                Application.OpenURL(PortConstants.ChangeAPIKeys);
+
+            GUILayout.EndHorizontal();
+            */
             
             GuiLine();
             
@@ -315,8 +339,8 @@ namespace NFTPort.Editor
         }
         static void SetSize(NFTPortSettings win) 
         {
-            win.minSize = new Vector2(530, 750);
-            win.maxSize = new Vector2(530, 750);
+            win.minSize = new Vector2(530, 830);
+            win.maxSize = new Vector2(530, 830);
         } 
         
         static void GuiLine( int i_height = 1 )
