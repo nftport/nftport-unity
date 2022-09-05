@@ -29,6 +29,7 @@ namespace NFTPort
             public string contract_address;
             public string metadata_uri;
             public string token_id;
+            public bool freeze_metadata = false;
         }
 
 
@@ -40,6 +41,8 @@ namespace NFTPort
             [SerializeField] private string _contract_address = "Enter previously deployed contract address using deploy feature";
             [SerializeField] [Tooltip("Token ID of NFT to update.")] private string _token_id = "0";
             [SerializeField] private string _metadata_uri = "Enter new Metadata URI, can be obtained from metadata or file upload feature";
+            [Tooltip("If true, freezes the specified NFT token URI and further token metadata updates are blocked. You can still change the base_uri on contract level with Update a deployed contract for NFT products. If you wish to freeze all updates, then set freeze_metadata as true in Update a deployed product contract.")]
+            [SerializeField] private bool _freeze_metadata = false;
 
             [Space(20)]
             //[Header("Called When API call starts")]
@@ -104,7 +107,9 @@ namespace NFTPort
         /// <param name="contract_address"> Previously deployed contract address of this user.</param>
         /// <param name="metadata_uri"> New Metadata URI obtained from metadata or file upload feature </param>
         /// <param name="token_id"> Int Token ID for the NFT</param>
-        public Update_NFT SetParameters(string contract_address = null, string metadata_uri = null , string token_id = null)
+        /// <param name="freeze_metadata"> bool , If true, freezes the specified NFT token URI and further token metadata updates are blocked. </param>
+        
+        public Update_NFT SetParameters(string contract_address = null, string metadata_uri = null , string token_id = null, bool freeze_metadata = false)
         {
             if(contract_address!=null)
                 _contract_address = contract_address;
@@ -112,6 +117,7 @@ namespace NFTPort
                 _metadata_uri = metadata_uri;
             if(token_id!=null)
                 _token_id = token_id;
+            _freeze_metadata = freeze_metadata;
             return this;
         }
         
@@ -165,6 +171,7 @@ namespace NFTPort
             nft.contract_address = _contract_address;
             nft.metadata_uri = _metadata_uri;
             nft.token_id = _token_id;
+            nft.freeze_metadata = _freeze_metadata;
             return nft;
         }
 
