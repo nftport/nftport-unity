@@ -24,6 +24,13 @@ namespace NFTPort.Editor
         {
             Selection.activeGameObject= new GameObject(PortConstants.FeatureName_ConnectUserWallet).AddComponent<ConnectPlayerWallet>().gameObject;
         }
+        
+        [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Burn_NFT)]
+        [MenuItem(GameObjMenu + PortConstants.FeatureName_Burn_NFT)]
+        static void Burn_NFT()
+        {
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Burn_NFT).AddComponent<Burn_NFT>().gameObject;
+        }
                 
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Update_NFT)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Update_NFT)]
@@ -31,7 +38,7 @@ namespace NFTPort.Editor
         {
             Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Update_NFT).AddComponent<Update_NFT>().gameObject;
         }
-        
+
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Mint_Custom)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Mint_Custom)]
         static void Spawn_Mint_Custom()
