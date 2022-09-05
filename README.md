@@ -17,7 +17,7 @@
 
 
 ### Introduction
-NFTPort's Unity extension wraps NFTPort API's and provides tools and features to fast-track development and create cross-chain compatible NFT games and products in Unity with fast and reliable onchain data.
+NFTPort's Unity extension provides tools and features to fast-track development and create cross-chain compatible NFT games and products in Unity with fast and reliable onchain data.
 
 # Installation
 
