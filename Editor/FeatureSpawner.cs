@@ -31,6 +31,13 @@ namespace NFTPort.Editor
         {
             Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Burn_NFT).AddComponent<Burn_NFT>().gameObject;
         }
+        
+        [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Transfer_NFT)]
+        [MenuItem(GameObjMenu + PortConstants.FeatureName_Transfer_NFT)]
+        static void Transfer_NFT()
+        {
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_Transfer_NFT).AddComponent<Transfer_NFT>().gameObject;
+        }
                 
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_Update_NFT)]
         [MenuItem(GameObjMenu + PortConstants.FeatureName_Update_NFT)]
