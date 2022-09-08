@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.0](https://github.com/nftport/nftport-unity/compare/v0.7.1...v0.8.0) (2022-09-08)
+
+
+### Features
+
+* Adds Freeze Metadata bool to Update NFT Feature, allowing option to make NFT Immutable ([e4f056f](https://github.com/nftport/nftport-unity/commit/e4f056f9185002e023dc268edd0c43eaa6283efa))
+* New Feature - BURN NFT, allowing developer to burn NFTs in deployer/collection contract, useful to create timed claim or burn scenarios etc. ([7cd1239](https://github.com/nftport/nftport-unity/commit/7cd12394813fde65d7c648691b88b5dd982d333c))
+* New Feature : Transfer NFT ([c2ce53b](https://github.com/nftport/nftport-unity/commit/c2ce53beb35fedeca1ec37e12290b9749bd7e600))
+
 ### [0.7.1](https://github.com/nftport/nftport-unity/compare/v0.7.0...v0.7.1) (2022-09-02)
 
 
