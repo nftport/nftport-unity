@@ -9,13 +9,13 @@ namespace NFTPort
     
    
     /// <summary>
-    ///  Update  NFT minted via customizable minting.
+    ///  Transfer  NFT minted via customizable minting.
     /// </summary>
     ///
-    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_Update_NFT)]
+    [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_Transfer_NFT)]
     [ExecuteAlways]
-    [HelpURL(PortConstants.Docs_Update_NFT)]
-    public class Update_NFT : MonoBehaviour
+    [HelpURL(PortConstants.Docs_Transfer_NFT)]
+    public class Transfer_NFT : MonoBehaviour
     {
         public enum Chains
         {
@@ -27,9 +27,8 @@ namespace NFTPort
         {
             public string chain;
             public string contract_address;
-            public string metadata_uri;
             public string token_id;
-            public bool freeze_metadata = false;
+            public string transfer_to_address;
         }
 
 
@@ -40,9 +39,7 @@ namespace NFTPort
             
             [SerializeField] private string _contract_address = "Enter previously deployed contract address using deploy feature";
             [SerializeField] [Tooltip("Token ID of NFT to update.")] private string _token_id = "0";
-            [SerializeField] private string _metadata_uri = "Enter new Metadata URI, can be obtained from metadata or file upload feature";
-            [Tooltip("If true, freezes the specified NFT token URI and further token metadata updates are blocked. You can still change the base_uri on contract level with Update a deployed contract for NFT products. If you wish to freeze all updates, then set freeze_metadata as true in Update a deployed product contract.")]
-            [SerializeField] private bool _freeze_metadata = false;
+            [SerializeField] private string _transfer_to_address = "Wallet address to which the NFT will be transferred.";
 
             [Space(20)]
             //[Header("Called When API call starts")]
@@ -63,7 +60,7 @@ namespace NFTPort
             private UnityAction<string> OnErrorAction;
             private UnityAction<Minted_model> OnCompleteAction;
             
-            private string RequestUriInit = "https://api.nftport.xyz/v0/mints/customizable";
+            private string RequestUriInit = "https://api.nftport.xyz/v0/mints/transfers";
             private string WEB_URL;
             private string _apiKey;
             private bool destroyAtEnd = false;
@@ -92,9 +89,9 @@ namespace NFTPort
         /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
         /// </summary>
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
-        public static Update_NFT Initialize(bool destroyAtEnd = true)
+        public static Transfer_NFT Initialize(bool destroyAtEnd = true)
         {
-            var _this = new GameObject(PortConstants.FeatureName_Update_NFT).AddComponent<Update_NFT>();
+            var _this = new GameObject(PortConstants.FeatureName_Transfer_NFT).AddComponent<Transfer_NFT>();
             _this.destroyAtEnd = destroyAtEnd;
             _this.onEnable = false;
             _this.debugErrorLog = false;
@@ -105,19 +102,18 @@ namespace NFTPort
         /// Set NFT Parameters ≧◔◡◔≦ .
         /// </summary>
         /// <param name="contract_address"> Previously deployed contract address of this user.</param>
-        /// <param name="metadata_uri"> New Metadata URI obtained from metadata or file upload feature </param>
         /// <param name="token_id"> Int Token ID for the NFT</param>
-        /// <param name="freeze_metadata"> bool , If true, freezes the specified NFT token URI and further token metadata updates are blocked. </param>
+        /// <param name="transfer_to_address"> Address to which NFT will be transfered to </param>
         
-        public Update_NFT SetParameters(string contract_address = null, string metadata_uri = null , string token_id = null, bool freeze_metadata = false)
+        public Transfer_NFT SetParameters(string contract_address = null, string token_id = null, string transfer_to_address = null)
         {
             if(contract_address!=null)
                 _contract_address = contract_address;
-            if(metadata_uri!=null)
-                _metadata_uri = metadata_uri;
+            if(transfer_to_address!=null)
+                _transfer_to_address = transfer_to_address;
             if(token_id!=null)
                 _token_id = token_id;
-            _freeze_metadata = freeze_metadata;
+            
             return this;
         }
         
@@ -125,7 +121,7 @@ namespace NFTPort
         /// Set Blockchain
         /// </summary>
         /// <param name="chain"> Choose from available 'Chains' enum</param>
-        public Update_NFT SetChain(Chains chain)
+        public Transfer_NFT SetChain(Chains chain)
         {
             this._chain = chain;
             return this;
@@ -136,7 +132,7 @@ namespace NFTPort
         /// </summary>
         /// <param name="Minted_model"> Use: .OnComplete(model=> Model = model) , where Model = Minted_model;</param>
         /// <returns> Minted_model </returns>
-        public Update_NFT OnComplete(UnityAction<Minted_model> action)
+        public Transfer_NFT OnComplete(UnityAction<Minted_model> action)
         {
             this.OnCompleteAction = action;
             return this;
@@ -147,7 +143,7 @@ namespace NFTPort
         /// </summary>
         /// <param name="UnityAction action"> string.</param>
         /// <returns> Information on Error as string text.</returns>
-        public Update_NFT OnError(UnityAction<string> action)
+        public Transfer_NFT OnError(UnityAction<string> action)
         {
             this.OnErrorAction = action;
             return this;
@@ -169,9 +165,8 @@ namespace NFTPort
             var nft = new CustomNFT();
             nft.chain = _chain.ToString().ToLower();
             nft.contract_address = _contract_address;
-            nft.metadata_uri = _metadata_uri;
             nft.token_id = _token_id;
-            nft.freeze_metadata = _freeze_metadata;
+            nft.transfer_to_address = _transfer_to_address;
             return nft;
         }
 
@@ -187,7 +182,7 @@ namespace NFTPort
         {
             
             if(debugErrorLog)
-                Debug.Log("Update NFT ⊂(▀¯▀⊂) | " + _contract_address + " tokenID: " + _token_id + "  on chain: " + _chain );
+                Debug.Log("Transfer NFT ⊂(▀¯▀⊂) | " + _contract_address + " tokenID: " + _token_id + "  on chain: " + _chain );
 
             string json = JsonConvert.SerializeObject(
                 nft, 
@@ -241,7 +236,7 @@ namespace NFTPort
                     afterSuccess.Invoke();
 
                 if(debugErrorLog)
-                    Debug.Log($"NFTPort | NFT Update Success (⌐■_■) : at: {minted.transaction_external_url}" );
+                    Debug.Log($"NFTPort | NFT Transfer Success (⌐■_■) : at: {minted.transaction_external_url}" );
             }
 
             request.Dispose();

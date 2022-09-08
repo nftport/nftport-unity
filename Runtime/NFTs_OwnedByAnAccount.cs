@@ -170,8 +170,8 @@ namespace NFTPort
             /// <summary>
             /// Action on succesfull API Fetch.
             /// </summary>
-            /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
-            /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
+            /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_model.Nfts[] ;</param>
+            /// <returns> NFTs_model </returns>
             public NFTs_OwnedByAnAccount OnComplete(UnityAction<NFTs_model> action)
             {
                 this.OnCompleteAction = action;

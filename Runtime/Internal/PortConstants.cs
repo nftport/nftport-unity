@@ -22,6 +22,10 @@ namespace NFTPort.Internal
         public const string Docs_Txns_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft";
         public const string Txn_Collection = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract";
         public const string Docs_Update_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
+        
+        public const string Docs_Transfer_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
+        public const string Docs_Burn_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
+
 
 
         public const string DiscordInvite = "https://discord.gg/w92sXkNmBR";
@@ -55,6 +59,8 @@ namespace NFTPort.Internal
         public const string FeatureName_Txn_NFT = "Transaction Data | NFT";
         public const string FeatureName_Txn_Collection = "Transaction Data | Collection";
         public const string FeatureName_Update_NFT = "Customizable minted | Update NFT";
+        public const string FeatureName_Burn_NFT = "Customizable minted | Burn NFT";
+        public const string FeatureName_Transfer_NFT = "Customizable minted | Transfer NFT";
 
     }
 }
