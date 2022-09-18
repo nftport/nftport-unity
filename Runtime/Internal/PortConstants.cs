@@ -49,7 +49,7 @@ namespace NFTPort.Internal
         public const string BaseFeatureSpawnerMenu = "NFTPort/Spawner/";
         public const string FeatureName_ConnectUserWallet = "Connect Player Wallet";
         public const string FeatureName_NFT_Details = "NFT Data | NFT Details";
-        public const string FeatureName_NFTs_OfContract = "NFT Data | of a contract-collection";
+        public const string FeatureName_NFTs_OfContract = "NFT Data | of a Collection";
         public const string FeatureName_NFTs_OfAccount = "NFT Data | of an Account";
         public const string FeatureName_StorageFiles = "Storage | Upload File";
         public const string FeatureName_StorageMetadata = "Storage | Upload Metadata";
