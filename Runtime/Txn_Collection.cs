@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
 
 namespace NFTPort  
 { using Internal;
@@ -33,9 +34,10 @@ namespace NFTPort
 
         [SerializeField] private Chains chain;
         
+            [FormerlySerializedAs("_collection_address")]
             [SerializeField]
             [Tooltip("Input Collection_id / Contract Address of the NFTs")]
-            private string _collection_address = "Input Collection/Contract Address of the NFTs";
+            private string _collection = "Input Collection/Contract Address of the NFTs";
         
 
             [SerializeField] private Type _type = Type.all;
@@ -100,12 +102,12 @@ namespace NFTPort
         /// <summary>
         /// Set Parameters to retrieve NFT From.  ≧◔◡◔≦ .
         /// </summary>
-        /// <param name="collection_address"> as string - EVM</param>
+        /// <param name="collection"> as string - EVM</param>
         /// <param name="type"> as Type{ all, mint, burn, transfer_from, transfer_to, list, buy, sell, make_bid , get_bid}.</param>
-        public Txn_Collection SetParameters(string collection_address = null, Type type = Type.all)
+        public Txn_Collection SetParameters(string collection = null, Type type = Type.all)
         {
-            if(collection_address!=null)
-                this._collection_address = collection_address;
+            if(collection!=null)
+                this._collection = collection;
             if (_type != type)
                 _type = type;
             return this;
@@ -162,15 +164,15 @@ namespace NFTPort
             {
                 if (chain == Chains.solana)
                 {
-                    WEB_URL = "https://api.nftport.xyz/v0/solana/transactions/nfts/" + _collection_address + "?type=" + _type.ToString();
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/transactions/nfts/" + _collection + "?type=" + _type.ToString();
                 }
                 else
                 {
-                    WEB_URL = RequestUriInit + _collection_address + "?chain=" + chain.ToString().ToLower() + "&type=" + _type.ToString();
+                    WEB_URL = RequestUriInit + _collection + "?chain=" + chain.ToString().ToLower() + "&type=" + _type.ToString();
                 }
                 
                 if(debugErrorLog)
-                    Debug.Log("Querying Transactions of Collection: " + _collection_address + " on " + chain);
+                    Debug.Log("Querying Transactions of Collection: " + _collection + " on " + chain);
                 
                 return WEB_URL;
             }
