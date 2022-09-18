@@ -38,7 +38,7 @@ namespace NFTPort
             [SerializeField]
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
             [Tooltip("Token ID of the NFT")]
-            private int _token_id = 0;
+            private string _token_id = "0";
             
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDraw)]
             [SerializeField]
@@ -109,14 +109,14 @@ namespace NFTPort
         /// <summary>
         /// Set Parameters to retrieve NFT From.  ≧◔◡◔≦ .
         /// </summary>
-        /// <param name="contract_address"> as string - EVM</param>
+        /// <param name="collection"> as string - EVM</param>
         /// <param name="token_id"> as int - EVM.</param>
         /// <param name="mint_address"> mint_address - Solana.</param>
         /// <param name="refresh_metadata"> Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded</param>
-        public NFT_Details SetParameters(string contract_address = null, int token_id = -1, string mint_address = null, bool refresh_metadata = false)
+        public NFT_Details SetParameters(string collection = null, string token_id = "0", string mint_address = null, bool refresh_metadata = false)
             {
-                if(contract_address!=null)
-                    this._contract_address = contract_address;
+                if(collection!=null)
+                    this._contract_address = collection;
                 if (token_id != -1)
                     _token_id = token_id;
                 if (mint_address != null)
