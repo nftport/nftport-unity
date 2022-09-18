@@ -95,7 +95,7 @@ namespace NFTPort.Editor
         [MenuItem(GameObjMenu + PortConstants.FeatureName_NFTs_OfContract)]
         static void Spawn_NFtsOfContract()
         {
-            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_NFTs_OfContract).AddComponent<NFTs_OfAContract>().gameObject;
+            Selection.activeGameObject= new GameObject(PortConstants.FeatureName_NFTs_OfContract).AddComponent<NFTs_OfACollection>().gameObject;
         }
         
         [MenuItem(PortConstants.BaseFeatureSpawnerMenu + PortConstants.FeatureName_NFTs_OfAccount)]

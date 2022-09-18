@@ -5,13 +5,13 @@ namespace NFTPort.Editor
     using UnityEditor;
     using Internal;
 
-    [CustomEditor(typeof(NFTs_OfAContract))]
+    [CustomEditor(typeof(NFTs_OfACollection))]
     public class NFTs_OfContract_Editor : Editor
     {
         public override void OnInspectorGUI()
         {
             
-            NFTs_OfAContract myScript = (NFTs_OfAContract)target;
+            NFTs_OfACollection myScript = (NFTs_OfACollection)target;
             
             
             Texture banner = Resources.Load<Texture>("c_nftdata_contract");
