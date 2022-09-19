@@ -40,6 +40,7 @@ namespace NFTPort
             private Chains chain = Chains.ethereum;
             
             [FormerlySerializedAs("contract_address")] [SerializeField]
+            [Tooltip("Also known as contract_address")]
             private string collection = "Input Contract/Collection Address To Fetch NFT's from";
 
             [Header("Optional:")]

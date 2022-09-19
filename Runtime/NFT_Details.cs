@@ -35,8 +35,9 @@ namespace NFTPort
             
             [FormerlySerializedAs("_contract_address")]
             [SerializeField][Header("Contract/Collection Address")]
+            [Tooltip("Also known as contract_address")]
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
-            private string _collection = "Input Contract Address of the NFT collection";
+            private string _collection = "Input Contract/Collection Address of the NFT collection";
             
             [SerializeField]
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]

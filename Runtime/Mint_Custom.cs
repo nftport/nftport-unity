@@ -108,16 +108,16 @@ namespace NFTPort
         /// </summary>
         /// <param name="contract_address"> Previously deployed contract address of this user.</param>
         /// <param name="metadata_uri"> Metadata URI obtained from metadata or file upload feature </param>
-        /// <param name="MintToAddress"> Blockchain address to mint to. </param>
+        /// <param name="mintToAddress"> Blockchain address to mint to. </param>
         /// <param name="token_id"> Int Token ID for the NFT</param>
-        public Mint_Custom SetParameters(string contract_address = null, string metadata_uri = null , string MintToAddress = null , int token_id = 0)
+        public Mint_Custom SetParameters(string contract_address = null, string metadata_uri = null , string mintToAddress = null , int token_id = 0)
         {
             if(contract_address!=null)
                 _contract_address = contract_address;
             if(metadata_uri!=null)
                 _metadata_uri = metadata_uri;
-            if(MintToAddress!=null)
-                _mintToAddress = MintToAddress;
+            if(mintToAddress!=null)
+                _mintToAddress = mintToAddress;
             if(token_id!=0)
                 _token_id = token_id;
             return this;
