@@ -98,7 +98,7 @@ Deploy fully customizable NFTs and contracts with industry standards - decentral
 | API Feature                                |  |
 | --------------------------------- | ---------- |
 | **Storage**                       |            |
-| List all your IPFS uploads |    🧭 planned      |   
+| List all your IPFS uploads |    Via dashboard      |   
 | [Upload a file to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY3-storage-upload-file)             |    ✅    |
 | [Create and upload advanced industry standard metadata to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY4-storage-upload-metadata)          |     ✅     |
 | Upload metadata directory to IPFS |   🧭 planned       |  
