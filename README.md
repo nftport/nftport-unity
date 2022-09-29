@@ -58,6 +58,7 @@ Create cross-chain games and products with fast and reliable NFT data and mints
 - Polygon ✅
 - Rinkeby ✅
 - Solana ✅
+- Goerli 🧭 planned
 
 -------
 
@@ -70,25 +71,25 @@ Create cross-chain games and products with fast and reliable NFT data and mints
 ### Multi-Chain NFT Data
 Get fast and reliable data.
 
-| API Feature                               | Ethereum | Rinkeby | Polygon | Solana | 
-| ----------------------------------- | -------- | ------- | ------- |  ------- | 
+| API Feature                               | Ethereum | Rinkeby | Goerli | Polygon | Solana | 
+| ----------------------------------- | -------- | ------- | ------- |  ------- | ------- | 
 | **Contracts, Metadata & Assets**    |          |         |         |          
-| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅       |   ✅   | ✅ |     
-| [Retrieve contract-collection NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection)              | ✅      |  ✅   | ✅    |  ✅  |   
+| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅   | 🧭 planned     |   ✅   | ✅ |     
+| [Retrieve contract-collection NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection)              | ✅      |  ✅  | 🧭 planned  | ✅    |  ✅  |   
 |  |          |        |        |    
 | **Ownership including NFT metadata and details:**                       |          |        |        |     
-| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅      | ✅      |     ✅  |   
-| [Retrieve NFTs owned by an account in a particular collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)  | ✅       | ✅      | ✅      |   🔧 in consideration  |     
+| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅    | 🧭 planned   | ✅      |     ✅  |   
+| [Retrieve NFTs owned by an account in a particular collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)  | ✅       | ✅     | 🧭 planned  | ✅      |   🔧 in consideration  |     
 
 
 ### Easy minting
 Easy mint NFTs with single component.
 
-| API Feature                 | Ethereum | Rinkeby | Polygon | Solana | 
-| ------------------ | -------- | ------- | ------- | ---- | 
+| API Feature                 | Ethereum | Rinkeby | Goerli  | Polygon | Solana | 
+| ------------------ | -------- | ------- | ------- | ---- | ------- | 
 | **Easy Minting**        |          |         |         | 
-| [Via URL](https://docs.nftport.xyz/docs/nftport/ZG9jOjU1MDM4OTgw-minting-w-url)     |    🔧 in consideration      | ✅     |  ✅     |  🧭 planned   
-| [Via File](https://docs.nftport.xyz/docs/nftport/ZG9jOjczMDEwMjIx-easy-minting-with-file-upload)         |    🔧 in consideration       |   ✅   |   ✅   |      🧭 planned   
+| [Via URL](https://docs.nftport.xyz/docs/nftport/ZG9jOjU1MDM4OTgw-minting-w-url)     |    🔧 in consideration      | ✅   |  🧭 planned    |  ✅     |  🧭 planned   
+| [Via File](https://docs.nftport.xyz/docs/nftport/ZG9jOjczMDEwMjIx-easy-minting-with-file-upload)         |    🔧 in consideration       |   ✅   |  🧭 planned  |   ✅   |      🧭 planned   
 
 
 ### Storage, contracts and customizable minting
@@ -97,32 +98,32 @@ Deploy fully customizable NFTs and contracts with industry standards - decentral
 | API Feature                                |  |
 | --------------------------------- | ---------- |
 | **Storage**                       |            |
-| List all your IPFS uploads |    View via Dashboard      |   
+| List all your IPFS uploads |    🧭 planned      |   
 | [Upload a file to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY3-storage-upload-file)             |    ✅    |
 | [Create and upload advanced industry standard metadata to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY4-storage-upload-metadata)          |     ✅     |
 | Upload metadata directory to IPFS |   🧭 planned       |  
 
 
-| API Feature                | Ethereum | Rinkeby | Polygon | Solana
-| ------------------ | -------- | ------- | ------- | ---- | 
+| API Feature                | Ethereum | Rinkeby | Goerli  | Polygon | Solana
+| ------------------ | -------- | ------- | ------- | ---- |  ---- | 
 | **Product**  |          |        |        |
 |  |          |        |        |
-| ERC 721  |    ✅      |  ✅      |   ✅     | ❌
+| ERC 721  |    ✅      |  ✅    |  ✅   |   ✅     | ❌
 | ERC 1155 |   🧭 planned         |  🧭 planned        | 🧭 planned         | ❌
 |  SPL  |     ❌     |    ❌    |     ❌   | 🧭 planned  
 |    |          |        |        |
-| Deploy a contract for NFT products  |     🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)      |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)       | 🧭 planned   
-| [Customizable minting : Mint NFTs of your contract to any wallet](https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting)  |     🧭 planned        | ✅       |  ✅    | 🧭 planned   
-| [Update a minted NFT / Dynamic NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft)   |     🧭 planned        | ✅       | ✅    | 🧭 planned   
-| Burn a minted NFT   |     🔧 in consideration        |  ✅      |  ✅   | 🔧 in consideration    
-| Transfer a minted NFT   |     🔧 in consideration        |  ✅     |  ✅    | 🔧 in consideration   
+| Deploy a contract for NFT products  |     🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)  | 🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)       | 🧭 planned   
+| [Customizable minting : Mint NFTs of your contract to any wallet](https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting)  |     🧭 planned        | ✅     | 🧭 planned    |  ✅    | 🧭 planned   
+| [Update a minted NFT / Dynamic NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft)   |     🧭 planned        | ✅      | 🧭 planned   | ✅    | 🧭 planned   
+| [Burn a minted NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDM0-customizable-minted-burn-nft)   |     🔧 in consideration        |  ✅      | 🧭 planned  |  ✅   | 🔧 in consideration    
+| [Transfer a minted NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDUy-customizable-minted-transfer-nft)   |     🔧 in consideration        |  ✅     | 🧭 planned  |  ✅    | 🔧 in consideration   
 
 
 ### Transactions
 Get multichain transaction data.
 
-| API Feature                 | Ethereum | Rinkeby | Polygon | Solana |
-| ------------------ | -------- | ------- | ------- | ------ |
+| API Feature                 | Ethereum | Rinkeby | Goerli | Polygon | Solana |
+| ------------------ | -------- | ------- | ------- | ------ | ------ | 
 | [Retrieve transactions by NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft)        | ✅        | ❌      | ❌     |  ✅   
 | [Retrieve transactions by collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract)   | ✅       | ❌      | ❌     |   ✅
 | [Retrieve transactions by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjY1MjQwMTAw-transaction-data-account) | ✅        | ❌      | ❌     | ✅   
