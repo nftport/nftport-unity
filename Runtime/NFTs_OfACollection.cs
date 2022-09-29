@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
 
 namespace NFTPort  
 { using Internal;
@@ -13,7 +14,7 @@ namespace NFTPort
     [AddComponentMenu(PortConstants.BaseComponentMenu+PortConstants.FeatureName_NFTs_OfContract)]
     [ExecuteAlways]
     [HelpURL(PortConstants.NFTs_OfContract)]
-    public class NFTs_OfAContract : MonoBehaviour
+    public class NFTs_OfACollection : MonoBehaviour
     {
         /// <summary>
         /// Currently Supported chains for this endpoint.
@@ -38,8 +39,9 @@ namespace NFTPort
             [SerializeField]
             private Chains chain = Chains.ethereum;
             
-            [SerializeField]
-            private string contract_address = "Input Contract Address To Fetch NFT's from";
+            [FormerlySerializedAs("contract_address")] [SerializeField]
+            [Tooltip("Also known as contract_address")]
+            private string collection = "Input Contract/Collection Address To Fetch NFT's from";
 
             [Header("Optional:")]
             
@@ -101,9 +103,9 @@ namespace NFTPort
         /// Initialize creates a gameobject and assings this script as a component. This must be called if you are not refrencing the script any other way and it doesn't already exists in the scene.
         /// </summary>
         /// <param name="destroyAtEnd"> Optional bool parameter can set to false to avoid Spawned GameObject being destroyed after the Api process is complete. </param>
-        public static NFTs_OfAContract Initialize(bool destroyAtEnd = true)
+        public static NFTs_OfACollection Initialize(bool destroyAtEnd = true)
             {
-                var _this = new GameObject("NFTs Of a Contract").AddComponent<NFTs_OfAContract>();
+                var _this = new GameObject("NFTs Of a Contract").AddComponent<NFTs_OfACollection>();
                 _this.destroyAtEnd = destroyAtEnd;
                 _this.onEnable = false;
                 _this.debugErrorLog = false;
@@ -111,12 +113,16 @@ namespace NFTPort
             }
             
             /// <summary>
-            /// Set Contract Address to retrieve NFTs from as string
+            /// Set Parameters to retrieve NFTs from as string
             /// </summary>
-            /// <param name="contract_address"> as string.</param>
-            public NFTs_OfAContract SetContractAddress(string contract_address)
+            /// <param name="collection"> as string.</param>
+            /// <param name="include"> Choose from available 'Includes' enum </param>
+            public NFTs_OfACollection SetParameters(string collection = null, Includes include = Includes.all )
             {
-                this.contract_address = contract_address;
+                if (this.include != include)
+                    this.include = include;
+                if(collection != null)
+                    this.collection = collection;
                 return this;
             }
             
@@ -124,19 +130,9 @@ namespace NFTPort
             /// Blockchain from which to query NFTs.
             /// </summary>
             /// <param name="chain"> Choose from available 'Chains' enum</param>
-            public NFTs_OfAContract SetChain(Chains chain)
+            public NFTs_OfACollection SetChain(Chains chain)
             {
                 this.chain = chain;
-                return this;
-            }
-            
-            /// <summary>
-            /// Include optional data in the response. default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract, Choose from Includes.
-            /// </summary>
-            /// <param name="include"> Choose from available 'Includes' enum </param>
-            public NFTs_OfAContract SetInclude(Includes include)
-            {
-                this.include = include;
                 return this;
             }
 
@@ -145,7 +141,7 @@ namespace NFTPort
             /// </summary>
             /// <param name="NFTs_OwnedByAnAccount_model.Root"> Use: .OnComplete(NFTs=> NFTsOfUser = NFTs) , where NFTsOfUser = NFTs_OwnedByAnAccount_model.Root;</param>
             /// <returns> NFTs_OwnedByAnAccount_model.Root </returns>
-            public NFTs_OfAContract OnComplete(UnityAction<NFTs_model> action)
+            public NFTs_OfACollection OnComplete(UnityAction<NFTs_model> action)
             {
                 this.OnCompleteAction = action;
                 return this;
@@ -156,7 +152,7 @@ namespace NFTPort
             /// Set Continuation
             /// </summary>
             ///<param name="continuation"> page number as int.</param>
-            public NFTs_OfAContract SetContinuation(int continuation)
+            public NFTs_OfACollection SetContinuation(int continuation)
             {
                 this.page_number = continuation;
                 return this;
@@ -167,7 +163,7 @@ namespace NFTPort
             /// </summary>
             /// <param name="UnityAction action"> string.</param>
             /// <returns> Information on Error as string text.</returns>
-            public NFTs_OfAContract OnError(UnityAction<string> action)
+            public NFTs_OfACollection OnError(UnityAction<string> action)
             {
                 this.OnErrorAction = action;
                 return this;
@@ -192,7 +188,7 @@ namespace NFTPort
             {
                 if (chain == Chains.solana)
                 {
-                    WEB_URL = "https://api.nftport.xyz/v0/solana/nfts/" + contract_address;
+                    WEB_URL = "https://api.nftport.xyz/v0/solana/nfts/" + collection;
                     if (page_number != 0)
                     {
                         WEB_URL = WEB_URL + "?page_number=" + page_number.ToString() + "&include=" + include.ToString().ToLower();;
@@ -204,7 +200,7 @@ namespace NFTPort
                 }
                 else
                 {
-                    WEB_URL = RequestUriInit + contract_address + "?chain=" + chain.ToString().ToLower();
+                    WEB_URL = RequestUriInit + collection + "?chain=" + chain.ToString().ToLower();
                     if (page_number != 0)
                     {
                         WEB_URL = WEB_URL + "&page_number=" + page_number.ToString();

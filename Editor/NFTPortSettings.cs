@@ -234,6 +234,9 @@ namespace NFTPort.Editor
             if (GUILayout.Button("Whats New", GUILayout.Height(buttonHeight))) 
                 Application.OpenURL(PortConstants.ChangeLog);
             
+            if (GUILayout.Button("FAQ", GUILayout.Height(buttonHeight))) 
+                Application.OpenURL(PortConstants.FAQ);
+            
             if (GUILayout.Button("Report a Bug or Request Feature", GUILayout.Height(buttonHeight))) 
                 Application.OpenURL(PortConstants.ReportABug);
 

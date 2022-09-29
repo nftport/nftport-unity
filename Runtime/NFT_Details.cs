@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
 
 namespace NFTPort  
 { using Internal;
@@ -31,14 +33,16 @@ namespace NFTPort
             [SerializeField]
             private Chains chain = Chains.ethereum;
             
-            [SerializeField]
+            [FormerlySerializedAs("_contract_address")]
+            [SerializeField][Header("Contract/Collection Address")]
+            [Tooltip("Also known as contract_address")]
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
-            private string _contract_address = "Input Contract Address of the NFT collection";
+            private string _collection = "Input Contract/Collection Address of the NFT collection";
             
             [SerializeField]
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
             [Tooltip("Token ID of the NFT")]
-            private int _token_id = 0;
+            private string _token_id = "0";
             
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDraw)]
             [SerializeField]
@@ -109,15 +113,15 @@ namespace NFTPort
         /// <summary>
         /// Set Parameters to retrieve NFT From.  ≧◔◡◔≦ .
         /// </summary>
-        /// <param name="contract_address"> as string - EVM</param>
+        /// <param name="collection"> as string - EVM</param>
         /// <param name="token_id"> as int - EVM.</param>
         /// <param name="mint_address"> mint_address - Solana.</param>
         /// <param name="refresh_metadata"> Queues and refreshes the metadata of the token if it has changed since the updated_date. Useful for example, when NFT collections are revealed or upgraded</param>
-        public NFT_Details SetParameters(string contract_address = null, int token_id = -1, string mint_address = null, bool refresh_metadata = false)
+        public NFT_Details SetParameters(string collection = null, string token_id = null, string mint_address = null, bool refresh_metadata = false)
             {
-                if(contract_address!=null)
-                    this._contract_address = contract_address;
-                if (token_id != -1)
+                if(collection!=null)
+                    this._collection = collection;
+                if (token_id != null)
                     _token_id = token_id;
                 if (mint_address != null)
                     _mint_address = mint_address;
@@ -183,9 +187,9 @@ namespace NFTPort
                 }
                 else
                 {
-                    WEB_URL = RequestUriInit + _contract_address + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
+                    WEB_URL = RequestUriInit + _collection + "/" + _token_id.ToString() + "?chain=" + chain.ToString().ToLower() + "&refresh_metadata=" + _refresh_metadata.ToString();
                     if(debugErrorLog)
-                        Debug.Log("Querying Details of NFT: " + _contract_address + "  token ID  " + _token_id + " on " + chain);
+                        Debug.Log("Querying Details of NFT: " + _collection + "  token ID  " + _token_id + " on " + chain);
                 } 
                 return WEB_URL;
             }

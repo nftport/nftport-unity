@@ -138,10 +138,12 @@ namespace NFTPort
             FileLocate(filePath);
         }
         
-        public void Stop(bool destroy)
+        public void Stop(bool destroy = false)
         {
+            destroy = destroyAtEnd;
             StopAllCoroutines();
-            Debug.Log("File Upload Stopped");
+            if(debugErrorLog)
+                Debug.Log("File Upload Stopped");
             End();
         }
 

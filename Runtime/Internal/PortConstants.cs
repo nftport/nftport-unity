@@ -22,9 +22,8 @@ namespace NFTPort.Internal
         public const string Docs_Txns_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft";
         public const string Txn_Collection = "https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract";
         public const string Docs_Update_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
-        
-        public const string Docs_Transfer_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
-        public const string Docs_Burn_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft";
+        public const string Docs_Transfer_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDUy-customizable-minted-transfer-nft";
+        public const string Docs_Burn_NFT = "https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDM0-customizable-minted-burn-nft";
 
 
 
@@ -36,17 +35,21 @@ namespace NFTPort.Internal
         public const string ReportABug = "https://github.com/nftport/nftport-unity/issues";
         public const string MyIPFS = "https://dashboard.nftport.xyz/files";
         public const string MyNFTs = "https://dashboard.nftport.xyz/nfts";
+        public const string FAQ =
+            "https://nftport.notion.site/NFTPort-Frequently-asked-questions-5e0fb89737524766a63d443655035bae#23bfa474d1af49c09fe73f36f9e2d70c";
+
+        
 
         
         public const string AdvPlaygroundGallery = "https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template";
         public const string PlaygroundButterflyMint = "https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template/blob/main/Assets/Advanced%20Playground/CustomMintSample.cs";
 
-
+       
         public const string BaseComponentMenu = "NFTPort/";
         public const string BaseFeatureSpawnerMenu = "NFTPort/Spawner/";
         public const string FeatureName_ConnectUserWallet = "Connect Player Wallet";
         public const string FeatureName_NFT_Details = "NFT Data | NFT Details";
-        public const string FeatureName_NFTs_OfContract = "NFT Data | of a contract-collection";
+        public const string FeatureName_NFTs_OfContract = "NFT Data | of a Collection";
         public const string FeatureName_NFTs_OfAccount = "NFT Data | of an Account";
         public const string FeatureName_StorageFiles = "Storage | Upload File";
         public const string FeatureName_StorageMetadata = "Storage | Upload Metadata";

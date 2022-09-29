@@ -44,12 +44,13 @@ namespace NFTPort
             [SerializeField]
             private string address = "Input Account Address To Fetch NFT's from";
             
+            [FormerlySerializedAs("contract_address")]
             [Header("Optional: Filter by and return NFTs only from the given contract address/collection")]
            
             [SerializeField]
             [Tooltip("Filter from a collection, EVM only, Leave blank if not using")]
             [DrawIf("chain", Chains.solana , DrawIfAttribute.DisablingType.DontDrawInverse)]
-            string contract_address;
+            string collection;
             
             [Header("Include optional data in the response.")]
             [Tooltip("Default is the default response and metadata includes NFT metadata, like in Retrieve NFT details, and contract_information includes information of the NFT’s contract.")]
@@ -149,10 +150,10 @@ namespace NFTPort
             /// <summary>
             /// Set Filter by to return NFTs only from the given contract address/collection. 
             /// </summary>
-            ///<param name="contract_address"> as string.</param>
-            public NFTs_OwnedByAnAccount SetFilterFromContract(string contract_address)
+            ///<param name="collection"> as string.</param>
+            public NFTs_OwnedByAnAccount SetFilterFromCollection(string collection)
             {
-                this.contract_address = contract_address;
+                this.collection = collection;
                 return this;
             }
             
@@ -227,15 +228,15 @@ namespace NFTPort
                     } 
                     WEB_URL = WEB_URL + "&include=" + include.ToString().ToLower();
              
-                    if (contract_address != "")
-                        WEB_URL = WEB_URL + "&contract_address=" + contract_address;
+                    if (collection != "")
+                        WEB_URL = WEB_URL + "&contract_address=" + collection;
                 }
 
                 if (debugErrorLog)
                 {
                     var s = "Querying NFTs owned of Account: " + address + " on " + chain;
-                    if (contract_address != "")
-                        s += " / Filter from collection: " + contract_address;
+                    if (collection != "")
+                        s += " / Filter from collection: " + collection;
                     Debug.Log(s);
 
                 }
