@@ -68,18 +68,24 @@ Create cross-chain games and products with fast and reliable NFT data and mints
 
 ## Feature list: <br/>
 
+
+✅ - Supported <br/>
+❌ - Not supported as of now<br/>
+🧭 - Planned  <br/>
+🛠  - In consideration according to requests <br/>
+
 ### Multi-Chain NFT Data
 Get fast and reliable data.
 
 | API Feature                               | Ethereum | Rinkeby | Goerli | Polygon | Solana | 
 | ----------------------------------- | -------- | ------- | ------- |  ------- | ------- | 
 | **Contracts, Metadata & Assets**    |          |         |         |          
-| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅   | 🧭 planned     |   ✅   | ✅ |     
-| [Retrieve contract-collection NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjUzNjI2MzQ0-nf-ts-of-a-contract-collection)              | ✅      |  ✅  | 🧭 planned  | ✅    |  ✅  |   
+| [Retrieve NFT details](https://docs.nftport.xyz/docs/nftport/ZG9jOjY0OTM2NTgx-nft-details)                |✅        |✅   | 🧭      |   ✅   | ✅ |     
+| [Retrieve contract-collection NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjk0NjM3NjA1-nf-ts-of-a-collection)              | ✅      |  ✅  | 🧭   | ✅    |  ✅  |   
 |  |          |        |        |    
 | **Ownership including NFT metadata and details:**                       |          |        |        |     
-| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅    | 🧭 planned   | ✅      |     ✅  |   
-| [Retrieve NFTs owned by an account in a particular collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)  | ✅       | ✅     | 🧭 planned  | ✅      |   🔧 in consideration  |     
+| [Retrieve NFTs owned by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)   | ✅       | ✅    | 🧭    | ✅      |     ✅  |   
+| [Retrieve NFTs owned by an account in a particular collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjUyMzI4NTkz-nf-ts-owned-by-an-account)  | ✅       | ✅     | 🧭   | ✅      |   🛠   |     
 
 
 ### Easy minting
@@ -88,8 +94,8 @@ Easy mint NFTs with single component.
 | API Feature                 | Ethereum | Rinkeby | Goerli  | Polygon | Solana | 
 | ------------------ | -------- | ------- | ------- | ---- | ------- | 
 | **Easy Minting**        |          |         |         | 
-| [Via URL](https://docs.nftport.xyz/docs/nftport/ZG9jOjU1MDM4OTgw-minting-w-url)     |    🔧 in consideration      | ✅   |  🧭 planned    |  ✅     |  🧭 planned   
-| [Via File](https://docs.nftport.xyz/docs/nftport/ZG9jOjczMDEwMjIx-easy-minting-with-file-upload)         |    🔧 in consideration       |   ✅   |  🧭 planned  |   ✅   |      🧭 planned   
+| [Via URL](https://docs.nftport.xyz/docs/nftport/ZG9jOjU1MDM4OTgw-minting-w-url)     |    🛠      | ✅   |  🧭     |  ✅     |  🧭    
+| [Via File](https://docs.nftport.xyz/docs/nftport/ZG9jOjczMDEwMjIx-easy-minting-with-file-upload)         |    🛠     |   ✅   |  🧭   |   ✅   |      🧭    
 
 
 ### Storage, contracts and customizable minting
@@ -101,22 +107,22 @@ Deploy fully customizable NFTs and contracts with industry standards - decentral
 | List all your IPFS uploads |    Via dashboard      |   
 | [Upload a file to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY3-storage-upload-file)             |    ✅    |
 | [Create and upload advanced industry standard metadata to IPFS](https://docs.nftport.xyz/docs/nftport/ZG9jOjYwODM0NTY4-storage-upload-metadata)          |     ✅     |
-| Upload metadata directory to IPFS |   🧭 planned       |  
+| Upload metadata directory to IPFS |   🧭        |  
 
 
 | API Feature                | Ethereum | Rinkeby | Goerli  | Polygon | Solana
 | ------------------ | -------- | ------- | ------- | ---- |  ---- | 
 | **Product**  |          |        |        |
 |  |          |        |        |
-| ERC 721  |    ✅      |  ✅    |  ✅   |   ✅     | ❌
-| ERC 1155 |   🧭 planned         |  🧭 planned        | 🧭 planned         | ❌
-|  SPL  |     ❌     |    ❌    |     ❌   | 🧭 planned  
+| ERC 721  |    ✅      |  ✅    |  ✅   |   ✅   |   ✅   | ❌
+| ERC 1155 |   🧭         |  🧭         | 🧭     | 🧭       | ❌
+|  SPL  |     ❌     |    ❌    |     ❌  | ❌ | 🧭   
 |    |          |        |        |
-| Deploy a contract for NFT products  |     🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)  | 🧭 planned       |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)       | 🧭 planned   
-| [Customizable minting : Mint NFTs of your contract to any wallet](https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting)  |     🧭 planned        | ✅     | 🧭 planned    |  ✅    | 🧭 planned   
-| [Update a minted NFT / Dynamic NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft)   |     🧭 planned        | ✅      | 🧭 planned   | ✅    | 🧭 planned   
-| [Burn a minted NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDM0-customizable-minted-burn-nft)   |     🔧 in consideration        |  ✅      | 🧭 planned  |  ✅   | 🔧 in consideration    
-| [Transfer a minted NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDUy-customizable-minted-transfer-nft)   |     🔧 in consideration        |  ✅     | 🧭 planned  |  ✅    | 🔧 in consideration   
+| Deploy a contract for NFT products  |     🧭        |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)  | 🧭        |  [via API](https://docs.nftport.xyz/docs/nftport/b3A6MjE0MDYzNzU-deploy-a-contract-for-nft-products)       | 🧭    
+| [Customizable minting : Mint NFTs of your contract to any wallet](https://docs.nftport.xyz/docs/nftport/ZG9jOjYzMDIzNDgx-customizable-minting)  |     🧭         | ✅     | 🧭     |  ✅    | 🧭    
+| [Update a minted NFT / Dynamic NFTs](https://docs.nftport.xyz/docs/nftport/ZG9jOjg2MTE3MTg4-customizable-minted-update-nft)   |     🧭         | ✅      | 🧭    | ✅    | 🧭    
+| [Burn a minted NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDM0-customizable-minted-burn-nft)   |     🛠        |  ✅      | 🧭   |  ✅   | 🛠    
+| [Transfer a minted NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjg4Mzk3MDUy-customizable-minted-transfer-nft)   |     🛠        |  ✅     | 🧭   |  ✅    | 🛠   
 
 
 ### Transactions
@@ -124,10 +130,10 @@ Get multichain transaction data.
 
 | API Feature                 | Ethereum | Rinkeby | Goerli | Polygon | Solana |
 | ------------------ | -------- | ------- | ------- | ------ | ------ | 
-| [Retrieve transactions by NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft)        | ✅        | ❌      | ❌     | ❌   |  ✅   
-| [Retrieve transactions by collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract)   | ✅       | ❌     | ❌    | ❌     |   ✅
+| [Retrieve transactions by NFT](https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUy-transaction-data-nft)        | ✅        | ❌      | ❌      | ❌  |  ✅   
+| [Retrieve transactions by collection](https://docs.nftport.xyz/docs/nftport/ZG9jOjgzODU5NDUx-transaction-data-collection-contract)   | ✅       | ❌      | ❌      | ❌  |   ✅
 | [Retrieve transactions by an account](https://docs.nftport.xyz/docs/nftport/ZG9jOjY1MjQwMTAw-transaction-data-account) | ✅        | ❌      | ❌     | ❌   | ✅   
-| Retrieve contract sales statistics  | 🔧 in consideration         | ❌      | ❌      | ❌  | 🔧 in consideration    
+| Retrieve contract sales statistics  | 🛠    | ❌      | ❌       | ❌ |   🛠    
 
 
 
@@ -140,12 +146,12 @@ Get multichain transaction data.
 | **Asset Downloader:**  |          |         |         |       |
 | [Determine URL Content Type](https://docs.nftport.xyz/docs/nftport/ZG9jOjU2NjAzOTE0-asset-downloader) |    ✅   |         |         |       |
 | [Fetch Image asset from IPFS / web cached image](https://docs.nftport.xyz/docs/nftport/ZG9jOjU2NjAzOTE0-asset-downloader) |   ✅        |         |         |       |
-| Fetch Audio file from IPFS / web |    🧭 planned      |         |         |       |
+| Fetch Audio file from IPFS / web |    🧭       |         |         |       |
 | Fetch 3D object from IPFS / web |    ✅ Use determine content type with [gltFast](https://github.com/atteneder/glTFast) , [View Example](https://github.com/Worldsz/NFT-Unity3D-Metaverse-Template/blob/main/Assets/Advanced%20Playground/Gallery/Gallery.cs#L165)   |         |         |       |
 |  |          |         |         |       |
-| NFT collection reader (bulk) |    🧭 planned      |         |         |       |
+| NFT collection reader (bulk) |    🧭       |         |         |       |
 |  |          |         |         |       |
-| **NFT Product Minting Suite**  |    🧭 planned     |         |         |       |
+| **NFT Product Minting Suite**  |    🧭      |         |         |       |
 
 
   <br/>
