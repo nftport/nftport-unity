@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.0](https://github.com/nftport/nftport-unity/compare/v0.8.0...v1.1.0) (2022-10-05)
+
+
+### Features
+
+* Added Goerli to supported features - Rinkeby has been depracted with Ethererum moving to Proof of Stake. ([3b4c398](https://github.com/nftport/nftport-unity/commit/3b4c398f0d074cf152b2cd4f025cf942133a97e2))
+* BREAKING parameter contract_address in TXN endpoints have been changed to collection, token_id has been changed from type int to string to handle long values and enable unified solution across chains ([b6dfa79](https://github.com/nftport/nftport-unity/commit/b6dfa79a158ea8371e511b6c6482576125d82f3d))
+* BREAKING: NFTDetails parameter contract_address has been renamed to collection ( to make it more unified with different chain namings going forward) ([3073b98](https://github.com/nftport/nftport-unity/commit/3073b9821cb43ce8677b3c32efd297e495d4ae42))
+* BREAKING: NFTs of contract functions SetContractAddress and SetIncludes have been combined into SetParameters ([13ef460](https://github.com/nftport/nftport-unity/commit/13ef460c1c0218b5fd76dc98b86434fd25411a95))
+* BREAKING: NFTs_OfAContract has been renamed to NFTs_OfACollection for consistent naming with other blockchains. ([3924690](https://github.com/nftport/nftport-unity/commit/3924690a4c8cc7ec19f33a8bc63038f28b02ceb3))
+
 ## [1.0.0](https://github.com/nftport/nftport-unity/compare/v0.8.0...v1.0.0) (2022-09-29)
 
 

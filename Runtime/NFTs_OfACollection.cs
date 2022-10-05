@@ -23,7 +23,7 @@ namespace NFTPort
         {
             ethereum,
             polygon,
-            rinkeby,
+            goerli,
             solana
         }
         
