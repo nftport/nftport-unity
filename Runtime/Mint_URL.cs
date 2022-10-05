@@ -19,7 +19,7 @@ namespace NFTPort
         public enum Chains
         {
             polygon,
-            rinkeby
+            goerli
         }
         
         private class EasyMintNFT

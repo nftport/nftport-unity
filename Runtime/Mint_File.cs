@@ -23,7 +23,7 @@ namespace NFTPort
         public enum Chains
         {
             polygon,
-            rinkeby
+            goerli
         }
 
         #region Parameter Defines

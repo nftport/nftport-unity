@@ -25,8 +25,8 @@ namespace NFTPort
         {
             ethereum,
             polygon,
-            rinkeby,
-            solana
+            goerli,
+            solana,
         }
         
         public enum Includes

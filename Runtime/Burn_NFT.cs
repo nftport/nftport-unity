@@ -20,7 +20,8 @@ namespace NFTPort
         public enum Chains
         {
             polygon,
-            rinkeby
+            goerli,
+            ethereum
         }
         
         private class CustomNFT
