@@ -196,7 +196,7 @@ namespace NFTPort
                 Debug.Log(json);
              
              byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
-             var request = new UnityWebRequest(WEB_URL, "PUT");
+             var request = new UnityWebRequest(WEB_URL, "POST");
             
             request.uploadHandler = (UploadHandler) new UploadHandlerRaw(jsonToSend);
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
